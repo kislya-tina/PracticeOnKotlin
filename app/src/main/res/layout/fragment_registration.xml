@@ -8,7 +8,9 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/reg_frag" />
+        android:layout_height="100dp"
+        android:text="@string/reg_frag"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_gravity="center"/>
 
 </FrameLayout>

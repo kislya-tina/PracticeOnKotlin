@@ -5,39 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import me.apps.personalaccountnpomir.R
+import me.apps.personalaccountnpomir.interfaces.OnFragmentLogDataListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LogInFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LogInFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    private var button : Button? = null
-    private var textView : TextView? = null
+    private var regButton : Button? = null
+
+    private var mListener : OnFragmentLogDataListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    @JvmName("newInstance1")
-    fun newInstance(param1: String?, param2: String?): LogInFragment? {
-        return LogInFragment()
     }
 
     override fun onCreateView(
@@ -47,25 +26,21 @@ class LogInFragment : Fragment() {
 
         var view : View? = inflater.inflate(R.layout.fragment_log_in, container, false)
 
-        button = view?.findViewById(R.id.button)
-        textView = view?.findViewById(R.id.textView)
+        regButton = view?.findViewById(R.id.regButt)
 
-        button?.setOnClickListener(){
-
+        regButton?.setOnClickListener(){
+            fun onClick(view: View){
+                mListener?.onOpenFragment2()
+            }
         }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
 
     companion object {
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LogInFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        fun newInstance(param1: String, param2: String) : LogInFragment {
+            return LogInFragment()
+        }
     }
 }

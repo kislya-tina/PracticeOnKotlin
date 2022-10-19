@@ -5,4 +5,6 @@
     <string name="gang">go to registration fragment</string>
     <string name="button">Button</string>
     <string name="reg_frag">hello on reg fragment</string>
+    <string name="log_in">log_in</string>
+    <string name="reg">reg</string>
 </resources>

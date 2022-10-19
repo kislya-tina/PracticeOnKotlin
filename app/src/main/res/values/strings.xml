@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Personal Account NPO MIR</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Button here</string>
+    <string name="gang">go to registration fragment</string>
+    <string name="button">Button</string>
+    <string name="reg_frag">hello on reg fragment</string>
+</resources>

@@ -15,7 +15,7 @@ import me.apps.personalaccountnpomir.R
 import me.apps.personalaccountnpomir.interfaces.OnFragmentLogDataListener
 import org.w3c.dom.Text
 
-class LogInFragment : Fragment() {
+class LogInFragment : Fragment(),View.OnClickListener {
 
     private var regButton : Button? = null
     private var logButton : Button? = null
@@ -37,15 +37,14 @@ class LogInFragment : Fragment() {
 
         regButton = view?.findViewById(R.id.regButt)
 
-        regButton?.setOnClickListener(){
-            fun onClick(view: View){
-                mListener?.onOpenFragment2()
-            }
-        }
+        regButton?.setOnClickListener(this)
 
         logButton = view?.findViewById(R.id.logButt)
         idText = view?.findViewById(R.id.idText)
         passText = view?.findViewById(R.id.passText)
+        //fm.findFragmentById(R.id.fragmentLogContainer)
+        //byTag
+        //todo
 
         logButton?.setOnClickListener(){
             if(idText?.text?.toString()?.trim()?.equals("")!! || passText?.text?.toString()?.trim()?.equals("")!!){
@@ -54,7 +53,7 @@ class LogInFragment : Fragment() {
                 /**
                  * todo для рамазана
                  * isLogged(id, pass)
-                 *
+                 * login //
                  * @param id String
                  * @param password String
                  * @return String
@@ -81,10 +80,23 @@ class LogInFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
 
-    companion object {
+    override fun onDestroy() {
+        //очистка ресурсов
+        super.onDestroy()
+        regButton?.setOnClickListener(null);
+    }
+    //жизненные циклы активити и фрагментов
+    companion object {//todo
         @JvmStatic
         fun newInstance(param1: String, param2: String) : LogInFragment {
             return LogInFragment()
         }
+    }
+
+    override fun onClick(p0: View?) {
+            mListener?.onOpenFragment2()
+            //todo
+            //replace
+            //или таб придумать сделать
     }
 }

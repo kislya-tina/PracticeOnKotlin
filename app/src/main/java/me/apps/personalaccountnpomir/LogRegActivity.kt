@@ -36,7 +36,7 @@ class LogRegActivity : AppCompatActivity(), OnFragmentLogDataListener{
 
 
     }
-
+//если есть токен перейти сразу на следующую активити
     override fun onOpenFragment2() {
         val fm: FragmentManager = supportFragmentManager
 
@@ -49,5 +49,5 @@ class LogRegActivity : AppCompatActivity(), OnFragmentLogDataListener{
                 .commit()
         }    }
 
-
+//вот это не нужно и интерфейс
 }

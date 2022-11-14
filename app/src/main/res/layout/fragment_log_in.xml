@@ -7,7 +7,6 @@
     android:background="#FF33B5E5"
     tools:context=".fragments.LogInFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 <!--    <TextView-->
 <!--        android:id="@+id/textView"-->
 <!--        android:layout_width="122dp"-->
@@ -41,16 +40,17 @@
             android:id="@+id/idText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="152dp"
+            android:autofillHints="name"
             android:ems="10"
             android:inputType="textPersonName"
+            android:outlineProvider="background"
             app:layout_constraintBottom_toTopOf="@+id/passText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
-            android:autofillHints="name"
-            android:layout_gravity="center"/>
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/passText"

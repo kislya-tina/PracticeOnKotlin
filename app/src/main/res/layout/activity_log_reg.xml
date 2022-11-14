@@ -7,17 +7,23 @@
     tools:context=".LogRegActivity">
 
     <FrameLayout
-        android:id="@+id/fragmentRegContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-
-    <FrameLayout
         android:id="@+id/fragmentLogContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
 
+    <FrameLayout
+        android:id="@+id/fragmentRegContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+<!--
+todo
+кнопка переключения "регистрация" вынести на активити
+переключение между фрагментами
+-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

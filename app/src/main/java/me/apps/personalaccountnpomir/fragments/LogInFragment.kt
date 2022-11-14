@@ -8,19 +8,22 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import me.apps.personalaccountnpomir.Back
 import me.apps.personalaccountnpomir.InstrumentActivity
-import me.apps.personalaccountnpomir.LogRegActivity
 import me.apps.personalaccountnpomir.R
 import me.apps.personalaccountnpomir.interfaces.OnFragmentLogDataListener
-import org.w3c.dom.Text
 
 class LogInFragment : Fragment(),View.OnClickListener {
 
-    private var regButton : Button? = null
+    private var regButton : AppCompatButton? = null
     private var logButton : Button? = null
     private var idText : TextView? = null
     private var passText : TextView? = null
+    private var fm : FragmentManager? = null
+    private var frag : Fragment? = null
 
     private var mListener : OnFragmentLogDataListener? = null
 
@@ -39,12 +42,12 @@ class LogInFragment : Fragment(),View.OnClickListener {
 
         regButton?.setOnClickListener(this)
 
-        logButton = view?.findViewById(R.id.logButt)
-        idText = view?.findViewById(R.id.idText)
-        passText = view?.findViewById(R.id.passText)
-        //fm.findFragmentById(R.id.fragmentLogContainer)
+        logButton = view?.findViewWithTag(R.id.logButt)
+        idText = view?.findViewWithTag(R.id.textLogin)
+        passText = view?.findViewWithTag(R.id.textPassword)
+        frag = fm?.findFragmentById(R.id.fragmentLogContainer)
         //byTag
-        //todo
+        //todo complete all
 
         logButton?.setOnClickListener(){
             if(idText?.text?.toString()?.trim()?.equals("")!! || passText?.text?.toString()?.trim()?.equals("")!!){
@@ -67,13 +70,12 @@ class LogInFragment : Fragment(),View.OnClickListener {
                     startActivity(intent)
                 }
  */
-                val name: String = idText?.text.toString()
-                val password: String = passText?.text.toString()
-                if(name != "0001" || password !="0000"){
+                if(Back().logIn(idText?.text.toString(), passText?.text.toString()) == "error"){
                     Toast.makeText(activity, "Incorrect ID and/or password", Toast.LENGTH_LONG).show()
                 }else {
                     var intent = Intent(activity, InstrumentActivity::class.java)
                     startActivity(intent)
+                    //
                 }
             }
         }

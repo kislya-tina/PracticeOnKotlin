@@ -1,7 +1,9 @@
 package me.apps.personalaccountnpomir
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -12,9 +14,10 @@ import me.apps.personalaccountnpomir.interfaces.OnFragmentLogDataListener
 
 
 class LogRegActivity : AppCompatActivity(), OnFragmentLogDataListener{
-    private var logCont : FrameLayout? = null
-    private var regCont : FrameLayout? = null
+    private var logCont : LinearLayout? = null
+    private var regCont : LinearLayout? = null
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_reg)

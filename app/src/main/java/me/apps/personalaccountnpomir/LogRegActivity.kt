@@ -25,8 +25,6 @@ class LogRegActivity : AppCompatActivity(), OnFragmentLogDataListener{
         logCont = findViewById(R.id.fragmentLogContainer)
         regCont = findViewById(R.id.fragmentRegContainer)
 
-
-
         val fm = supportFragmentManager
 
         var fragment: Fragment? = fm.findFragmentById(R.id.fragmentLogContainer)

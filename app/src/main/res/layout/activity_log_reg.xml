@@ -6,25 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".InstrumentActivity">
 
-    <LinearLayout
-        android:id="@+id/fragmentLogContainer"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerLogReg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape_rect"
-        android:orientation="vertical">
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/fragmentRegContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape_rect"
-        android:orientation="vertical">
-    </LinearLayout>
-
+        android:name="me.apps.personalaccountnpomir.fragments.LogInFragment"/>
 
 </RelativeLayout>

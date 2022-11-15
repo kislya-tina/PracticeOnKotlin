@@ -36,15 +36,18 @@ class LogInFragment : Fragment(),View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        var view : View? = inflater.inflate(R.layout.fragment_log_in, container, false)
+        return inflater.inflate(R.layout.fragment_log_in, container, false)
+    }
 
-        regButton = view?.findViewById(R.id.regButt)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        regButton = view.findViewById(R.id.regButt)
 
         regButton?.setOnClickListener(this)
 
-        logButton = view?.findViewWithTag(R.id.logButt)
-        idText = view?.findViewWithTag(R.id.textLogin)
-        passText = view?.findViewWithTag(R.id.textPassword)
+        logButton = view.findViewWithTag(R.id.logButt)
+        idText = view.findViewWithTag(R.id.textLogin)
+        passText = view.findViewWithTag(R.id.textPassword)
         frag = fm?.findFragmentById(R.id.fragmentLogContainer)
         //byTag
         //todo complete all
@@ -73,15 +76,13 @@ class LogInFragment : Fragment(),View.OnClickListener {
                 if(Back().logIn(idText?.text.toString(), passText?.text.toString()) == "error"){
                     Toast.makeText(activity, "Incorrect ID and/or password", Toast.LENGTH_LONG).show()
                 }else {
-                    var intent = Intent(activity, InstrumentActivity::class.java)
+                    val intent = Intent(activity, InstrumentActivity::class.java)
                     startActivity(intent)
                     //
                 }
             }
         }
-        return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
-
     override fun onDestroy() {
         //очистка ресурсов
         super.onDestroy()

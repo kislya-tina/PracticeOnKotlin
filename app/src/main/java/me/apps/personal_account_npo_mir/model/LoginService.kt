@@ -1,13 +1,13 @@
-package me.apps.personalaccountnpomir
+package me.apps.personal_account_npo_mir.model
 
+import me.apps.personal_account_npo_mir.model.abstractions.ILoginService
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
 private const val ENDPOINT = "http://localhost:5000/api/"
 
-class Back {
-
+class LoginService : ILoginService{
     fun logIn(USERNAME:String, PASSWORD:String): String {
         val httpURLConnection = URL(ENDPOINT+ "SignIn" + "/"+USERNAME+"/"+PASSWORD).openConnection() as HttpURLConnection
         httpURLConnection.apply {
@@ -15,7 +15,7 @@ class Back {
             requestMethod = "GET"
             doInput = true
         }
-        if(httpURLConnection.responseCode!=HttpURLConnection.HTTP_OK) {
+        if(httpURLConnection.responseCode!= HttpURLConnection.HTTP_OK) {
             return "error"
         }
         val streamReader = InputStreamReader(httpURLConnection.inputStream)
@@ -35,7 +35,7 @@ class Back {
             doInput = true
         }
 
-        if(httpURLConnection.responseCode!=HttpURLConnection.HTTP_OK) {
+        if(httpURLConnection.responseCode!= HttpURLConnection.HTTP_OK) {
             return "erorro"
         }
         val streamReader = InputStreamReader(httpURLConnection.inputStream)
@@ -44,4 +44,23 @@ class Back {
         httpURLConnection.disconnect()
         return text
     }
+
+    override fun signIn(username: String, password: String): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun signOut() {
+        TODO("Not yet implemented")
+    }
+
+    override fun signUp(username: String, password: String, email: String, phoneNumber: String) {
+        TODO("Not yet implemented")
+    }
+
+    override var username: String
+        get() = TODO("Not yet implemented")
+        set(value) {}
+    override var token: Int
+        get() = TODO("Not yet implemented")
+        set(value) {}
 }

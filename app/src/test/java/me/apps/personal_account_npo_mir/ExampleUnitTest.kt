@@ -1,4 +1,4 @@
-package me.apps.personalaccountnpomir
+package me.apps.personal_account_npo_mir
 
 import org.junit.Test
 

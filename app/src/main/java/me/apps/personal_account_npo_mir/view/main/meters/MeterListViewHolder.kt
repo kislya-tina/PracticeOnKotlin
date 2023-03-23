@@ -12,6 +12,7 @@ import me.apps.personalaccountnpomir.R
 class MeterListViewHolder(view: View) :
   RecyclerView.ViewHolder(view),
   IMeterListViewItem {
+  //view pager
   /**
    * Колбэк, вызываемый при привязке элемента к списку
    */

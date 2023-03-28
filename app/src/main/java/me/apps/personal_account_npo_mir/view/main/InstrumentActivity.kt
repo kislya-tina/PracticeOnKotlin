@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import me.apps.personalaccountnpomir.R
 
 class InstrumentActivity : FragmentActivity(),
@@ -23,6 +25,12 @@ class InstrumentActivity : FragmentActivity(),
         adapter = DeviceAdapter(this)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
+
+        tabLayout = findViewById(R.id.tab_layout)
+
+        TabLayoutMediator (tabLayout, viewPager){ tab, position ->
+            tab.text = "${(position + 1)}"
+        }.attach()
     }
 
     override fun onClick(p0: View?) {
@@ -38,7 +46,7 @@ class InstrumentActivity : FragmentActivity(),
     private lateinit var button : Button
     private lateinit var adapter : DeviceAdapter
     private lateinit var viewPager : ViewPager2
-
+    private lateinit var tabLayout : TabLayout
 
 }
 /*

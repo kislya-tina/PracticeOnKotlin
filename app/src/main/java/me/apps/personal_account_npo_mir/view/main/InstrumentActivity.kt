@@ -2,15 +2,59 @@ package me.apps.personal_account_npo_mir.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.View.OnClickListener
+import android.widget.Button
+import android.widget.EditText
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.widget.ViewPager2
 import me.apps.personalaccountnpomir.R
 
-class InstrumentActivity : AppCompatActivity() {
+class InstrumentActivity : FragmentActivity(),
+    OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_reg)
-    }
-}
+        setContentView(R.layout.activity_instrument)
 
+        editText = findViewById(R.id.instrumentEditText)
+        button = findViewById(R.id.instrumentButton)
+        button.setOnClickListener(this)
+
+        adapter = DeviceAdapter(this)
+        viewPager = findViewById(R.id.view_pager)
+        viewPager.adapter = adapter
+    }
+
+    override fun onClick(p0: View?) {
+        editText.setText("Welcome to Instrument Activity")
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        button.setOnClickListener(null)
+    }
+    private lateinit var editText : EditText
+    private lateinit var button : Button
+    private lateinit var adapter : DeviceAdapter
+    private lateinit var viewPager : ViewPager2
+
+
+}
+/*
+    instrument activity
+        каждый метод по циклу, с презентером работать
+    presenter for ia, fragments in pager
+        должна быть логика oncreFrag
+        countFrag
+    abstractions for ia, fragment, pager
+
+
+    реализовать сам пейджер с листанием
+    элементами пейджера будут фрагменты
+    на них
+    принимающие параметры и отобразить параметры(номер (Page #N))
+*/
 /*
 class MainActivity :
   AppCompatActivity(),

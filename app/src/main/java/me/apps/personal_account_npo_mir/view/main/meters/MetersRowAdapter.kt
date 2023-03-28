@@ -1,15 +1,13 @@
 package me.apps.personal_account_npo_mir.view.main.meters
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import me.apps.personal_account_npo_mir.presentation.main.MainPresenter
-import me.apps.personalaccountnpomir.R
+import me.apps.personal_account_npo_mir.presentation.main.InstrumentPresenter
 
 /**
  * Адаптер списка устройств
  */
-class MetersRowAdapter(private val presenter: MainPresenter) : RecyclerView.Adapter<MeterListViewHolder>() {
+class MetersRowAdapter(private val presenter: InstrumentPresenter) : RecyclerView.Adapter<MeterListViewHolder>() {
   /**
    * Колбэк, вызываемый при создании элемента списка
    */

@@ -6,7 +6,8 @@ import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMeterListViewItem
 
-class MainPresenter : IPresenter<IMainView> {
+class InstrumentPresenter : IPresenter<IMainView> {
+
     override fun onViewCreated(view: IMainView) {
         this.view = view
         val username = App.loginService.username

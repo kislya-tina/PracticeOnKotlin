@@ -5,42 +5,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="me.apps.personal_account_npo_mir.view.login.RegistrationFragment">
+
+    <ImageView
+        android:id="@+id/npoMirLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/npo_mir_svg" />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_username_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/username"
+        android:drawableStart="@drawable/user"
+        android:hint="@string/name_surname_enter"
         android:inputType="text" />
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/sign_up_password_edit_text"
-        style="@style/Theme.MIR.EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/password"
-        android:inputType="textPassword"/>
+
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_phone_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/call"
         android:hint="@string/phone"
         android:inputType="phone"/>
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_email_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/mail"
         android:hint="@string/email"
         android:inputType="textEmailAddress"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/sign_up_password_edit_text"
+        style="@style/Theme.MIR.EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/lock"
+        android:hint="@string/password"
+        android:inputType="textPassword"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_up_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/Theme.MIR.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/register"
-        android:theme="@style/Theme.MIR.Button"/>
+        android:layout_marginTop="30dp"
+        />
+
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

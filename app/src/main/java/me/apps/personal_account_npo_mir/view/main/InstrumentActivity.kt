@@ -18,7 +18,6 @@ class InstrumentActivity : FragmentActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instrument)
 
-        editText = findViewById(R.id.instrumentEditText)
         button = findViewById(R.id.instrumentButton)
         button.setOnClickListener(this)
 
@@ -34,7 +33,6 @@ class InstrumentActivity : FragmentActivity(),
     }
 
     override fun onClick(p0: View?) {
-        editText.setText("Welcome to Instrument Activity")
     }
 
 
@@ -42,7 +40,6 @@ class InstrumentActivity : FragmentActivity(),
         super.onDestroy()
         button.setOnClickListener(null)
     }
-    private lateinit var editText : EditText
     private lateinit var button : Button
     private lateinit var adapter : DeviceAdapter
     private lateinit var viewPager : ViewPager2

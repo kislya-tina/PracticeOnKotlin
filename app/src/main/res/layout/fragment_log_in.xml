@@ -5,29 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context="me.apps.personal_account_npo_mir.view.login.LogInFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_in_login_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="match_parent"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:hint="@string/username"
+        android:drawableStart="@drawable/call_20"
+        android:hint="@string/phone"
         android:inputType="text" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_in_password_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="match_parent"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/lock_20"
         android:hint="@string/password"
         android:inputType="textPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_in_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/Theme.MIR.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/sign_in"
-        android:theme="@style/Theme.MIR.Button"/>
+        android:layout_marginTop="30dp"
+        />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,14 +1,25 @@
 <resources>
     <string name="app_name">NPO MIR</string>
-    <string name="sign_in">Вход</string>
+    <string name="sign_in">Войти</string>
     <string name="registration">Регистрация</string>
     <string name="register">Зарегистрироваться</string>
     <string name="username">Имя пользователя</string>
-    <string name="password">Пароль</string>
-    <string name="phone">Номер телефона</string>
-    <string name="email">Email</string>
+    <string name="password">Введите пароль</string>
+    <string name="phone">Введите ваш номер телефона</string>
+    <string name="email">Введите ваш e-mail</string>
     <string name="electric_active_energy_units">кВт•ч</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="device">Device</string>
+
+    <string name="please_registration">Зарегистрируйтесь по e-mail или телефону</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="name_surname_enter">Введите свое имя и фамилию</string>
+    <string name="archive">Архив показаний</string>
+    <string name="diagnostic">Диагностика</string>
+    <string name="transmission_of_testimony">Передача показаний</string>
+    <string name="information">Информация</string>
+    <string name="meters">Приборы учета</string>
+
+
 </resources>

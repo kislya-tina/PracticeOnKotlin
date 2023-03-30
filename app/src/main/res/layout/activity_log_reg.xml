@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?colorPrimary"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="me.apps.personal_account_npo_mir.view.login.LogRegActivity">
     <!--LinearLayout или его аналог из Compat выравнивает все дочерние объекты в одном направлении
@@ -43,8 +43,10 @@
         Строки берем из ресурсов. Для изменения внешнего вида кнопки применяем стили и темы-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/login_registration_switch_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/reg_button"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:theme="@style/Theme.MIR.Button.SignInUpSwitch" />
     </androidx.appcompat.widget.LinearLayoutCompat>

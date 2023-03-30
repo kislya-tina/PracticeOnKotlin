@@ -28,7 +28,7 @@ class InstrumentActivity : FragmentActivity(),
         setContentView(R.layout.activity_instrument)
 
         presenter.onViewCreated(this)
-
+        
         button = findViewById(R.id.instrumentButton)
         button.setOnClickListener(this)
         button1 = findViewById(R.id.instrumentButton1)
@@ -56,7 +56,6 @@ class InstrumentActivity : FragmentActivity(),
         } else {
             viewPager.currentItem = viewPager.currentItem
         }
-    }
 
     private inner class DeviceAdapter(fragmentActivity: FragmentActivity) :
         FragmentStateAdapter(fragmentActivity) {

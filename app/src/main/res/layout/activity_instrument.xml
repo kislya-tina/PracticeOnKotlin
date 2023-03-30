@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -47,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/instrumentButton"
+            android:id="@+id/archiveButton"
             style="@style/Theme.MIR.Buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +57,7 @@
             android:text="@string/archive" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/instrumentButton1"
+            android:id="@+id/diagnosticButton"
             style="@style/Theme.MIR.Buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +66,7 @@
             android:text="@string/diagnostic" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/instrumentButton2"
+            android:id="@+id/transButton"
             style="@style/Theme.MIR.Buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,7 +75,7 @@
             android:text="@string/transmission_of_testimony" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/instrumentButton3"
+            android:id="@+id/informationButton"
             style="@style/Theme.MIR.Buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

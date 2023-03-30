@@ -20,6 +20,17 @@
     <string name="transmission_of_testimony">Передача показаний</string>
     <string name="information">Информация</string>
     <string name="meters">Приборы учета</string>
+    <string name="meter_name">Имя прибора учета</string>
+    <string name="serial_number">Серийный номер</string>
+    <string name="date">Дата поверки</string>
+    <string name="address">Адрес установки</string>
+    <string name="sum_readings">Суммарные показания</string>
+    <string name="first_tariff">Тариф 1</string>
+    <string name="second_tariff">Тариф 2</string>
+    <string name="third_tariff">Тариф 3</string>
+    <string name="fourth_tariff">Тариф 4</string>
+    <string name="give">Передать</string>
+
 
 
 </resources>

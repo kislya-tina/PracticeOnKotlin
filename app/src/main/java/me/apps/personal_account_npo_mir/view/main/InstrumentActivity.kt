@@ -14,7 +14,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import me.apps.personal_account_npo_mir.presentation.main.InstrumentPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
+import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
+import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
+import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
 import me.apps.personalaccountnpomir.R
 
 
@@ -28,14 +31,14 @@ class InstrumentActivity : FragmentActivity(),
         setContentView(R.layout.activity_instrument)
 
         presenter.onViewCreated(this)
-        
-        button = findViewById(R.id.instrumentButton)
+
+        button = findViewById(R.id.archiveButton)
         button.setOnClickListener(this)
-        button1 = findViewById(R.id.instrumentButton1)
+        button1 = findViewById(R.id.diagnosticButton)
         button1.setOnClickListener(this)
-        button2 = findViewById(R.id.instrumentButton2)
+        button2 = findViewById(R.id.transButton)
         button2.setOnClickListener(this)
-        button3 = findViewById(R.id.instrumentButton3)
+        button3 = findViewById(R.id.informationButton)
         button3.setOnClickListener(this)
 
         adapter = DeviceAdapter(this)
@@ -50,100 +53,46 @@ class InstrumentActivity : FragmentActivity(),
 
     }
 
-    override fun onBackPressed() {
-        if (viewPager.currentItem == 0) {
-            super.onBackPressed()
-        } else {
-            viewPager.currentItem = viewPager.currentItem
-        }
 
-    private inner class DeviceAdapter(fragmentActivity: FragmentActivity) :
-        FragmentStateAdapter(fragmentActivity) {
-        override fun getItemCount(): Int = NUM_PAGES
-
-        override fun createFragment(position: Int): Fragment = InstrumentFragment()
-    }
-
-    override fun onClick(view: View?) {
+        override fun onClick(view: View?) {
 //        presenter.onButtonClick(view)
-        if (view === button) {
-            startAnotherActivity(DiagnosticActivity())
+            if (view === button) {
+                startAnotherActivity(ArchiveActivity())
+            }
+            if (view === button1) {
+                startAnotherActivity(DiagnosticActivity())
+            }
+            if (view === button2) {
+                startAnotherActivity(TransmittalActivity())
+            }
+            if (view === button3) {
+                startAnotherActivity(InformationActivity())
+            }
         }
+
+        override fun setHeader(header: String) {
+        }
+
+        override fun refreshItems() {
+        }
+
+        override fun startAnotherActivity(activity: Activity) {
+            val intent = Intent(this, activity::class.java)
+            startActivity(intent)
+        }
+
+        override fun onDestroy() {
+            super.onDestroy()
+            button.setOnClickListener(null)
+        }
+
+        private lateinit var button: Button
+        private lateinit var button1: Button
+        private lateinit var button2: Button
+        private lateinit var button3: Button
+        private lateinit var adapter: DeviceAdapter
+        private lateinit var viewPager: ViewPager2
+        private lateinit var tabLayout: TabLayout
+        private var presenter = InstrumentPresenter()
+
     }
-
-    override fun setHeader(header: String) {
-    }
-
-    override fun refreshItems() {
-    }
-
-    override fun startAnotherActivity(activity: Activity) {
-        val intent = Intent(this, activity::class.java)
-        startActivity(intent)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        button.setOnClickListener(null)
-    }
-
-    private lateinit var button: Button
-    private lateinit var button1: Button
-    private lateinit var button2: Button
-    private lateinit var button3: Button
-    private lateinit var adapter: DeviceAdapter
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
-    private var presenter = InstrumentPresenter()
-
-}
-/*
-    instrument activity
-        каждый метод по циклу, с презентером работать
-    presenter for ia, fragments in pager
-        должна быть логика oncreFrag
-        countFrag
-    abstractions for ia, fragment, pager
-
-
-    реализовать сам пейджер с листанием
-    элементами пейджера будут фрагменты
-    на них
-    принимающие параметры и отобразить параметры(номер (Page #N))
-*/
-/*
-class MainActivity :
-  AppCompatActivity(),
-  IMainView {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    //Ищем RecyclerView в разметке
-    recyclerView = findViewById<RecyclerView?>(R.id.main_meters_recycler_view)
-      .apply {
-        //Устанавливаем ему адаптер
-        adapter = this@MainActivity.adapter
-      }
-    presenter.onViewCreated(this)
-  }
-
-  override fun onDestroy() {
-    super.onDestroy()
-    presenter.onDestroy()
-  }
-
-  override fun setHeader(header: String) {
-    supportActionBar?.title = header
-  }
-
-  @SuppressLint("NotifyDataSetChanged")
-  override fun refreshItems() {
-    adapter.notifyDataSetChanged()
-  }
-
-  private lateinit var recyclerView: RecyclerView
-  private val presenter = MainPresenter()
-  private val adapter = MetersRowAdapter(presenter)
-
-}
- */

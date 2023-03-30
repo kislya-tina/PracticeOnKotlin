@@ -1,10 +1,14 @@
 <resources>
-    <string name="app_name">Personal Account NPO MIR</string>
-
-    <string name="hello_blank_fragment">Button here</string>
-    <string name="gang">go to registration fragment</string>
-    <string name="button">Button</string>
-    <string name="reg_frag">hello on reg fragment</string>
-    <string name="log_in">log_in</string>
-    <string name="reg">reg</string>
+    <string name="app_name">NPO MIR</string>
+    <string name="sign_in">Вход</string>
+    <string name="registration">Регистрация</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="username">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="phone">Номер телефона</string>
+    <string name="email">Email</string>
+    <string name="electric_active_energy_units">кВт•ч</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="device">Device</string>
 </resources>

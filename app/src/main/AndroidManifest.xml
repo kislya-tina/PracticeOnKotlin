@@ -3,20 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name="me.apps.personal_account_npo_mir.di.App"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PersonalAccountNPOMIR"
-        tools:targetApi="31">
+        android:theme="@style/Theme.MIR"
+        tools:targetApi="29">
         <activity
-            android:name=".LogRegActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"
-            >
+            android:name="me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="me.apps.personal_account_npo_mir.view.login.LogRegActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +32,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".InstrumentActivity"
+            android:name="me.apps.personal_account_npo_mir.view.main.InstrumentActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

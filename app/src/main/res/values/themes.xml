@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PersonalAccountNPOMIR" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <attr name="warningColor" format="reference"/>
+    <style name="Theme.MIR" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +13,27 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="warningColor">@color/red</item>
+    </style>
+
+    <!--Стиль для полей ввода-->
+    <style name="Theme.MIR.EditText" parent="Theme.MIR">
+        <item name="android:background">@drawable/ic_edit_text_background</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <!--Стиль для кнопок-->
+    <style name="Theme.MIR.Button" parent="Theme.MIR">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:elevation">5dp</item>
+    </style>
+
+    <!--Стиль для кнопки переключения Вход/Регистрация-->
+    <style name="Theme.MIR.Button.SignInUpSwitch" parent="Theme.MIR.Button">
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 </resources>

@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Разметка для фрагмента регистрации-->
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.RegistrationFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:orientation="vertical"
+    tools:context="me.apps.personal_account_npo_mir.view.login.RegistrationFragment">
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/sign_up_username_edit_text"
+        style="@style/Theme.MIR.EditText"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="@string/reg_frag"
-        android:textColor="@android:color/holo_red_light"
-        android:layout_gravity="center"/>
+        android:layout_height="wrap_content"
+        android:hint="@string/username"
+        android:inputType="text" />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/sign_up_password_edit_text"
+        style="@style/Theme.MIR.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textPassword"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/sign_up_phone_edit_text"
+        style="@style/Theme.MIR.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone"
+        android:inputType="phone"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/sign_up_email_edit_text"
+        style="@style/Theme.MIR.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sign_up_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/register"
+        android:theme="@style/Theme.MIR.Button"/>
 
-</FrameLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

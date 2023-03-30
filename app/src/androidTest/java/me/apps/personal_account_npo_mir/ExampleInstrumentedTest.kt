@@ -2,6 +2,7 @@ package me.apps.personal_account_npo_mir
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import me.apps.personal_account_npo_mir.model.LoginService
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,9 +17,9 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("me.apps.personalaccountnpomir", appContext.packageName)
+    fun SignIn(){
+        val username = "user"
+        val password = "password"
+        println( LoginService().signIn(username,password))
     }
 }

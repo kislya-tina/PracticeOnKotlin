@@ -16,17 +16,17 @@ class LoginService : ILoginService{
 
 
     override fun signIn(username: String, password: String): Boolean {
-        return true
-    }
-
-    override fun signOut() {
         val token:String = ServerConnection().signIn(username,password)
-        println(token)
+        return token != "Unauthorized"
+    }
+
+    override fun signOut(): Boolean {
         return true
     }
 
-    override fun signUp(username: String, password: String, email: String, phoneNumber: String) {
-        token = "17"
+    override fun signUp(username: String, password: String, email: String, phoneNumber: String): Boolean {
+        val token:String = ServerConnection().signUp(username,password)
+        return token!="Authorized"
     }
 
     override var username: String

@@ -10,10 +10,17 @@ import java.net.URL
 
 private const val ENDPOINT = "http://localhost:5000/api/"
 class ServerConnection {
-    fun signIn(username: String,password: String):String{
-        return "{\"SessionId\":784,\"Username\":\"user\"}.0554B274A9AE2954F97400A4588A0A2B"
+    fun signIn(username: String,password: String): String {
+        if(username=="user"&&password=="password" ||username=="vika"&&password=="777"||username=="ramazan"&&password=="12345678")
+            return username
+        else return "Unauthorized"
     }
-    fun signIn_real(username: String, password: String): String {
+    fun signUp(username: String,password: String):String{
+        if(username!="user")
+            return username
+        else return "Authorized"
+    }
+    fun signInReal(username: String, password: String): String {
         val urlAdress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
@@ -49,6 +56,23 @@ class ServerConnection {
             doInput = true
         }
         if(httpURLConnection.responseCode!= HttpURLConnection.HTTP_OK) {
+            return "error"
+        }
+        val streamReader = InputStreamReader(httpURLConnection.inputStream)
+        var text: String = ""
+        streamReader.use{text = it.readText()}
+        httpURLConnection.disconnect()
+        return text
+    }
+    fun signUpReal(username:String, password: String): String {
+        val httpURLConnection = URL(ENDPOINT+"SignUp" + "/"+username+"/"+password).openConnection() as HttpURLConnection
+        httpURLConnection.apply {
+            connectTimeout = 10000
+            requestMethod = "GET"
+            doInput = true
+        }
+
+        if(httpURLConnection.responseCode!=HttpURLConnection.HTTP_OK) {
             return "error"
         }
         val streamReader = InputStreamReader(httpURLConnection.inputStream)

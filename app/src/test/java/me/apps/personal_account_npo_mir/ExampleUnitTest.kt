@@ -1,5 +1,6 @@
 package me.apps.personal_account_npo_mir
 
+import me.apps.personal_account_npo_mir.model.ServerConnection
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,7 +12,15 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun SignIn(){
+        val username = "user"
+        val password = "password"
+        println( ServerConnection().signIn(username,password))
+    }
+    @Test
+    fun SignUp(){
+        val username = "user"
+        val password = "password"
+        println( ServerConnection().signUp(username,password))
     }
 }

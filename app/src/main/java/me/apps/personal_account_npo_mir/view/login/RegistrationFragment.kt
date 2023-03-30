@@ -16,7 +16,7 @@ import me.apps.personalaccountnpomir.R
 
 class RegistrationFragment :
     Fragment(),
-    OnClickListener,
+    View.OnClickListener,
     IRegistrationView {
 
     override fun onCreateView(
@@ -28,6 +28,7 @@ class RegistrationFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         signUpButton = view.findViewById(R.id.sign_up_button)
         signUpButton.setOnClickListener(this)
 
@@ -35,11 +36,14 @@ class RegistrationFragment :
         passwordEditText = view.findViewById(R.id.sign_up_password_edit_text)
         phoneEditText = view.findViewById(R.id.sign_up_phone_edit_text)
         emailEditText = view.findViewById(R.id.sign_up_email_edit_text)
+
+        presenter.onViewCreated(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         signUpButton.setOnClickListener(null)
+        presenter.onDestroy()
     }
 
     override fun onClick(view: View?) {
@@ -61,7 +65,7 @@ class RegistrationFragment :
     }
 
     override fun setEmailBackground(resourceID : Int){
-        passwordEditText.setBackgroundResource(resourceID)
+        emailEditText.setBackgroundResource(resourceID)
     }
 
     override fun setPhoneBackground(resourceID : Int){

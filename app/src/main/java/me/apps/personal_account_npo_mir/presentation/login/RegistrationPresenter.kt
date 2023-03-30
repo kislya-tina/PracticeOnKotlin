@@ -1,5 +1,6 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
+import android.widget.Toast
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.IRegistrationView
@@ -34,9 +35,13 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
         this.phone = phone
     }
 
+    /**
+     * Колбэк при нажатии на кнопку "Регистрация"
+     */
     fun onRegisterButtonClick(){
         var success = true
         if (login.isBlank()){
+
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
@@ -66,6 +71,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
 
         if(success) {
             App.loginService.signUp(login, password, email, phone)
+//            token = App.loginService.getToken()
             view?.startMainActivity()
         }
     }
@@ -75,4 +81,5 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
     private var email: String = ""
     private var phone: String = ""
 
-    private var view : IRegistrationView? = null}
+    private var view : IRegistrationView? = null
+}

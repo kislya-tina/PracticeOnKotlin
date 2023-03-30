@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import me.apps.personalaccountnpomir.R
 
 const val  ARG_OBJECT = "object"
@@ -13,7 +14,8 @@ const val  ARG_OBJECT = "object"
 class InstrumentFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_instrument, container, false)
@@ -24,5 +26,6 @@ class InstrumentFragment : Fragment() {
             val textView : TextView = view.findViewById(R.id.deviceText)
             textView.text = "Device" + getInt(ARG_OBJECT).toString()
         }
+        Toast.makeText(requireContext(), "aa", Toast.LENGTH_LONG)
     }
 }

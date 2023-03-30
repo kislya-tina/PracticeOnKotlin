@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class DeviceAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
-    override fun getItemCount(): Int = 100
+    override fun getItemCount(): Int = 10
 
     override fun createFragment(position: Int): Fragment {
         val fragment = InstrumentFragment()

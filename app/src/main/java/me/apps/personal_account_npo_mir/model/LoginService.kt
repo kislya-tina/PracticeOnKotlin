@@ -1,6 +1,11 @@
 package me.apps.personal_account_npo_mir.model
 
+import android.content.Context
+import android.widget.Toast
 import me.apps.personal_account_npo_mir.model.abstractions.ILoginService
+import me.apps.personal_account_npo_mir.view.login.LogRegActivity
+import me.apps.personal_account_npo_mir.view.login.RegistrationFragment
+import me.apps.personal_account_npo_mir.view.main.InstrumentActivity
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
@@ -54,13 +59,15 @@ class LoginService : ILoginService{
     }
 
     override fun signUp(username: String, password: String, email: String, phoneNumber: String) {
-        TODO("Not yet implemented")
+        token = "17"
     }
 
     override var username: String
-        get() = TODO("Not yet implemented")
+        get() = "OPa"
         set(value) {}
-    override var token: Int
-        get() = TODO("Not yet implemented")
+    override var token: String
+        get() = "pop"
         set(value) {}
+
+
 }

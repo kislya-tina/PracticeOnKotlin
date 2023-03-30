@@ -16,5 +16,5 @@ interface ILoginService {
     )
 
     var username: String
-    var token: Int
+    var token: String
 }

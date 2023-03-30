@@ -35,15 +35,13 @@ class LogInFragment :
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Ищем в разметке кнопку вход
+
         signInButton = view.findViewById(R.id.sign_in_button)
-        //Устанавливаем текущий фрагмент слушателем колбэка OnClick кнопки вход
         signInButton.setOnClickListener(this)
 
-        //Ищем поля ввода имени пользователя и пароля
         loginEditText = view.findViewById(R.id.sign_in_login_edit_text)
         passwordEditText = view.findViewById(R.id.sign_in_password_edit_text)
-        //должен иметь ссылку на презентер
+
         presenter.onViewCreated(this)
     }
 
@@ -67,20 +65,6 @@ class LogInFragment :
             presenter.onLoginTextChanged(loginEditText.text.toString())
             presenter.onPasswordChanged(passwordEditText.text.toString())
             presenter.onEnterButtonPressed()
-        }
-    }
-
-    /**
-     * Функция валидации полей ввода
-     */
-    private fun validateIsEditTextEmpty(editText: AppCompatEditText): Boolean {
-        return if (editText.text?.isBlank() == true) {
-            editText.setBackgroundResource(R.drawable.ic_warning_frame)
-            false
-        } else {
-            //иначе возвращаем исходный background
-            editText.setBackgroundResource(R.drawable.ic_edit_text_background)
-            true
         }
     }
 

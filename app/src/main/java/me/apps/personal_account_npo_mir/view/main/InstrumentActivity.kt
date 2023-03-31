@@ -66,10 +66,10 @@ class InstrumentActivity : FragmentActivity(),
     }
 
     override fun onClick(view: View?) {
-//        presenter.onButtonClick(view)
-        if (view === button) {
-            startAnotherActivity(DiagnosticActivity())
-        }
+//        presenter.onButtonClick(id)
+//        if (view === button) {
+//            startAnotherActivity(DiagnosticActivity())
+//        }
     }
 
     override fun setHeader(header: String) {
@@ -79,6 +79,7 @@ class InstrumentActivity : FragmentActivity(),
     }
 
     override fun startAnotherActivity(activity: Activity) {
+        //4 разных старт активити
         val intent = Intent(this, activity::class.java)
         startActivity(intent)
     }

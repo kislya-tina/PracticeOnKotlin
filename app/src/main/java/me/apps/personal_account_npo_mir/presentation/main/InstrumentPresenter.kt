@@ -16,11 +16,6 @@ class InstrumentPresenter : IPresenter<IMainView> {
         meters = App.metersService.getMeters(username)
     }
 
-    fun onButtonClick(){
-        //сделать 4 отдельных метода
-//        if(view === )
-    }
-
     override fun onDestroy() {
         view = null
     }
@@ -35,6 +30,7 @@ class InstrumentPresenter : IPresenter<IMainView> {
         view.setIndications(meters[position].indications.toString())
     }
 
+
     /**
      * Кол-во элементов в списке
      */
@@ -43,8 +39,7 @@ class InstrumentPresenter : IPresenter<IMainView> {
 
     private lateinit var meters: List<Meter>
     private var view: IMainView? = null
-//    private var count : Int
-//хранить здесь id устройства и передавать его для создания фрагмента
+    private var meterID: Int = 0
 
-
+    //хранить здесь id устройства и передавать его для создания фрагмента
 }

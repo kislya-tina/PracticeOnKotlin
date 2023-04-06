@@ -48,10 +48,10 @@ class RegistrationFragment :
 
     override fun onClick(view: View?) {
         if (view === signUpButton) {
-            presenter.onLoginTextChanged(loginEditText.toString())
-            presenter.onPasswordChanged(passwordEditText.toString())
-            presenter.onEmailChanged(emailEditText.toString())
-            presenter.onPhoneChanged(phoneEditText.toString())
+            presenter.onLoginTextChanged(loginEditText.text.toString())
+            presenter.onPasswordChanged(passwordEditText.text.toString())
+            presenter.onEmailChanged(emailEditText.text.toString())
+            presenter.onPhoneChanged(phoneEditText.text.toString())
             presenter.onRegisterButtonClick()
         }
     }

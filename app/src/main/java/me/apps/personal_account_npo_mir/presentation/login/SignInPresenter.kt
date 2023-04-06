@@ -42,14 +42,14 @@ class SignInPresenter : IPresenter<ISignInView> {
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setLoginBackground(R.drawable.ic_edit_text_background)
+            view?.setLoginBackground(R.drawable.rectangle_reg)
         }
 
         if (password.isBlank()){
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setPasswordBackground(R.drawable.ic_edit_text_background)
+            view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
 
         if(success && App.loginService.signIn(login, password)){

@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import me.apps.personalaccountnpomir.R
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.random.Random
 import kotlin.random.nextInt
 
@@ -24,15 +26,17 @@ class InstrumentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
-            val textView : TextView = view.findViewById(R.id.meterNameTextView)
+            val textView : TextView = view.findViewById(R.id.meterNameTextView2)
+            val dateView : TextView = view.findViewById(R.id.dateTextView)
             val indicationsTextView = view.findViewById<TextView>(R.id.meterIndicationsTextView)
             textView.text = generateMeterName()
             indicationsTextView.text = generateIndications()
+            dateView.text = currentDate.toString()
         }
     }
 
     private fun generateMeterName(): String {
-        return "C05-" + (1..10).map { Random.nextInt(1..9) }.joinToString("")
+        return  (1..10).map { Random.nextInt(1..9) }.joinToString("")
     }
 
     private fun generateIndications(): String {
@@ -40,4 +44,6 @@ class InstrumentFragment : Fragment() {
             .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
     }
 
+    val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm")
+    val currentDate = simpleDate.format(Date())
 }

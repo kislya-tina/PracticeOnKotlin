@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model
+package me.apps.personal_account_npo_mir.model.ServerConnect
 
 
 
@@ -9,25 +9,16 @@ import java.net.MalformedURLException
 import java.net.URL
 
 private const val ENDPOINT = "http://localhost:5000/api/"
-class ServerConnection {
-    fun signIn(username: String,password: String): String {
-        if(username=="user"&&password=="password" ||username=="vika"&&password=="777"||username=="ramazan"&&password=="12345678")
-            return username
-        else return "Unauthorized"
-    }
-    fun signUp(username: String,password: String):String{
-        if(username!="user")
-            return username
-        else return "Authorized"
-    }
-    fun signInReal(username: String, password: String): String {
-        val urlAdress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
+class ServerConnection : IServerConnection {
+
+    override fun signIn(username: String, password: String): String {
+        val URLAddress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
         var text: String = ""
         try {
             httpURLConnection =
-                URL(urlAdress).openConnection() as HttpURLConnection
+                URL(URLAddress).openConnection() as HttpURLConnection
             httpURLConnection.apply {
                 connectTimeout = 10000
                 doInput = true
@@ -55,16 +46,16 @@ class ServerConnection {
             connectTimeout = 10000
             doInput = true
         }
-        if(httpURLConnection.responseCode!= HttpURLConnection.HTTP_OK) {
-            return "error"
-        }
+        //if(httpURLConnection.responseCode!= HttpURLConnection.HTTP_OK) {
+          //  return "error"
+        //}
         val streamReader = InputStreamReader(httpURLConnection.inputStream)
         var text: String = ""
         streamReader.use{text = it.readText()}
         httpURLConnection.disconnect()
         return text
     }
-    fun signUpReal(username:String, password: String): String {
+    override fun signUp(username:String, password: String): String {
         val httpURLConnection = URL(ENDPOINT+"SignUp" + "/"+username+"/"+password).openConnection() as HttpURLConnection
         httpURLConnection.apply {
             connectTimeout = 10000

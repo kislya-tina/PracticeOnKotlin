@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.model.LoginService
 import me.apps.personal_account_npo_mir.presentation.login.LoginPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ILoginView
 import me.apps.personalaccountnpomir.R
@@ -109,7 +109,7 @@ class LogRegActivity :
     private lateinit var signInFragment: Fragment
     private lateinit var signUpFragment: Fragment
     private lateinit var loginRegistrationSwitchButton: AppCompatButton
-    private val presenter = LoginPresenter(App.loginService)
+    private val presenter = LoginPresenter(LoginService())
 
     companion object {
         //имя параметра для сохранения в bundle текущего состояния фрагментов

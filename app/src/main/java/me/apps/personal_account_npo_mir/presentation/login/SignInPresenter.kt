@@ -56,6 +56,9 @@ class SignInPresenter : IPresenter<ISignInView> {
 //            token = App.loginService.getToken()
             view?.startMainActivity()
         }
+        else{
+
+        }
     }
 
     private var login: String = ""

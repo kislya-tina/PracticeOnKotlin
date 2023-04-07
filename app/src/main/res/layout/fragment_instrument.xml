@@ -28,7 +28,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/meter_name_1"
                 android:textColor="@color/dark"
-                android:textSize="20sp" />
+                android:textSize="17sp" />
 
             <View
                 android:layout_width="0dp"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/dark"
-                android:textSize="20sp" />
+                android:textSize="17sp" />
 
 
         </LinearLayout>
@@ -51,30 +51,31 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/meterIndicationsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="50sp" />
+                android:textSize="40sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/electric_active_energy_units"
                 android:textColor="@color/black"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:textColor="@color/dark"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
 
     </LinearLayout>

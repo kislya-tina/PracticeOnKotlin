@@ -26,8 +26,8 @@ class InstrumentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
-            val textView : TextView = view.findViewById(R.id.meterNameTextView2)
-            val dateView : TextView = view.findViewById(R.id.dateTextView)
+            val textView: TextView = view.findViewById(R.id.meterNameTextView2)
+            val dateView: TextView = view.findViewById(R.id.dateTextView)
             val indicationsTextView = view.findViewById<TextView>(R.id.meterIndicationsTextView)
             textView.text = generateMeterName()
             indicationsTextView.text = generateIndications()
@@ -36,7 +36,7 @@ class InstrumentFragment : Fragment() {
     }
 
     private fun generateMeterName(): String {
-        return  (1..10).map { Random.nextInt(1..9) }.joinToString("")
+        return (1..10).map { Random.nextInt(1..9) }.joinToString("")
     }
 
     private fun generateIndications(): String {
@@ -44,6 +44,8 @@ class InstrumentFragment : Fragment() {
             .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
     }
 
-    val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm")
-    val currentDate = simpleDate.format(Date())
+
+    private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.GERMANY)
+    private val currentDate = simpleDate.format(Date())
+
 }

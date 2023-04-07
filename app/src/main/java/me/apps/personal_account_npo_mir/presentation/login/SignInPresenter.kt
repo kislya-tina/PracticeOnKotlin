@@ -1,13 +1,9 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-import android.widget.Toast
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
-import me.apps.personal_account_npo_mir.view.main.InstrumentActivity
-import me.apps.personal_account_npo_mir.view.main.InstrumentFragment
 import me.apps.personalaccountnpomir.R
-import kotlin.coroutines.coroutineContext
 
 class SignInPresenter : IPresenter<ISignInView> {
 

@@ -4,7 +4,6 @@ import me.apps.personal_account_npo_mir.model.MetersService
 import me.apps.personal_account_npo_mir.model.ServerConnect.ServerConnection
 import org.junit.Test
 
-import org.junit.Assert.*
 import kotlin.math.round
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -35,6 +34,6 @@ class ExampleUnitTest {
         println(round(Random.nextDouble(0.toDouble(), 255.toDouble()) * 100.0) / 100.0)
         println(MetersService().getMeters("Паша"))
         println((1..10).map { Random.nextInt(1..9) }.joinToString(""))
-        println(MetersService().GetLastMeasures(1, "d"))
+        println(MetersService().getLastMeasures(1, "d"))
     }
 }

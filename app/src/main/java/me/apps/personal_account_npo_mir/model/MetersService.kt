@@ -2,12 +2,11 @@ package me.apps.personal_account_npo_mir.model
 
 import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
 import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
-import kotlin.math.round
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 class MetersService : IMetersService {
-    fun GetLastMeasures(DeviceID: Int, Token:String): Map<String, Any> {
+    override fun getLastMeasures(DeviceID: Int, Token:String): Map<String, Any> {
         val tariff1:Int = generateId()
         val tariff2:Int = generateId()
         val tariff3:Int = generateId()

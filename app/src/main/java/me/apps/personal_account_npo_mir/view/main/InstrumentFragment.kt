@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import me.apps.personal_account_npo_mir.di.App
 import me.apps.personalaccountnpomir.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -30,7 +31,7 @@ class InstrumentFragment : Fragment() {
             val dateView: TextView = view.findViewById(R.id.dateTextView)
             val indicationsTextView = view.findViewById<TextView>(R.id.meterIndicationsTextView)
             textView.text = generateMeterName()
-            indicationsTextView.text = generateIndications()
+            indicationsTextView.text = sumIndications
             dateView.text = currentDate.toString()
         }
     }
@@ -43,6 +44,9 @@ class InstrumentFragment : Fragment() {
         return (1..3).map { Random.nextInt(1..9) }
             .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
     }
+
+    private var sumIndications :
+            String = "   " + App.metersService.getLastMeasures(123, "123")["summary"].toString()
 
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.GERMANY)

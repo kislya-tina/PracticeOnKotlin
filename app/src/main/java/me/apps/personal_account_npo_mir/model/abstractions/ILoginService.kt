@@ -6,14 +6,14 @@ interface ILoginService {
         password: String
     ): Boolean
 
-    fun signOut()
+    fun signOut(): Boolean
 
     fun signUp(
         username: String,
         password: String,
         email: String,
         phoneNumber: String
-    )
+    ): Boolean
 
     var username: String
     var token: String

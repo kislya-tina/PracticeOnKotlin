@@ -32,7 +32,7 @@ class InstrumentPresenter : IPresenter<IMainView> {
      */
     fun onBindViewItem(view: IMeterListViewItem, position: Int) {
         view.setName(meters[position].name)
-        view.setIndications(meters[position].indications.toString())
+        view.setIndications(meters[position].serialNumber.toString())
     }
 
     /**

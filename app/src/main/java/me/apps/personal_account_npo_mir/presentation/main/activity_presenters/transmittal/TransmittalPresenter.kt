@@ -13,6 +13,11 @@ class TransmittalPresenter: IPresenter<ITransmittalView> {
 
     fun onClickHandOverButton(){
 //        TransmittalDialogFragment().show(FragmentManager, TransmittalDialogFragment.TAG)
+
+//        val transmittalDialogFragment = TransmittalDialogFragment()
+//        val manager = supportFragmentManager
+//        val transaction: FragmentTransaction = manager.beginTransaction()
+//        transmittalDialogFragment.show(transaction, "dialog")
     }
 
     override fun onDestroy() {

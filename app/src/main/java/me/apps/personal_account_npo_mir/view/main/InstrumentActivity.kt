@@ -74,21 +74,25 @@ class InstrumentActivity : FragmentActivity(),
     }
 
     override fun startArchiveActivity() {
+        presenter.onStartArchiveActivity()
         val intent = Intent(this, ArchiveActivity::class.java)
         startActivity(intent)
     }
 
     override fun startDiagnosticActivity() {
+        presenter.onStartDiagnosticActivity()
         val intent = Intent(this, DiagnosticActivity::class.java)
         startActivity(intent)
     }
 
     override fun startTransmittalActivity() {
+        presenter.onStartTransmittalActivity()
         val intent = Intent(this, TransmittalActivity::class.java)
         startActivity(intent)
     }
 
     override fun startInformationActivity() {
+        presenter.onStartInformationActivity()
         val intent = Intent(this, InformationActivity::class.java)
         startActivity(intent)
     }
@@ -103,8 +107,6 @@ class InstrumentActivity : FragmentActivity(),
         informationButton.setOnClickListener(null)
 
         presenter.onDestroy()
-
-        tabLayout.removeAllTabs()
     }
 
     private lateinit var archiveButton: Button

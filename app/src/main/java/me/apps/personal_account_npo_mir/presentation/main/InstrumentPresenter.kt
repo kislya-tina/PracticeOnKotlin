@@ -14,6 +14,7 @@ class InstrumentPresenter : IPresenter<IMainView> {
         val username = App.loginService.username
         view.setHeader(username)
         meters = App.metersService.getMeters(username)
+//        meterID = App.metersService.getMeterID()
     }
 
     override fun onDestroy() {
@@ -30,6 +31,21 @@ class InstrumentPresenter : IPresenter<IMainView> {
         view.setIndications(meters[position].indications.toString())
     }
 
+    fun onStartArchiveActivity(){
+        view?.startArchiveActivity()
+    }
+
+    fun onStartDiagnosticActivity(){
+
+    }
+
+    fun onStartTransmittalActivity(){
+// TODO:
+    }
+
+    fun onStartInformationActivity(){
+
+    }
 
     /**
      * Кол-во элементов в списке

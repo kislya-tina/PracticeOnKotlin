@@ -10,3 +10,5 @@ class TransmittalActivity:  Activity() {
         setContentView(R.layout.transmittal_activity)
     }
 }
+//как в рег активити
+//на изменение textEdit в поиске

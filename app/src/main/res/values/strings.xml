@@ -8,7 +8,7 @@
     <string name="phone">Введите ваш номер телефона</string>
     <string name="email">Введите ваш e-mail</string>
     <string name="electric_active_energy_units">кВт•ч</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="transmittal_complete">Передача выполнена успешно</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="device">Device</string>
 

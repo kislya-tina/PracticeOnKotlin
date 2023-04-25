@@ -11,6 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MIR"
         tools:targetApi="29">
+        <activity android:name="me.apps.personal_account_npo_mir.view.login.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name="me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity"
             android:exported="false">
@@ -20,13 +30,7 @@
         </activity>
         <activity
             android:name="me.apps.personal_account_npo_mir.view.login.LogRegActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -45,7 +49,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name="me.apps.personal_account_npo_mir.view.main.activities.InformationActivity"
             android:exported="false">
@@ -60,6 +63,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

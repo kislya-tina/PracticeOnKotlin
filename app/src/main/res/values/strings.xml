@@ -30,7 +30,10 @@
     <string name="third_tariff">Тариф 3</string>
     <string name="fourth_tariff">Тариф 4</string>
     <string name="give">Передать</string>
-
+    <string name="code">Код</string>
+    <string name="error">Ошибка</string>
+    <string name="meter_name_1">C-05</string>
+    <string name="meters_main">Приборы учета</string>
 
 
 </resources>

@@ -36,15 +36,15 @@ class InstrumentPresenter : IPresenter<IMainView> {
     }
 
     fun onStartDiagnosticActivity(){
-
+        view?.startDiagnosticActivity()
     }
 
     fun onStartTransmittalActivity(){
-// TODO:
+        view?.startTransmittalActivity()
     }
 
     fun onStartInformationActivity(){
-
+        view?.startInformationActivity()
     }
 
     /**

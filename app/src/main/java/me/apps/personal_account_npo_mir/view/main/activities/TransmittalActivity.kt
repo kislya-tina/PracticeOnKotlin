@@ -6,11 +6,11 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.FragmentTransaction
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.transmittal.TransmittalDialogFragment
 import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.transmittal.TransmittalPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.ITransmittalView
+import me.apps.personal_account_npo_mir.view.dialogs.WarningDialogFragment
 import me.apps.personalaccountnpomir.R
 
 class TransmittalActivity:  Activity(),
@@ -42,6 +42,12 @@ class TransmittalActivity:  Activity(),
         if(view === handOverButton){
             presenter.onClickHandOverButton()
         }
+    }
+
+    override fun showDialog() {
+//        val dialog = WarningDialogFragment(presenter)
+//        dialog.show(supportFragmentManager, "")
+        // TODO: разобраться с презентерами 
     }
 
     private var sumIndications :

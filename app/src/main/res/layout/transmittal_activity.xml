@@ -242,7 +242,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/handOverTextView"
+            android:id="@+id/handOverButton"
             style="@style/Theme.MIR.Button"
             android:layout_width="150dp"
             android:layout_height="35dp"

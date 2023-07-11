@@ -7,15 +7,33 @@ import android.app.Activity
  */
 interface IMainView {
   /**
+   * Перезагрузить список
+   */
+  fun refreshItems()
+
+  /**
    * Установить заголовок окна
    * @param header текст заголовка
    */
   fun setHeader(header: String)
 
   /**
-   * Перезагрузить список
+   * Запустить окно архива
    */
-  fun refreshItems()
+  fun startArchiveActivity()
 
-  fun startAnotherActivity(activity: Activity)
+  /**
+   * Запустить окно диагностики
+   */
+  fun startDiagnosticActivity()
+
+  /**
+   * Запустить окно передачи показаний
+   */
+  fun startTransmittalActivity()
+
+  /**
+   * Запустить окно информации
+   */
+  fun startInformationActivity()
 }

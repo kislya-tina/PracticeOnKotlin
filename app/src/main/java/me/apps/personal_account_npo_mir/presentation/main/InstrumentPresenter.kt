@@ -14,11 +14,7 @@ class InstrumentPresenter : IPresenter<IMainView> {
         val username = App.loginService.username
         view.setHeader(username)
         meters = App.metersService.getMeters(username)
-    }
-
-    fun onButtonClick(){
-        //сделать 4 отдельных метода
-//        if(view === )
+//        meterID = App.metersService.getMeterID()
     }
 
     override fun onDestroy() {
@@ -35,6 +31,22 @@ class InstrumentPresenter : IPresenter<IMainView> {
         view.setIndications(meters[position].serialNumber.toString())
     }
 
+    fun onStartArchiveActivity(){
+        view?.startArchiveActivity()
+    }
+
+    fun onStartDiagnosticActivity(){
+        view?.startDiagnosticActivity()
+    }
+
+    fun onStartTransmittalActivity(){
+        view?.startTransmittalActivity()
+    }
+
+    fun onStartInformationActivity(){
+        view?.startInformationActivity()
+    }
+
     /**
      * Кол-во элементов в списке
      */
@@ -43,8 +55,7 @@ class InstrumentPresenter : IPresenter<IMainView> {
 
     private lateinit var meters: List<Meter>
     private var view: IMainView? = null
-//    private var count : Int
-//хранить здесь id устройства и передавать его для создания фрагмента
+    private var meterID: Int = 0
 
-
+    //хранить здесь id устройства и передавать его для создания фрагмента
 }

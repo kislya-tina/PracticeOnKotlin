@@ -1,12 +1,10 @@
 package me.apps.personal_account_npo_mir.view.main
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
-import android.widget.LinearLayout
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -24,21 +22,19 @@ private const val NUM_PAGES = 5
 
 class InstrumentActivity : FragmentActivity(),
     IMainView,
-    OnClickListener {
+    OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instrument)
 
-        presenter.onViewCreated(this)
-
-        button = findViewById(R.id.archiveButton)
-        button.setOnClickListener(this)
-        button1 = findViewById(R.id.diagnosticButton)
-        button1.setOnClickListener(this)
-        button2 = findViewById(R.id.transButton)
-        button2.setOnClickListener(this)
-        button3 = findViewById(R.id.informationButton)
-        button3.setOnClickListener(this)
+        archiveButton = findViewById(R.id.archiveButton)
+        archiveButton.setOnClickListener(this)
+        diagnosticButton = findViewById(R.id.diagnosticButton)
+        diagnosticButton.setOnClickListener(this)
+        transmittalButton = findViewById(R.id.transButton)
+        transmittalButton.setOnClickListener(this)
+        informationButton = findViewById(R.id.informationButton)
+        informationButton.setOnClickListener(this)
 
         adapter = DeviceAdapter(this)
         viewPager = findViewById(R.id.view_pager)
@@ -50,50 +46,75 @@ class InstrumentActivity : FragmentActivity(),
             tab.text = "${(position + 1)}"
         }.attach()
 
-
-
+        presenter.onViewCreated(this)
     }
 
 
-        override fun onClick(view: View?) {
-//        presenter.onButtonClick(view)
-            if (view === button) {
-                startAnotherActivity(ArchiveActivity())
-            }
-            if (view === button1) {
-                startAnotherActivity(DiagnosticActivity())
-            }
-            if (view === button2) {
-                startAnotherActivity(TransmittalActivity())
-            }
-            if (view === button3) {
-                startAnotherActivity(InformationActivity())
-            }
+    override fun onClick(view: View?) {
+        if (view === archiveButton) {
+            startArchiveActivity()
         }
-
-        override fun setHeader(header: String) {
+        if (view === diagnosticButton) {
+            startDiagnosticActivity()
         }
-
-        override fun refreshItems() {
+        if (view === transmittalButton) {
+            startTransmittalActivity()
         }
-
-        override fun startAnotherActivity(activity: Activity) {
-            val intent = Intent(this, activity::class.java)
-            startActivity(intent)
+        if (view === informationButton) {
+            startInformationActivity()
         }
+    }
 
-        override fun onDestroy() {
-            super.onDestroy()
-            button.setOnClickListener(null)
-        }
-
-        private lateinit var button: Button
-        private lateinit var button1: Button
-        private lateinit var button2: Button
-        private lateinit var button3: Button
-        private lateinit var adapter: DeviceAdapter
-        private lateinit var viewPager: ViewPager2
-        private lateinit var tabLayout: TabLayout
-        private var presenter = InstrumentPresenter()
+    override fun refreshItems() {
 
     }
+
+    override fun setHeader(header: String) {
+
+    }
+
+    override fun startArchiveActivity() {
+        presenter.onStartArchiveActivity()
+        val intent = Intent(this, ArchiveActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun startDiagnosticActivity() {
+        presenter.onStartDiagnosticActivity()
+        val intent = Intent(this, DiagnosticActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun startTransmittalActivity() {
+        presenter.onStartTransmittalActivity()
+        val intent = Intent(this, TransmittalActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun startInformationActivity() {
+        presenter.onStartInformationActivity()
+        val intent = Intent(this, InformationActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        archiveButton.setOnClickListener(null)
+        diagnosticButton.setOnClickListener(null)
+        transmittalButton.setOnClickListener(null)
+        informationButton.setOnClickListener(null)
+
+        presenter.onDestroy()
+    }
+
+    private lateinit var archiveButton: Button
+    private lateinit var diagnosticButton: Button
+    private lateinit var transmittalButton: Button
+    private lateinit var informationButton: Button
+    private lateinit var adapter: DeviceAdapter
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
+    private var presenter = InstrumentPresenter()
+}

@@ -19,7 +19,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_username_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/user"
         android:hint="@string/name_surname_enter"
@@ -29,7 +29,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_phone_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/call"
         android:hint="@string/phone"
@@ -38,7 +38,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_email_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/mail"
         android:hint="@string/email"
@@ -47,7 +47,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_password_edit_text"
         style="@style/Theme.MIR.EditText"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/lock"
         android:hint="@string/password"

@@ -1,13 +1,9 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-import android.widget.Toast
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
-import me.apps.personal_account_npo_mir.view.main.InstrumentActivity
-import me.apps.personal_account_npo_mir.view.main.InstrumentFragment
 import me.apps.personalaccountnpomir.R
-import kotlin.coroutines.coroutineContext
 
 class SignInPresenter : IPresenter<ISignInView> {
 
@@ -42,14 +38,14 @@ class SignInPresenter : IPresenter<ISignInView> {
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setLoginBackground(R.drawable.ic_edit_text_background)
+            view?.setLoginBackground(R.drawable.rectangle_reg)
         }
 
         if (password.isBlank()){
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setPasswordBackground(R.drawable.ic_edit_text_background)
+            view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
 
         if(success && App.loginService.signIn(login, password)){

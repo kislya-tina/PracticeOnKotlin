@@ -16,7 +16,8 @@ class InstrumentPresenter : IPresenter<IMainView> {
         meters = App.metersService.getMeters(username)
     }
 
-    fun onButtonClick(view : View){
+    fun onButtonClick(){
+        //сделать 4 отдельных метода
 //        if(view === )
     }
 

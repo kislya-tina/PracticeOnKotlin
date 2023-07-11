@@ -30,7 +30,7 @@
         android:id="@+id/backImageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/white_rectangle_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moveIconImageView" />
@@ -84,6 +84,8 @@
                 android:id="@+id/indicationOfSumTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textColor="@color/black"
                 android:background="@drawable/meter_rectangle" />
 
             <TextView
@@ -118,6 +120,8 @@
                 android:id="@+id/indicationFirstTariffTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textColor="@color/black"
                 android:background="@drawable/meter_rectangle" />
 
             <TextView
@@ -153,6 +157,8 @@
                 android:id="@+id/indicationSecondTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textColor="@color/black"
                 android:background="@drawable/meter_rectangle" />
 
             <TextView
@@ -187,6 +193,8 @@
                 android:id="@+id/indicationThirdTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textColor="@color/black"
                 android:background="@drawable/meter_rectangle" />
 
             <TextView
@@ -221,6 +229,8 @@
                 android:id="@+id/indicationFourthTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textColor="@color/black"
                 android:background="@drawable/meter_rectangle" />
 
             <TextView

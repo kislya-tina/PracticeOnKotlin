@@ -50,6 +50,8 @@ class InstrumentActivity : FragmentActivity(),
             tab.text = "${(position + 1)}"
         }.attach()
 
+
+
     }
 
 

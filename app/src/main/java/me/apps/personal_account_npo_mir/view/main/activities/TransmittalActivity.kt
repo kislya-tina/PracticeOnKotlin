@@ -17,24 +17,8 @@ class TransmittalActivity:  Activity(){
         tariff3IndicationsTextView = this.findViewById(R.id.indicationThirdTextView)
         tariff4IndicationsTextView = this.findViewById(R.id.indicationFourthTextView)
 
-        sumTextView.text = sumIndications
-        tariff1IndicationsTextView.text = tariff1Indications
-        tariff2IndicationsTextView.text = tariff2Indications
-        tariff3IndicationsTextView.text = tariff3Indications
-        tariff4IndicationsTextView.text = tariff4Indications
     }
 
-    private var sumIndications :
-            String = "   " + App.metersService.getLastMeasures(123, "123")["summary"].toString()
-
-    private var tariff1Indications :
-            String = "   " + App.metersService.getLastMeasures(123, "123")["tariff1"].toString()
-    private var tariff2Indications :
-            String = "   " + App.metersService.getLastMeasures(123, "123")["tariff2"].toString()
-    private var tariff3Indications :
-            String = "   " + App.metersService.getLastMeasures(123, "123")["tariff3"].toString()
-    private var tariff4Indications :
-            String = "   " + App.metersService.getLastMeasures(123, "123")["tariff4"].toString()
 
     private lateinit var sumTextView : TextView
     private lateinit var tariff1IndicationsTextView: TextView

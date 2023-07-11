@@ -4,7 +4,7 @@ interface ILoginService {
     fun signIn(
         username: String,
         password: String
-    ): String
+    ): Boolean
 
     fun signOut(): Boolean
 
@@ -13,7 +13,7 @@ interface ILoginService {
         password: String,
         email: String,
         phoneNumber: String
-    ): String
+    ): Boolean
 
     var username: String
     var token: String

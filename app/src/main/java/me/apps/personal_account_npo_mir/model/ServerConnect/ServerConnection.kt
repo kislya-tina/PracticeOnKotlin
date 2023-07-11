@@ -10,9 +10,9 @@ import java.net.MalformedURLException
 import java.net.URL
 
 private const val ENDPOINT = "http://localhost:5000/api/"
-class ServerConnection : ILoginService {
+class ServerConnection {
 
-    override fun signIn(username: String, password: String): String {
+    fun signIn(username: String, password: String): String {
         val URLAddress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
@@ -41,16 +41,16 @@ class ServerConnection : ILoginService {
         }
     }
 
-    override fun signOut(): Boolean {
+    fun signOut(): Boolean {
         TODO("Not yet implemented")
     }
 
 
 
-    override var username: String
+    var username: String
         get() = TODO("Not yet implemented")
         set(value) {}
-    override var token: String
+    var token: String
         get() = TODO("Not yet implemented")
         set(value) {}
 
@@ -83,11 +83,9 @@ class ServerConnection : ILoginService {
             streamReader?.close()
         }
     }
-    override fun signUp(
+    fun signUp(
         username: String,
-        password: String,
-        email: String,
-        phoneNumber: String
+        password: String
     ): String {
         val URLAddress: String = ENDPOINT+"SignUp" + "/"+username+"/"+password
         var httpURLConnection: HttpURLConnection? = null

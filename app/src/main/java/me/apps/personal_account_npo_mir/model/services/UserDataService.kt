@@ -4,6 +4,8 @@ import me.apps.personal_account_npo_mir.model.abstractions.user_data.IUserDataSe
 
 class UserDataService : IUserDataService {
     override var token: String
-        get() = "pop"
+        get() {
+            return token
+        }
         set(value) {}
 }

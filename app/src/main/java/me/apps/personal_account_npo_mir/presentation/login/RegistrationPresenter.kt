@@ -41,7 +41,6 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
     fun onRegisterButtonClick(){
         var success = true
         if (login.isBlank()){
-
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
@@ -69,9 +68,8 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
             view?.setPhoneBackground(R.drawable.ic_edit_text_background)
         }
 
-        if(success) {
-            App.loginService.signUp(login, password, email, phone)
-//            token = App.loginService.getToken()
+        if(success && App.loginService.signUp(login, password, email, phone)) {
+            token = App.userDataService.token
             view?.startMainActivity()
         }
     }
@@ -80,6 +78,8 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
     private var password: String = ""
     private var email: String = ""
     private var phone: String = ""
+
+    private var token: String = ""
 
     private var view : IRegistrationView? = null
 }

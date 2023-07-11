@@ -1,11 +1,7 @@
 package me.apps.personal_account_npo_mir
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import me.apps.personal_account_npo_mir.model.LoginService
-import me.apps.personal_account_npo_mir.model.ServerConnection
 
-import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*

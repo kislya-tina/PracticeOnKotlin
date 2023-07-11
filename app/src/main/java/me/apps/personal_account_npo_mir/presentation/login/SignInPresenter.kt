@@ -49,7 +49,7 @@ class SignInPresenter : IPresenter<ISignInView> {
         }
 
         if(success && App.loginService.signIn(login, password)){
-//            token = App.loginService.getToken()
+            token = App.userDataService.token
             view?.startMainActivity()
         }
         else{

@@ -1,8 +1,7 @@
-package me.apps.personal_account_npo_mir.model.ServerConnect
+package me.apps.personal_account_npo_mir.model.server_connect
 
 
 
-import me.apps.personal_account_npo_mir.model.abstractions.ILoginService
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
@@ -13,13 +12,13 @@ private const val ENDPOINT = "http://localhost:5000/api/"
 class ServerConnection {
 
     fun signIn(username: String, password: String): String {
-        val URLAddress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
+        val urlAddress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
         var text: String
         try {
             httpURLConnection =
-                URL(URLAddress).openConnection() as HttpURLConnection
+                URL(urlAddress).openConnection() as HttpURLConnection
             httpURLConnection.apply {
                 connectTimeout = 10000
                 doInput = true

@@ -1,16 +1,14 @@
 package me.apps.personal_account_npo_mir.model
 
-import me.apps.personal_account_npo_mir.model.ServerConnect.ServerConnection
-import me.apps.personal_account_npo_mir.model.abstractions.ILoginService
+import me.apps.personal_account_npo_mir.model.abstractions.login.ILoginService
+import me.apps.personal_account_npo_mir.model.server_connect.ServerConnection
 
 
-class LoginService() : ILoginService{
+class LoginService() : ILoginService {
     override var username: String
         get() = "OPa"
         set(value) {}
-    override var token: String
-        get() = "pop"
-        set(value) {}
+
 
     override fun signIn(username: String, password: String): Boolean {
         val token:String = ServerConnection().signIn(username,password)

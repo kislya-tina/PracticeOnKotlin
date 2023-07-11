@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model
+package me.apps.personal_account_npo_mir.model.services
 
 import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
 import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter

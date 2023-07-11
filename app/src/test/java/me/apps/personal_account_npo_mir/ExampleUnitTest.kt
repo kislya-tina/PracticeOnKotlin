@@ -1,7 +1,7 @@
 package me.apps.personal_account_npo_mir
 
-import me.apps.personal_account_npo_mir.model.MetersService
-import me.apps.personal_account_npo_mir.model.ServerConnect.ServerConnection
+import me.apps.personal_account_npo_mir.model.services.MetersService
+import me.apps.personal_account_npo_mir.model.server_connect.ServerConnection
 import org.junit.Test
 
 import org.junit.Assert.*

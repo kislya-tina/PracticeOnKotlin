@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NPO MIR</string>
+    <string name="app_name">Личный кабинет</string>
     <string name="sign_in">Войти</string>
     <string name="registration">Регистрация</string>
     <string name="register">Зарегистрироваться</string>
@@ -35,8 +35,10 @@
     <string name="give">Передать</string>
     <string name="code">Код</string>
     <string name="error">Ошибка</string>
-    <string name="meter_name_1">C-05</string>
+    <string name="meter_name_1">МИР C-05</string>
     <string name="meters_main">Приборы учета</string>
+    <string name="enter_devices_number">Введите серийный номер прибора учета</string>
+    <string name="serial_number_2">Серийный номер:</string>
 
 
 </resources>

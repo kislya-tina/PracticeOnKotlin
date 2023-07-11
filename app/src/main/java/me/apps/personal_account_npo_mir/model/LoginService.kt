@@ -13,8 +13,12 @@ class LoginService() : ILoginService{
 
 
     override fun signIn(username: String, password: String): Boolean {
+/*
         val token:String = serverConnect.signIn(username,password)
-        return token != "Unauthorized"
+*/
+        /*return token != "Unauthorized"*/
+
+        return true
     }
 
     override fun signOut(): Boolean {

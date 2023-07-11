@@ -31,7 +31,7 @@
       android:layout_width="match_parent"
       android:layout_height="2dp"
       android:layout_margin="5dp"
-      android:background="gray_light"/>
+      android:background="@color/light_gray"/>
 
   <androidx.appcompat.widget.LinearLayoutCompat
       android:layout_width="wrap_content"

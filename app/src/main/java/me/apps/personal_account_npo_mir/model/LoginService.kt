@@ -1,10 +1,6 @@
 package me.apps.personal_account_npo_mir.model
 
-import me.apps.personal_account_npo_mir.model.ServerConnect.IServerConnection
 import me.apps.personal_account_npo_mir.model.abstractions.ILoginService
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
 
 private const val ENDPOINT = "http://localhost:5000/api/"
 

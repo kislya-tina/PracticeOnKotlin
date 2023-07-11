@@ -2,19 +2,22 @@ package me.apps.personal_account_npo_mir.model
 
 import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
 import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.math.round
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 class MetersService : IMetersService {
-    fun GetLastMeasures(DeviceID: Int, Token:String): Map<String, Any> {
+    override fun getLastMeasures(DeviceID: Int, Token:String): Map<String, Any> {
         val tariff1:Int = generateId()
         val tariff2:Int = generateId()
         val tariff3:Int = generateId()
         val tariff4:Int = generateId()
         val summary:Int = tariff1+tariff2+tariff3+tariff4
         val measure = mapOf("summary" to summary, "tariff1" to tariff1,"tariff2" to tariff2,
-            "tariff3" to tariff3, "tariff4" to tariff4, "timestamp" to "04.04.2023 18:04")
+            "tariff3" to tariff3, "tariff4" to tariff4, "timestamp" to LocalDateTime.now().format(
+                DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")))
         return measure
     }
     override fun getMeters(username: String): List<Meter> = listOf(
@@ -25,6 +28,7 @@ class MetersService : IMetersService {
         Meter(generateId(), generateMeterName(), generateSerialContractNumber(), generateSerialContractNumber(),"Герцена 49/1"),
         Meter(generateId(), generateMeterName(), generateSerialContractNumber(), generateSerialContractNumber(),"Малиновского 13"),
     )
+
 
 
 

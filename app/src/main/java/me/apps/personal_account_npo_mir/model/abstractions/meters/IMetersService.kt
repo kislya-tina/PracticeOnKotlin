@@ -6,4 +6,6 @@ interface IMetersService {
      * @param username Имя пользователя
      */
     fun getMeters(username: String) : List<Meter>
+    fun getLastMeasures(DeviceID: Int, Token:String): Map<String, Any>
+
 }

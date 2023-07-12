@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.view
+package me.apps.personal_account_npo_mir.view.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

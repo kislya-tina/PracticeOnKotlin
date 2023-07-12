@@ -44,28 +44,27 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setLoginBackground(R.drawable.ic_edit_text_background)
+            view?.setLoginBackground(R.drawable.rectangle_reg)
         }
-
         if (password.isBlank()){
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setPasswordBackground(R.drawable.ic_edit_text_background)
+            view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
 
         if (email.isBlank()){
             success = false
             view?.setEmailBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setEmailBackground(R.drawable.ic_edit_text_background)
+            view?.setEmailBackground(R.drawable.rectangle_reg)
         }
 
         if (phone.isBlank()){
             success = false
             view?.setPhoneBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setPhoneBackground(R.drawable.ic_edit_text_background)
+            view?.setPhoneBackground(R.drawable.rectangle_reg)
         }
 
         if(success && App.loginService.signUp(login, password, email, phone)) {

@@ -17,8 +17,8 @@ class App : Application() {
     }
 
     companion object {
-        lateinit var userDataService: IUserDataService
         lateinit var loginService: ILoginService
         lateinit var metersService: IMetersService
+        lateinit var userDataService: IUserDataService
     }
 }

@@ -82,11 +82,12 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationOfSumTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="20dp"
                 android:padding="2dp"
+                android:layout_margin="2dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -118,11 +119,12 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationFirstTariffTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="20dp"
                 android:padding="2dp"
+                android:layout_margin="2dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -155,11 +157,12 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationSecondTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="20dp"
                 android:padding="2dp"
+                android:layout_margin="2dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -191,11 +194,12 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationThirdTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="20dp"
                 android:padding="2dp"
+                android:layout_margin="2dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -227,11 +231,12 @@
 
             <EditText
                 android:id="@+id/indicationFourthTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="20dp"
                 android:padding="2dp"
+                android:layout_margin="2dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -13,7 +13,9 @@ import me.apps.personal_account_npo_mir.view.abstractions.main.ITransmittalView
 import me.apps.personal_account_npo_mir.view.dialogs.WarningDialogFragment
 import me.apps.personalaccountnpomir.R
 
-class TransmittalActivity:  Activity(),
+class
+
+TransmittalActivity:  Activity(),
             OnClickListener,
             ITransmittalView{
     override fun onCreate(savedInstanceState: Bundle?) {

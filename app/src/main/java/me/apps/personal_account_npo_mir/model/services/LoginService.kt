@@ -7,9 +7,7 @@ import me.apps.personal_account_npo_mir.model.server_connect.ServerConnection
 
 class LoginService() : ILoginService {
     override var username: String
-        get() {
-            return username
-        }
+        get() = username
         set(value) {
             username = value
         }

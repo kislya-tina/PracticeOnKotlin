@@ -67,8 +67,9 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
             view?.setPhoneBackground(R.drawable.rectangle_reg)
         }
 
-        if(success && App.loginService.signUp(login, password, email, phone)) {
-            token = App.userDataService.token
+//        if(success && App.loginService.signUp(login, password, email, phone)) {
+//            token = App.userDataService.token
+        if(success){
             view?.startMainActivity()
         }
     }

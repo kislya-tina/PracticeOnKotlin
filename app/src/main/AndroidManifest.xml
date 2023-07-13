@@ -7,9 +7,9 @@
     <application
         android:name="me.apps.personal_account_npo_mir.di.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/npo_mir_svg"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/npo_mir_svg"
         android:supportsRtl="true"
         android:theme="@style/Theme.MIR"
         tools:targetApi="29"
@@ -43,7 +43,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="me.apps.personal_account_npo_mir.view.main.InstrumentActivity"
+            android:name="me.apps.personal_account_npo_mir.view.main.instruments.InstrumentActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

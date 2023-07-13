@@ -1,25 +1,41 @@
 package me.apps.personal_account_npo_mir.view.login
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.animation.doOnEnd
 import me.apps.personalaccountnpomir.R
+import kotlin.math.roundToInt
 
 class ButtonLoading(view: View) {
     val layout = view as LinearLayout
-    val progressbar = view.findViewById<ProgressBar>(R.id.btn_loading_progressbar)
-    val textview = view.findViewById<TextView>(R.id.login_text_view)
+    private val progressBar: ProgressBar = view.findViewById(R.id.btn_loading_progressbar)
+    private val loginText = view.findViewById<TextView>(R.id.login_text_view)
+    private val icfail = view.findViewById<ImageView>(R.id.fail_view)
 
     fun setLoading(){
         layout.isEnabled = false
-        textview.visibility = View.GONE
-        progressbar.visibility = View.VISIBLE
+        loginText.visibility = View.GONE
+        progressBar.visibility = View.VISIBLE
     }
 
     fun reset(){
-        textview.visibility = View.VISIBLE
-        progressbar.visibility = View.GONE
+        loginText.visibility = View.VISIBLE
+        progressBar.visibility = View.GONE
+        icfail.visibility = View.GONE
+
+        layout.background.clearColorFilter()
+        layout.isEnabled = true
     }
 
 }

@@ -11,9 +11,9 @@ class InstrumentPresenter : IPresenter<IMainView> {
 
     override fun onViewCreated(view: IMainView) {
         this.view = view
-        val username = App.loginService.username
-        view.setHeader(username)
-        meters = App.metersService.getMeters(username)
+//        val username = App.loginService.username
+        view.setHeader("username")
+//        meters = App.metersService.getMeters(username)
 //        meterID = App.metersService.getMeterID()
     }
 

@@ -13,7 +13,7 @@ import me.apps.personal_account_npo_mir.presentation.login.LoginPresenter
 import me.apps.personal_account_npo_mir.presentation.login.SignInPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ILoginView
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
-import me.apps.personal_account_npo_mir.view.main.InstrumentActivity
+import me.apps.personal_account_npo_mir.view.main.instruments.InstrumentActivity
 import me.apps.personalaccountnpomir.R
 
 class LogInFragment :

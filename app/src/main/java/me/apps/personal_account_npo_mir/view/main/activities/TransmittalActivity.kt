@@ -5,12 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
-import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.transmittal.TransmittalPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.ITransmittalView
-import me.apps.personal_account_npo_mir.view.dialogs.WarningDialogFragment
 import me.apps.personalaccountnpomir.R
 
 class
@@ -34,8 +31,19 @@ TransmittalActivity:  Activity(),
         presenter.onViewCreated(this)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        handOverButton.setOnClickListener(null)
+        presenter.onDestroy()
+    }
+
     override fun onClick(view: View?) {
         if(view === handOverButton){
+            presenter.onSummaryTextChanged(sumTextView.text.toString())
+            presenter.onTariff1TextChanged(tariff1IndicationsTextView.text.toString())
+            presenter.onTariff2TextChanged(tariff2IndicationsTextView.text.toString())
+            presenter.onTariff3TextChanged(tariff3IndicationsTextView.text.toString())
+            presenter.onTariff4TextChanged(tariff4IndicationsTextView.text.toString())
             presenter.onClickHandOverButton()
         }
     }
@@ -66,10 +74,6 @@ TransmittalActivity:  Activity(),
         tariff4IndicationsTextView.setBackgroundResource(resourceID)
     }
 
-    override fun reactToMeasures() {
-        TODO("Not yet implemented")
-    }
-
     private lateinit var sumTextView : AppCompatEditText
     private lateinit var tariff1IndicationsTextView: AppCompatEditText
     private lateinit var tariff2IndicationsTextView: AppCompatEditText
@@ -78,5 +82,3 @@ TransmittalActivity:  Activity(),
     private lateinit var handOverButton: Button
     private var presenter = TransmittalPresenter()
 }
-//как в рег активити
-//на изменение textEdit в поиске

@@ -85,8 +85,10 @@
                 android:layout_height="25dp"
                 android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:padding="1dp"
-                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
                 android:background="@drawable/rec_trans"
                 android:inputType="numberDecimal" />
 
@@ -124,8 +126,10 @@
                 android:layout_height="25dp"
                 android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:padding="1dp"
-                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
                 android:background="@drawable/rec_trans"
                 android:inputType="numberDecimal" />
 
@@ -164,8 +168,10 @@
                 android:layout_height="25dp"
                 android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:padding="1dp"
-                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
                 android:background="@drawable/rec_trans"
                 android:inputType="numberDecimal"/>
 
@@ -203,8 +209,10 @@
                 android:layout_height="25dp"
                 android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:padding="1dp"
-                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
                 android:background="@drawable/rec_trans"
                 android:inputType="numberDecimal"/>
 
@@ -242,8 +250,10 @@
                 android:layout_height="25dp"
                 android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:padding="1dp"
-                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
                 android:background="@drawable/rec_trans"
                 android:inputType="numberDecimal" />
 

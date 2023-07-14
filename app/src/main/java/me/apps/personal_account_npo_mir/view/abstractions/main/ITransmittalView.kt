@@ -12,6 +12,4 @@ interface ITransmittalView {
     fun setTariff3Background(resourceID : Int)
 
     fun setTariff4Background(resourceID : Int)
-
-    fun reactToMeasures()
 }

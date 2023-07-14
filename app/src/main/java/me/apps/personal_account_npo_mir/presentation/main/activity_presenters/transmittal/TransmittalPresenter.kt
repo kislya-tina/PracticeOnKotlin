@@ -65,8 +65,10 @@ class TransmittalPresenter : IPresenter<ITransmittalView> {
         } else {
             view?.setTariff4Background(R.drawable.rec_trans)
         }
-
+// TODO: сделать подачу для сервера в виде жсон и параметры показаний
         /*if(success && App.measureService.putMeasure(
+                measureID,
+                userToken,
                 summary,
                 tariff1,
                 tariff2,

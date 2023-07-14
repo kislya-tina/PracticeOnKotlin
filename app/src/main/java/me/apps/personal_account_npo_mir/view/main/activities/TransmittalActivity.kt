@@ -17,7 +17,7 @@ TransmittalActivity:  Activity(),
             ITransmittalView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.transmittal_activity)
+        setContentView(R.layout.activity_transmittal)
 
         handOverButton = this.findViewById(R.id.handOverButton)
         handOverButton.setOnClickListener(this)

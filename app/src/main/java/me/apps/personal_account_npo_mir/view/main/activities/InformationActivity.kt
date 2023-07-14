@@ -7,6 +7,6 @@ import me.apps.personalaccountnpomir.R
 class InformationActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.information_activity)
+        setContentView(R.layout.activity_information)
     }
 }

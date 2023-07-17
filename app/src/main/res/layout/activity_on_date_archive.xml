@@ -85,7 +85,7 @@
                 android:layout_weight="1" />
 
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:id="@+id/indicationOfSumTextView"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
@@ -93,8 +93,7 @@
                 android:textColor="@color/black"
                 android:padding="1dp"
                 android:textSize="15sp"
-                android:background="@drawable/rec_trans"
-                android:inputType="numberDecimal" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,7 +123,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:id="@+id/indicationFirstTariffTextView"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
@@ -132,8 +131,7 @@
                 android:textColor="@color/black"
                 android:padding="1dp"
                 android:textSize="15sp"
-                android:background="@drawable/rec_trans"
-                android:inputType="numberDecimal" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -164,7 +162,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:id="@+id/indicationSecondTextView"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
@@ -172,8 +170,7 @@
                 android:textColor="@color/black"
                 android:padding="1dp"
                 android:textSize="15sp"
-                android:background="@drawable/rec_trans"
-                android:inputType="numberDecimal" />
+                android:background="@drawable/rec_trans"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -203,7 +200,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:id="@+id/indicationThirdTextView"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
@@ -211,8 +208,7 @@
                 android:textColor="@color/black"
                 android:padding="1dp"
                 android:textSize="15sp"
-                android:background="@drawable/rec_trans"
-                android:inputType="numberDecimal" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -242,7 +238,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:id="@+id/indicationFourthTextView"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
@@ -250,8 +246,7 @@
                 android:textColor="@color/black"
                 android:padding="1dp"
                 android:textSize="15sp"
-                android:background="@drawable/rec_trans"
-                android:inputType="numberDecimal" />
+                android:background="@drawable/rec_trans" />
 
             <TextView
                 android:layout_width="wrap_content"

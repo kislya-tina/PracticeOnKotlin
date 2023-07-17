@@ -20,17 +20,23 @@ import kotlin.math.roundToInt
 class ButtonLoading(view: View) {
     val layout = view as LinearLayout
     private val progressBar: ProgressBar = view.findViewById(R.id.btn_loading_progressbar)
+/*
     private val loginText = view.findViewById<TextView>(R.id.login_text_view)
+*/
     private val icfail = view.findViewById<ImageView>(R.id.fail_view)
 
     fun setLoading(){
         layout.isEnabled = false
+/*
         loginText.visibility = View.GONE
+*/
         progressBar.visibility = View.VISIBLE
     }
 
     fun reset(){
+/*
         loginText.visibility = View.VISIBLE
+*/
         progressBar.visibility = View.GONE
         icfail.visibility = View.GONE
 

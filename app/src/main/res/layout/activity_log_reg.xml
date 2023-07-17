@@ -30,8 +30,7 @@
             android:layout_gravity="center" />
 
         <!--Второй контейнер для фрагментов. Указываем статически имя
-        отображаемого фрагмента свойством
-        android:name="com.example.pcexample.view.login.SignUpFragment" -->
+        отображаемого фрагмента свойством-->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/sign_up_fragment"
             android:name="me.apps.personal_account_npo_mir.view.login.RegistrationFragment"
@@ -50,4 +49,5 @@
             android:layout_gravity="center"
             android:theme="@style/Theme.MIR.Button.SignInUpSwitch" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 </FrameLayout>

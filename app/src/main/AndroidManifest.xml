@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
         <activity
-            android:name=".onDateArchiveActivity"
+            android:name="me.apps.personal_account_npo_mir.onDateArchiveActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

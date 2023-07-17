@@ -41,6 +41,9 @@
     <string name="meters_main">Приборы учета</string>
     <string name="enter_devices_number">Введите серийный номер прибора учета</string>
     <string name="serial_number_2">Серийный номер:</string>
+    <string name="indications_by_date">Показания с</string>
+    <string name="before">до</string>
+    <string name="meters_from">Показания от</string>
 
 
 </resources>

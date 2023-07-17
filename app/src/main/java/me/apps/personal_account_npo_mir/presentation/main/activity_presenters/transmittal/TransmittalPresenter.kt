@@ -1,10 +1,13 @@
 package me.apps.personal_account_npo_mir.presentation.main.activity_presenters.transmittal
 
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
+import me.apps.personal_account_npo_mir.presentation.abstraction.ISupportWarningDialogPresenter
+import me.apps.personal_account_npo_mir.view.abstractions.dialogs.IWarningDialogView
 import me.apps.personal_account_npo_mir.view.abstractions.main.ITransmittalView
 import me.apps.personalaccountnpomir.R
 
-class TransmittalPresenter : IPresenter<ITransmittalView> {
+class TransmittalPresenter : IPresenter<ITransmittalView>,
+    ISupportWarningDialogPresenter{
 
     override fun onViewCreated(view: ITransmittalView) {
         this.view = view
@@ -93,6 +96,23 @@ class TransmittalPresenter : IPresenter<ITransmittalView> {
         tariff2 = ""
         tariff3 = ""
         tariff4 = ""
+    }
+
+    override fun onDialogCreate(view: IWarningDialogView) {
+        view.setTitle(R.string.success)
+        view.setWarningMessage(R.string.well_done)
+    }
+
+    override fun onDialogDestroy() {
+
+    }
+
+    override fun onOkButtonClick() {
+
+    }
+
+    override fun onCancelButtonClick() {
+
     }
 
     private var view: ITransmittalView? = null

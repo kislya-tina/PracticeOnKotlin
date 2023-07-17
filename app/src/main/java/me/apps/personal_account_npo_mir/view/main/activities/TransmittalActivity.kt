@@ -1,18 +1,19 @@
 package me.apps.personal_account_npo_mir.view.main.activities
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.transmittal.TransmittalPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.ITransmittalView
+import me.apps.personal_account_npo_mir.view.dialogs.WarningDialogFragment
 import me.apps.personalaccountnpomir.R
 
 class
 
-TransmittalActivity:  Activity(),
+TransmittalActivity:  AppCompatActivity(),
             OnClickListener,
             ITransmittalView{
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +50,8 @@ TransmittalActivity:  Activity(),
     }
 
     override fun showDialog() {
-//        val dialog = WarningDialogFragment(presenter)
-//        dialog.show(supportFragmentManager, "")
-        // TODO: разобраться с презентерами 
+        val dialog = WarningDialogFragment(presenter)
+        dialog.show(supportFragmentManager, "")
     }
 
     override fun setSummaryBackground(resourceID: Int) {

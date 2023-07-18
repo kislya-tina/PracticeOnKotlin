@@ -2,11 +2,15 @@ package me.apps.personal_account_npo_mir.presentation.login
 
 import android.widget.Toast
 import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
+import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
+import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.IRegistrationView
 import me.apps.personalaccountnpomir.R
 
-class RegistrationPresenter : IPresenter<IRegistrationView> {
+class RegistrationPresenter : IPresenter<IRegistrationView>,
+    IServerRequestResultListener<SignInRequestResult> {
     override fun onViewCreated(view: IRegistrationView) {
         this.view = view
     }
@@ -68,9 +72,9 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
             view?.setPhoneBackground(R.drawable.ic_edit_text_background)
         }
 
-        if(success && App.loginService.signUp(login, password, email, phone)) {
-            token = App.userDataService.token
-            view?.startMainActivity()
+        if(success) {
+            App.loginService.signUp(login, password, email, phone, this)
+
         }
     }
 
@@ -82,4 +86,13 @@ class RegistrationPresenter : IPresenter<IRegistrationView> {
     private var token: String = ""
 
     private var view : IRegistrationView? = null
+    override fun onRequestSuccess(result: SignInRequestResult) {
+        App.userDataService.token = result.token
+        App.userDataService.username = result.username
+        view?.startMainActivity()
+    }
+
+    override fun onRequestFail(message: ErrorCode) {
+        TODO("Not yet implemented")
+    }
 }

@@ -2,12 +2,10 @@ package me.apps.personal_account_npo_mir
 
 import me.apps.personal_account_npo_mir.model.services.MetersService
 import me.apps.personal_account_npo_mir.model.server_connect.ServerConnection
+import me.apps.personal_account_npo_mir.model.services.SignInService
 import org.junit.Test
 
 import org.junit.Assert.*
-import kotlin.math.round
-import kotlin.random.Random
-import kotlin.random.nextInt
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -29,11 +27,24 @@ class ExampleUnitTest {
         val Token = "{\"SessionId\":321,\"Username\":\"user\"}.8CD5FEAC4ED3C6C1C780318AABEFAF10"
         //println(Back().PutMeasure(2,Token))
     }*/
+   /* @Test
+    fun sign(){
+        val username = "user"
+       val password = "password"
+       val readStreamTask = ServerConnectionAsync(username, password)
+       readStreamTask.execute()
+    }*/
     @Test
-    fun signIn(){
+    fun realtest(){
+        assertEquals(2+2, 3)
+    }
+    @Test
+    fun signIn() = {
         val username = "user"
         val password = "password"
-        println( ServerConnection().signIn(username,password))
+
+           println(SignInService().signIn(username, password))
+
     }
     @Test
     fun signUp(){

@@ -2,6 +2,10 @@ package me.apps.personal_account_npo_mir.model.server_connect
 
 
 
+import android.os.AsyncTask
+import kotlinx.coroutines.*
+import okhttp3.*
+import okio.use
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
@@ -11,34 +15,61 @@ import java.net.URL
 private const val ENDPOINT = "http://localhost:5000/api/"
 class ServerConnection {
 
-    fun signIn(username: String, password: String): String {
-        val urlAddress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
-        var httpURLConnection: HttpURLConnection? = null
-        var streamReader: InputStreamReader? = null
-        var text: String
-        try {
-            httpURLConnection =
-                URL(urlAddress).openConnection() as HttpURLConnection
-            httpURLConnection.apply {
-                connectTimeout = 10000
-                doInput = true
-            }
-            val streamReader = InputStreamReader(httpURLConnection.inputStream)
-            streamReader.use { text = it.readText() }
-            return text
-        } catch (e: MalformedURLException) {
-            e.printStackTrace()
-            return ""
+    suspend fun signIn2(username:String, password: String): String? {
+        val client = OkHttpClient()
+        val url: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
+        val request = Request.Builder()
+            .url(url)
+            .build()
+        var responseString:String?=null
 
-        } catch (e: IOException) {
-            e.printStackTrace()
-            return ""
-        }
-        finally {
-            httpURLConnection?.disconnect()
-            streamReader?.close()
-        }
+
+            val call = client.newCall(request)
+            withContext(Dispatchers.IO) {
+                try {
+                    val response = call.execute()
+                    val responseBody = response.body?.string()
+                    responseString = responseBody
+                } catch (e: IOException) {
+                    // Обработка ошибки
+                }
+            }
+
+            return responseString
     }
+
+    suspend fun signIn(username: String, password: String):String{
+
+            val urlAddress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
+            var httpURLConnection: HttpURLConnection? = null
+            var streamReader: InputStreamReader? = null
+            var text: String = ""
+            try {
+                httpURLConnection =
+                    URL(urlAddress).openConnection() as HttpURLConnection
+                httpURLConnection.apply {
+                    connectTimeout = 10000
+                    doInput = true
+                }
+
+                    val streamReader = InputStreamReader(httpURLConnection.inputStream)
+                    streamReader.use { text = it.readText()
+                    return text
+                }
+                return text
+            } catch (e: MalformedURLException) {
+                e.printStackTrace()
+                return ""
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+                return ""
+            } finally {
+                httpURLConnection?.disconnect()
+                streamReader?.close()
+            }
+        }
+
 
     fun signOut(): Boolean {
         TODO("Not yet implemented")
@@ -57,7 +88,7 @@ class ServerConnection {
         val urlAddress = URL(ENDPOINT + "Devices/getdevices")
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
-        var text: String
+        var text: String = ""
         try {
             val httpURLConnection = urlAddress.openConnection() as HttpURLConnection
             httpURLConnection.setRequestProperty("X-User-Token", Token)
@@ -89,7 +120,7 @@ class ServerConnection {
         val URLAddress: String = ENDPOINT+"SignUp" + "/"+username+"/"+password
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
-        var text: String
+        var text: String = ""
         try {
             httpURLConnection =
                 URL(URLAddress).openConnection() as HttpURLConnection
@@ -117,7 +148,7 @@ class ServerConnection {
         val urlAdress: String = ENDPOINT + "Measures/getlastmeasures/" + DeviceID
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
-        var text: String
+        var text: String = ""
         try {
             httpURLConnection =
                 URL(urlAdress).openConnection() as HttpURLConnection
@@ -146,7 +177,7 @@ class ServerConnection {
         val urlAdress: String = ENDPOINT + "Diagnostics/" + DeviceID
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
-        var text: String
+        var text: String = ""
         try {
             httpURLConnection =
                 URL(urlAdress).openConnection() as HttpURLConnection
@@ -174,7 +205,7 @@ class ServerConnection {
     fun bindDevices(DeviceID:Int, Token:String): String{
         var httpURLConnection: HttpURLConnection? = null
         var streamReader: InputStreamReader? = null
-        var text: String
+        var text: String = ""
         val urlAddress = URL(ENDPOINT + "Devices/linktouser?deviceId=" + DeviceID)
         try {
             httpURLConnection =

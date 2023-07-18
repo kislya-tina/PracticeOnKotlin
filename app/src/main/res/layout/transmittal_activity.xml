@@ -39,9 +39,9 @@
         android:id="@+id/transLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="350dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:background="@drawable/transmittal_rectangle"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,9 +84,9 @@
                 android:id="@+id/indicationOfSumTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/meter_rectangle"
                 android:padding="2dp"
-                android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -120,9 +120,9 @@
                 android:id="@+id/indicationFirstTariffTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/meter_rectangle"
                 android:padding="2dp"
-                android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -157,9 +157,9 @@
                 android:id="@+id/indicationSecondTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/meter_rectangle"
                 android:padding="2dp"
-                android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -193,9 +193,9 @@
                 android:id="@+id/indicationThirdTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/meter_rectangle"
                 android:padding="2dp"
-                android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -229,9 +229,9 @@
                 android:id="@+id/indicationFourthTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/meter_rectangle"
                 android:padding="2dp"
-                android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -247,8 +247,7 @@
             android:layout_width="150dp"
             android:layout_height="35dp"
             android:layout_gravity="center_horizontal"
-            android:text="@string/give"
-            />
+            android:text="@string/give" />
 
 
     </LinearLayout>
@@ -257,8 +256,8 @@
         android:id="@+id/back_button"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:background="@drawable/main_back_button"
         android:layout_margin="20dp"
+        android:background="@drawable/main_back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

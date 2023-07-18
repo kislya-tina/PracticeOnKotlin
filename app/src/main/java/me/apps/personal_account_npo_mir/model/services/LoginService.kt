@@ -3,7 +3,7 @@ package me.apps.personal_account_npo_mir.model.services
 import kotlinx.coroutines.*
 import me.apps.personal_account_npo_mir.model.abstractions.login.ILoginService
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-import me.apps.personal_account_npo_mir.model.server_connect.login.LogInServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.signup.SignUpServerRequest
 import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInServerRequest
 
@@ -34,7 +34,7 @@ val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
         phoneNumber: String,
         resultListener: IServerRequestResultListener<SignInRequestResult>
     ) {
-        val request = LogInServerRequest(urlForHostLoopbackInterface, username,password, scope)
+        val request = SignUpServerRequest(urlForHostLoopbackInterface, username,password, scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }

@@ -1,9 +1,6 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
 import me.apps.personal_account_npo_mir.model.abstractions.login.ILoginService
-import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
-import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-import me.apps.personal_account_npo_mir.model.server_connect.login.LogInRequestResult
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ILoginView
 import me.apps.personalaccountnpomir.R

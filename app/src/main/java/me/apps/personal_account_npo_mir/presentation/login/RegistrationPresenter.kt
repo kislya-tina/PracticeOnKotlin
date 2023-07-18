@@ -7,6 +7,7 @@ import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServe
 import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.IRegistrationView
+import me.apps.personal_account_npo_mir.view.dialogs.WarningDialogFragment
 import me.apps.personalaccountnpomir.R
 
 class RegistrationPresenter : IPresenter<IRegistrationView>,
@@ -93,6 +94,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
     }
 
     override fun onRequestFail(message: ErrorCode) {
-        TODO("Not yet implemented")
+
+
     }
 }

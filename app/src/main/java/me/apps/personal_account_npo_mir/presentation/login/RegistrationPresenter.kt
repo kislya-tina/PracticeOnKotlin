@@ -1,7 +1,5 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-import android.widget.Toast
-import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.IRegistrationView
 import me.apps.personalaccountnpomir.R

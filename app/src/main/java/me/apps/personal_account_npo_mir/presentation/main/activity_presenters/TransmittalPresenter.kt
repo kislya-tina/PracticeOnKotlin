@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.presentation.main.activity_presenters.transmittal
+package me.apps.personal_account_npo_mir.presentation.main.activity_presenters
 
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.presentation.abstraction.ISupportWarningDialogPresenter

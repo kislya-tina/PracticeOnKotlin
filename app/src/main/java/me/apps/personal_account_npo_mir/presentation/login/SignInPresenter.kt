@@ -1,6 +1,5 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personalaccountnpomir.R

@@ -37,8 +37,6 @@
         android:src="@drawable/white_rectangle_2"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/infoIconImageView" />
 
     <LinearLayout
@@ -107,8 +105,8 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@drawable/button_add_devices_on_main_activity"
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

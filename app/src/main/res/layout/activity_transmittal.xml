@@ -245,7 +245,7 @@
             android:id="@+id/handOverButton"
             style="@style/Theme.MIR.Button"
             android:layout_width="150dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/give" />
 
@@ -259,6 +259,6 @@
         android:layout_margin="20dp"
         android:background="@drawable/main_back_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

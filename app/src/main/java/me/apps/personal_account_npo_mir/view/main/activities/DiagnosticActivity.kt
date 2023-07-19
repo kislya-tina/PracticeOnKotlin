@@ -20,11 +20,10 @@ class DiagnosticActivity : AppCompatActivity(), OnClickListener {
         if(view == backButton){
             supportFragmentManager.beginTransaction().apply {
                 addToBackStack(null)
+                commit()
             }
         }
     }
-
-
 
     private lateinit var backButton: Button
 }

@@ -40,11 +40,6 @@ class InstrumentFragment : Fragment() {
         return (1..10).map { Random.nextInt(1..9) }.joinToString("")
     }
 
-    private fun generateIndications(): String {
-        return (1..3).map { Random.nextInt(1..9) }
-            .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
-    }
-
     private var sumIndications :
             String = "   " + App.metersService.getLastMeasures(123, "123")["summary"].toString()
 

@@ -5,5 +5,5 @@ interface IArchiveView {
 
     fun refreshItems()
 
-    fun showDialog()
+    fun startItemActivity()
 }

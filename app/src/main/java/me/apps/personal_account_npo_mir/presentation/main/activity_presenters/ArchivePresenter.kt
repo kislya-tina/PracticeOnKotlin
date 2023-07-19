@@ -18,10 +18,19 @@ class ArchivePresenter : IPresenter<IArchiveView> {
     }
 
     fun onBindViewItem(view: IDateListViewItem, position: Int){
-
+// TODO:
     }
+
+    fun onItemClick(position : Int){
+        currentClickedPosition = position
+        view?.startItemActivity()
+    }
+
+    val itemsCount
+        get() = App.archiveDateService.datesCount
 
     private lateinit var dates: List<Long>
     private var view: IArchiveView? = null
     private var currentClickedPosition: Int = -1
+
 }

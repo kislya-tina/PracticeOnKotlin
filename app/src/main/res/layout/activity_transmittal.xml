@@ -18,10 +18,9 @@
         android:id="@+id/transTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         android:text="@string/transmission_of_testimony"
         android:theme="@style/textStyle"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.10"
         app:layout_constraintStart_toEndOf="@id/moveIconImageView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +37,7 @@
     <LinearLayout
         android:id="@+id/transLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -53,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
+            android:layout_margin="4dp"
             android:background="@color/light_blue"
             android:gravity="center"
             android:textColor="@color/dark"
@@ -80,13 +79,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationOfSumTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
+                android:background="@drawable/rec_trans"
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,13 +120,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationFirstTariffTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
+                android:background="@drawable/rec_trans"
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -153,13 +162,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationSecondTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
+                android:background="@drawable/rec_trans"
+                android:inputType="numberDecimal"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -189,13 +203,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationThirdTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
+                android:background="@drawable/rec_trans"
+                android:inputType="numberDecimal"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -225,13 +244,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/indicationFourthTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
                 android:textColor="@color/black"
-                android:background="@drawable/meter_rectangle" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="14sp"
+                android:background="@drawable/rec_trans"
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -246,6 +270,7 @@
             style="@style/Theme.MIR.Button"
             android:layout_width="150dp"
             android:layout_height="35dp"
+            android:layout_margin="20dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/give"
             />

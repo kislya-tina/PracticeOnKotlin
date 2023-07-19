@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import me.apps.personal_account_npo_mir.model.LoginService
+import me.apps.personal_account_npo_mir.model.services.LoginService
 import me.apps.personal_account_npo_mir.presentation.login.LoginPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ILoginView
 import me.apps.personalaccountnpomir.R

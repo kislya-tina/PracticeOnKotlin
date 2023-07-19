@@ -48,12 +48,10 @@ class SignInPresenter : IPresenter<ISignInView> {
             view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
 
-        if(success && App.loginService.signIn(login, password)){
-//            token = App.loginService.getToken()
+//        if(success && App.loginService.signIn(login, password)){
+//            token = App.userDataService.token
+        if(success){
             view?.startMainActivity()
-        }
-        else{
-
         }
     }
 

@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.view.main
+package me.apps.personal_account_npo_mir.view.main.instruments
 
 import android.content.Intent
 import android.os.Bundle

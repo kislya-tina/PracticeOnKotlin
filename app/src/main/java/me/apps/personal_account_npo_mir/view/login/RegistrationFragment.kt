@@ -5,13 +5,12 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import me.apps.personal_account_npo_mir.presentation.login.RegistrationPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.IRegistrationView
-import me.apps.personal_account_npo_mir.view.main.InstrumentActivity
+import me.apps.personal_account_npo_mir.view.main.instruments.InstrumentActivity
 import me.apps.personalaccountnpomir.R
 
 class RegistrationFragment :

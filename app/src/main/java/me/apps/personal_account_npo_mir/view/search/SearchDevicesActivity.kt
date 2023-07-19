@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.view
+package me.apps.personal_account_npo_mir.view.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

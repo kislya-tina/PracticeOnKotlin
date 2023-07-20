@@ -1,6 +1,6 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-// import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 // import me.apps.personal_account_npo_mir.view.login.LogInFragment
@@ -51,17 +51,23 @@ class SignInPresenter : IPresenter<ISignInView> {
 
         if (success && App.loginService.signIn(login, password)) {
             token = App.userDataService.token
+
+            view?.setStateFr(true)
+
             view?.startMainActivity()
         } else {
+            view?.setStateFr(false)
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
             view?.setLoginBackground(R.drawable.ic_warning_frame)
+
+            view?.setInvalidTextVisibilityTrue()
         }
 
     }
 
     private var login: String = ""
     private var password: String = ""
-    // private var token: String = ""
+    private var token: String = ""
 
     private var view: ISignInView? = null
 }

@@ -17,7 +17,7 @@ import me.apps.personalaccountnpomir.R
 class LogInFragment :
     Fragment(),
     View.OnClickListener,
-    ISignInView{
+    ISignInView {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,11 +42,10 @@ class LogInFragment :
         invalidTextView.visibility = View.GONE
 
 
-       /* signInButton.setOnClickListener {
-            val progressBar = ButtonLoading(it)
-            progressBar.setLoading()
-            progressBar.setState(false){invalidTextView.visibility = View.VISIBLE}
-        }*/
+         signInButton.setOnClickListener {
+             progressBar = ButtonLoading(it)
+             progressBar.setLoading()
+         }
     }
 
 
@@ -77,6 +76,14 @@ class LogInFragment :
         passwordEditText.setBackgroundResource(resourceId)
     }
 
+    override fun setInvalidTextVisibilityTrue() {
+        invalidTextView.visibility = View.VISIBLE
+    }
+
+    override fun setStateFr(success : Boolean){
+        progressBar.setState(success){}
+    }
+
     override fun startMainActivity() {
         val intent = Intent(context, InstrumentActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -84,6 +91,7 @@ class LogInFragment :
         activity?.finish()
     }
 
+    private lateinit var progressBar: ButtonLoading
     private lateinit var signInButton: LinearLayout
     private lateinit var loginEditText: AppCompatEditText
     private lateinit var passwordEditText: AppCompatEditText

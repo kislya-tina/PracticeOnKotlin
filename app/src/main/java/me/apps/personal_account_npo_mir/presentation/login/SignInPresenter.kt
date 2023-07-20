@@ -1,8 +1,9 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-import me.apps.personal_account_npo_mir.di.App
+// import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
+// import me.apps.personal_account_npo_mir.view.login.LogInFragment
 import me.apps.personalaccountnpomir.R
 
 class SignInPresenter : IPresenter<ISignInView> {
@@ -57,7 +58,7 @@ class SignInPresenter : IPresenter<ISignInView> {
 
     private var login: String = ""
     private var password: String = ""
-    private var token: String = ""
+    // private var token: String = ""
 
     private var view: ISignInView? = null
 }

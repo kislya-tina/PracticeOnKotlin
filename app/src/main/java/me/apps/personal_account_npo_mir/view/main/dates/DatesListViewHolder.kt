@@ -19,7 +19,6 @@ class DatesListViewHolder(val presenter: ArchivePresenter, view: View) :
     }
 
     fun onCleanUp(){
-        // TODO: найти где это использовать 
         itemView.setOnClickListener(null)
     }
 
@@ -31,12 +30,11 @@ class DatesListViewHolder(val presenter: ArchivePresenter, view: View) :
 
     override fun setDate(value: Long) {
         val date = Date(value)
-        val format = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-
+        val format = SimpleDateFormat(
+            "dd.MM.yyyy",
+            Locale.getDefault())
         dateTextView.text = format.format(date)
     }
-
-
 
     private lateinit var dateTextView : TextView
 }

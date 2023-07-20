@@ -49,6 +49,10 @@ class SignInPresenter : IPresenter<ISignInView> {
 
 //        if(success && App.loginService.signIn(login, password)){
 //            token = App.userDataService.token
+//            } else {
+//                  view?.setLoginBackground(R.drawable.ic_warning_frame)
+//                  view?.setPasswordBackground(R.drawable.ic_warning_frame)
+//            }
         if(success){
             view?.startMainActivity()
         }
@@ -56,7 +60,5 @@ class SignInPresenter : IPresenter<ISignInView> {
 
     private var login: String = ""
     private var password: String = ""
-    private var token: String = ""
-
     private var view: ISignInView? = null
 }

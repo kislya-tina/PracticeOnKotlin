@@ -20,6 +20,10 @@ class DatesRowAdapter(private val presenter: ArchivePresenter): RecyclerView.Ada
         presenter.onBindViewItem(holder, position)
     }
 
+    override fun onViewRecycled(holder: DatesListViewHolder) {
+        super.onViewRecycled(holder)
+        holder.onCleanUp()
+    }
+
     override fun getItemCount(): Int = presenter.itemsCount
-    // TODO: сделать dateService нормально
 }

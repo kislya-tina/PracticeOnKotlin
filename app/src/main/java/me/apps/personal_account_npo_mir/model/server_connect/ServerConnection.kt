@@ -2,19 +2,57 @@ package me.apps.personal_account_npo_mir.model.server_connect
 
 
 
-import android.os.AsyncTask
+import com.google.gson.Gson
 import kotlinx.coroutines.*
+import me.apps.personal_account_npo_mir.model.abstractions.measures.Measure
 import okhttp3.*
 import okio.use
 import java.io.IOException
 import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
 private const val ENDPOINT = "http://localhost:5000/api/"
 class ServerConnection {
+    fun PutMeasure(deviceID: Int, token:String,
+                   measure: Measure
+    ) {
+        val urlAddress: String = ENDPOINT + "Measures/PutMeasure?deviceId=" + deviceID
+        var httpURLConnection: HttpURLConnection? = null
+        var writer: OutputStreamWriter? = null
+        val gson = Gson()
+        try {
 
+            val url = URL(urlAddress)
+            val connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "POST"
+            connection.setRequestProperty("Content-Type", "application/json")
+            connection.setRequestProperty("X-User-Token", token)
+            connection.doOutput = true
+            val measureJson = gson.toJson(measure)
+            println(measureJson)
+            val outputStream = OutputStreamWriter(connection.outputStream)
+            outputStream.write(measureJson)
+            outputStream.flush()
+            outputStream.close()
+
+            val responseCode = connection.responseCode
+            println("Response Code : $responseCode")
+        } catch (e: MalformedURLException) {
+            e.printStackTrace()
+
+
+        } catch (e:IOException) {
+            e.printStackTrace()
+
+        }
+        finally {
+            httpURLConnection?.disconnect()
+            writer?.close()
+        }
+    }
     suspend fun signIn2(username:String, password: String): String? {
         val client = OkHttpClient()
         val url: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
@@ -38,7 +76,7 @@ class ServerConnection {
             return responseString
     }
 
-    suspend fun signIn(username: String, password: String):String{
+    fun signIn(username: String, password: String):String{
 
             val urlAddress: String = ENDPOINT + "SignIn" + "/" + username + "/" + password
             var httpURLConnection: HttpURLConnection? = null

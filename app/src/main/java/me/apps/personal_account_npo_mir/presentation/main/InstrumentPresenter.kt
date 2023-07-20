@@ -11,10 +11,9 @@ class InstrumentPresenter : IPresenter<IMainView> {
 
     override fun onViewCreated(view: IMainView) {
         this.view = view
-        // TODO: заглушка
-//        val username = App.loginService.username
-        view.setHeader("username")
-//        meters = App.metersService.getMeters(username)
+        val username = App.userDataService.username
+        view.setHeader(username)
+        meters = App.metersService.getMeters(username)
 //        meterID = App.metersService.getMeterID()
     }
 
@@ -33,19 +32,19 @@ class InstrumentPresenter : IPresenter<IMainView> {
     }
 
     fun onStartArchiveActivity(){
-//        view?.startArchiveActivity()
+        view?.startArchiveActivity()
     }
 
     fun onStartDiagnosticActivity(){
-//        view?.startDiagnosticActivity()
+        view?.startDiagnosticActivity()
     }
 
     fun onStartTransmittalActivity(){
-//        view?.startTransmittalActivity()
+        view?.startTransmittalActivity()
     }
 
     fun onStartInformationActivity(){
-//        view?.startInformationActivity()
+        view?.startInformationActivity()
     }
 
     /**

@@ -67,11 +67,12 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
             view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
 
-        if(success){
+        if (success) {
             App.loginService.signIn(username, password, this)
 
-            //token = App.userDataService.token
-            //view?.startMainActivity()
+        } else {
+            view?.setPasswordBackground(R.drawable.ic_warning_frame)
+            view?.setLoginBackground(R.drawable.ic_warning_frame)
         }
     }
 

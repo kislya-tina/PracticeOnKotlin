@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatButton
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
-import me.apps.personal_account_npo_mir.di.App
-import me.apps.personal_account_npo_mir.presentation.login.LoginPresenter
 import me.apps.personal_account_npo_mir.presentation.login.SignInPresenter
-import me.apps.personal_account_npo_mir.view.abstractions.login.ILoginView
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personal_account_npo_mir.view.main.instruments.InstrumentActivity
 import me.apps.personalaccountnpomir.R
@@ -34,20 +32,24 @@ class LogInFragment :
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.onViewCreated(this)
 
         signInButton = view.findViewById(R.id.sign_in_button)
-        signInButton.setOnClickListener(this)
-
         loginEditText = view.findViewById(R.id.sign_in_login_edit_text)
         passwordEditText = view.findViewById(R.id.sign_in_password_edit_text)
+        invalidTextView = view.findViewById(R.id.invalid_login_password_text_view)
 
-        presenter.onViewCreated(this)
+        invalidTextView.visibility = View.GONE
+
+
+       /* signInButton.setOnClickListener {
+            val progressBar = ButtonLoading(it)
+            progressBar.setLoading()
+            progressBar.setState(false){invalidTextView.visibility = View.VISIBLE}
+        }*/
     }
 
-    /**
-     * Колбэк при уничтожении фрагмента
-     * В нем освобождаем ресурсы
-     */
+
     override fun onDestroy() {
         super.onDestroy()
         //Удаляем слушателя OnClick кнопки вход
@@ -82,10 +84,12 @@ class LogInFragment :
         activity?.finish()
     }
 
-    private lateinit var signInButton: AppCompatButton
+    private lateinit var signInButton: LinearLayout
     private lateinit var loginEditText: AppCompatEditText
     private lateinit var passwordEditText: AppCompatEditText
+    private lateinit var invalidTextView: TextView
     private val presenter = SignInPresenter()
+
 
     companion object {
         /**

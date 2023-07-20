@@ -35,25 +35,28 @@ class SignInPresenter : IPresenter<ISignInView> {
      */
     fun onEnterButtonPressed() {
         var success = true
-        if (login.isBlank()){
+        if (login.isBlank()) {
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
             view?.setLoginBackground(R.drawable.rectangle_reg)
         }
 
-        if (password.isBlank()){
+        if (password.isBlank()) {
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
         } else {
             view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
 
-//        if(success && App.loginService.signIn(login, password)){
-//            token = App.userDataService.token
-        if(success){
+        if (success && App.loginService.signIn(login, password)) {
+            token = App.userDataService.token
             view?.startMainActivity()
+        } else {
+            view?.setPasswordBackground(R.drawable.ic_warning_frame)
+            view?.setLoginBackground(R.drawable.ic_warning_frame)
         }
+
     }
 
     private var login: String = ""

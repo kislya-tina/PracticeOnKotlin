@@ -46,6 +46,8 @@ class LogInFragment :
         progressBar = ButtonLoading(signInButton)
         loginEditText.setOnClickListener(this)
         passwordEditText.setOnClickListener(this)
+
+        progressBar = ButtonLoading(view)
     }
 
 

@@ -43,7 +43,7 @@ class LogInFragment :
 
 
         signInButton.setOnClickListener(this)
-        progressBar = ButtonLoading(view)
+        progressBar = ButtonLoading(signInButton)
         loginEditText.setOnClickListener(this)
         passwordEditText.setOnClickListener(this)
     }
@@ -51,20 +51,14 @@ class LogInFragment :
 
     override fun onDestroy() {
         super.onDestroy()
-        //Удаляем слушателя OnClick кнопки вход
         signInButton.setOnClickListener(null)
         presenter.onDestroy()
     }
 
-    /**
-     * Колбэк, вызываемый при нажатии на элемент управления.
-     * В текущей ситуации - кнопки Вход
-     */
     override fun onClick(view: View?) {
         if (view === signInButton) {
             presenter.onLoginTextChanged(loginEditText.text.toString())
             presenter.onPasswordChanged(passwordEditText.text.toString())
-//            progressBar = ButtonLoading(view)
             presenter.onEnterButtonPressed()
             progressBar.setLoading()
         }

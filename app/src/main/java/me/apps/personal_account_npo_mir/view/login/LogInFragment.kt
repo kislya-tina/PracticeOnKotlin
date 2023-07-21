@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import me.apps.personal_account_npo_mir.presentation.login.SignInPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
@@ -43,6 +43,7 @@ class LogInFragment :
 
 
         signInButton.setOnClickListener(this)
+        progressBar = ButtonLoading(signInButton)
         loginEditText.setOnClickListener(this)
         passwordEditText.setOnClickListener(this)
     }
@@ -50,20 +51,14 @@ class LogInFragment :
 
     override fun onDestroy() {
         super.onDestroy()
-        //Удаляем слушателя OnClick кнопки вход
         signInButton.setOnClickListener(null)
         presenter.onDestroy()
     }
 
-    /**
-     * Колбэк, вызываемый при нажатии на элемент управления.
-     * В текущей ситуации - кнопки Вход
-     */
     override fun onClick(view: View?) {
         if (view === signInButton) {
             presenter.onLoginTextChanged(loginEditText.text.toString())
             presenter.onPasswordChanged(passwordEditText.text.toString())
-            progressBar = ButtonLoading(view)
             presenter.onEnterButtonPressed()
             progressBar.setLoading()
         }
@@ -87,6 +82,10 @@ class LogInFragment :
         invalidTextView.visibility = View.VISIBLE
     }
 
+    override fun setInvalidTextVisibilityFalse() {
+        invalidTextView.visibility = View.GONE
+    }
+
     override fun setStateFr(success : Boolean){
         progressBar.setState(success){}
     }
@@ -99,7 +98,7 @@ class LogInFragment :
     }
 
     private lateinit var progressBar: ButtonLoading
-    private lateinit var signInButton: LinearLayout
+    private lateinit var signInButton: LinearLayoutCompat
     private lateinit var loginEditText: AppCompatEditText
     private lateinit var passwordEditText: AppCompatEditText
     private lateinit var invalidTextView: TextView

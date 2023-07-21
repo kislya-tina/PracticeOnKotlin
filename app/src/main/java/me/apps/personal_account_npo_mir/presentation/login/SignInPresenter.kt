@@ -21,18 +21,14 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
         App.userDataService.token = result.token
         App.userDataService.username = result.username
         view?.setStateFr(true)
+
+        view?.setPasswordBackground(R.drawable.ic_warning_frame)
+        view?.setLoginBackground(R.drawable.ic_warning_frame)
+        view?.setInvalidTextVisibilityTrue()
         view?.startMainActivity()
     }
 
     override fun onRequestFail(message: ErrorCode) {
-        /*if(enum == incorrect401) {
-            view?.setLoginBackground(R.drawable.ic_warning_frame)
-            view?.setPasswordBackground(R.drawable.ic_warning_frame)
-        }
-
-        if(enum == 404){
-            dialog
-        }*/
         view?.setStateFr(false)
         view?.setPasswordBackground(R.drawable.ic_warning_frame)
         view?.setLoginBackground(R.drawable.ic_warning_frame)

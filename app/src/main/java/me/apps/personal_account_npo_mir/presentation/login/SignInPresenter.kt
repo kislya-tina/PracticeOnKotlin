@@ -20,18 +20,18 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
     override fun onRequestSuccess(result: SignInRequestResult) {
         App.userDataService.token = result.token
         App.userDataService.username = result.username
-        view?.setStateFr(true)
 
-        view?.setPasswordBackground(R.drawable.ic_warning_frame)
-        view?.setLoginBackground(R.drawable.ic_warning_frame)
-        view?.setInvalidTextVisibilityTrue()
+        view?.setStateFr(true)
+        view?.setLoginBackground(R.drawable.rectangle_reg)
+        view?.setPasswordBackground(R.drawable.rectangle_reg)
+        view?.setInvalidTextVisibilityFalse()
         view?.startMainActivity()
     }
 
     override fun onRequestFail(message: ErrorCode) {
         view?.setStateFr(false)
-        view?.setPasswordBackground(R.drawable.ic_warning_frame)
         view?.setLoginBackground(R.drawable.ic_warning_frame)
+        view?.setPasswordBackground(R.drawable.ic_warning_frame)
         view?.setInvalidTextVisibilityTrue()
     }
 
@@ -40,6 +40,8 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
      */
     fun onLoginTextChanged(login: String) {
         this.username = login
+        view?.setInvalidTextVisibilityFalse()
+        view?.setLoginBackground(R.drawable.rectangle_reg)
     }
 
     /**
@@ -47,6 +49,8 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
      */
     fun onPasswordChanged(password: String) {
         this.password = password
+        view?.setInvalidTextVisibilityFalse()
+        view?.setPasswordBackground(R.drawable.rectangle_reg)
     }
 
     /**

@@ -8,9 +8,9 @@ import me.apps.personal_account_npo_mir.view.abstractions.main.IArchiveView
 class ArchivePresenter : IPresenter<IArchiveView> {
     override fun onViewCreated(view: IArchiveView) {
         this.view = view
-        val username = App.loginService.username
+        val username = App.userDataService.username
         view.setHeader(username)
-        dates = App.archiveDateService.dates
+//        dates = App.archiveDateService.dates
     }
 
     override fun onDestroy() {

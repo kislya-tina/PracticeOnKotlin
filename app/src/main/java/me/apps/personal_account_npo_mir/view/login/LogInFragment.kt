@@ -88,7 +88,7 @@ class LogInFragment :
     }
 
     override fun setStateFr(success : Boolean){
-        progressBar.setState(success){}
+        progressBar.setState(success)
     }
 
     override fun startMainActivity() {

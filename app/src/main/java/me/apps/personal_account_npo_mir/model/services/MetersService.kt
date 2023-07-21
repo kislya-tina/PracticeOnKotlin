@@ -10,7 +10,7 @@ import kotlin.random.nextInt
 
 class MetersService(private val scope: CoroutineScope) : IMetersService {
     val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
- //   val token: String = App.userDataService.token
+    // val token: String = App.userDataService.token
     override fun getLastMeasures(DeviceID: Int, Token:String): Map<String, Any> {
         val tariff1:Int = generateId()
         val tariff2:Int = generateId()

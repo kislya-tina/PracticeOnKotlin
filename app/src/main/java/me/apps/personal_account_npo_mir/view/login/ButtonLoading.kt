@@ -26,15 +26,15 @@ class ButtonLoading(view: View) {
         ic_success.visibility = View.GONE
     }
 
-    fun setState(isSuccess: Boolean, onAnimationEnd: () -> Unit) {
+    fun setState(isSuccess: Boolean) {
         val bgAnim = ObjectAnimator.ofFloat(0f, 1f).setDuration(500L)
         bgAnim.start()
         bgAnim.doOnEnd {
             if (isSuccess) {
-                flipProgressBar(R.drawable.ic_done) { if (it) onAnimationEnd() }
+                flipProgressBar(R.drawable.ic_done)
             }
             else {
-                flipProgressBar(R.drawable.ic_fail) { if (it) onAnimationEnd() }
+                flipProgressBar(R.drawable.ic_fail)
             }
         }
     }
@@ -42,7 +42,7 @@ class ButtonLoading(view: View) {
 
 
 
-    private fun flipProgressBar(img: Int, isEnded: (Boolean) -> Unit) {
+    private fun flipProgressBar(img: Int) {
         ic_success.setImageResource(img)
         val flip1 = ObjectAnimator.ofFloat(progressBar, "scaleX", 1f, 0f)
         val flip2 = ObjectAnimator.ofFloat(ic_success, "scaleX", 0f, 1f)
@@ -59,7 +59,6 @@ class ButtonLoading(view: View) {
             }
         })
         flip1.start()
-        flip2.doOnEnd { isEnded(true) }
     }
 
 

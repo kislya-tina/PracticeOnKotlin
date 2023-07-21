@@ -30,8 +30,7 @@
             android:layout_gravity="center" />
 
         <!--Второй контейнер для фрагментов. Указываем статически имя
-        отображаемого фрагмента свойством
-        android:name="com.example.pcexample.view.login.SignUpFragment" -->
+        отображаемого фрагмента свойством-->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/sign_up_fragment"
             android:name="me.apps.personal_account_npo_mir.view.login.RegistrationFragment"
@@ -43,11 +42,12 @@
         Строки берем из ресурсов. Для изменения внешнего вида кнопки применяем стили и темы-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/login_registration_switch_button"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:background="@drawable/reg_button"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:theme="@style/Theme.MIR.Button.SignInUpSwitch" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 </FrameLayout>

@@ -17,7 +17,6 @@ import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
 import me.apps.personalaccountnpomir.R
 
-
 private const val NUM_PAGES = 5
 
 class InstrumentActivity : FragmentActivity(),
@@ -52,16 +51,16 @@ class InstrumentActivity : FragmentActivity(),
 
     override fun onClick(view: View?) {
         if (view === archiveButton) {
-            startArchiveActivity()
+            presenter.onArchiveButtonClick()
         }
         if (view === diagnosticButton) {
-            startDiagnosticActivity()
+            presenter.onDiagnosticButtonClick()
         }
         if (view === transmittalButton) {
-            startTransmittalActivity()
+            presenter.onTransmittalButtonClick()
         }
         if (view === informationButton) {
-            startInformationActivity()
+            presenter.onInformationButtonClick()
         }
     }
 
@@ -74,25 +73,21 @@ class InstrumentActivity : FragmentActivity(),
     }
 
     override fun startArchiveActivity() {
-        presenter.onStartArchiveActivity()
         val intent = Intent(this, ArchiveActivity::class.java)
         startActivity(intent)
     }
 
     override fun startDiagnosticActivity() {
-        presenter.onStartDiagnosticActivity()
         val intent = Intent(this, DiagnosticActivity::class.java)
         startActivity(intent)
     }
 
     override fun startTransmittalActivity() {
-        presenter.onStartTransmittalActivity()
         val intent = Intent(this, TransmittalActivity::class.java)
         startActivity(intent)
     }
 
     override fun startInformationActivity() {
-        presenter.onStartInformationActivity()
         val intent = Intent(this, InformationActivity::class.java)
         startActivity(intent)
     }

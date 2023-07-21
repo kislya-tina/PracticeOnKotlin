@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DC3545</color>
     <color name="dark_blue">#0C54A0</color>
+    <color name="ripple_effect">#052242</color>
     <color name="light_gray">#868686</color>
     <color name="search_edit_text_light_gray">#D9D9D9</color>
     <color name="back_light_gray">#E7E7E7</color>

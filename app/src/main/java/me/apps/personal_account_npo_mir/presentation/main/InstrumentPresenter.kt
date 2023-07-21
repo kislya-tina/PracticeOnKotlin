@@ -1,6 +1,5 @@
 package me.apps.personal_account_npo_mir.presentation.main
 
-import android.view.View
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
@@ -31,19 +30,19 @@ class InstrumentPresenter : IPresenter<IMainView> {
         view.setIndications(meters[position].serialNumber.toString())
     }
 
-    fun onStartArchiveActivity(){
+    fun onArchiveButtonClick(){
         view?.startArchiveActivity()
     }
 
-    fun onStartDiagnosticActivity(){
+    fun onDiagnosticButtonClick(){
         view?.startDiagnosticActivity()
     }
 
-    fun onStartTransmittalActivity(){
+    fun onTransmittalButtonClick(){
         view?.startTransmittalActivity()
     }
 
-    fun onStartInformationActivity(){
+    fun onInformationButtonClick(){
         view?.startInformationActivity()
     }
 
@@ -56,6 +55,4 @@ class InstrumentPresenter : IPresenter<IMainView> {
     private lateinit var meters: List<Meter>
     private var view: IMainView? = null
     private var meterID: Int = 0
-
-    //хранить здесь id устройства и передавать его для создания фрагмента
 }

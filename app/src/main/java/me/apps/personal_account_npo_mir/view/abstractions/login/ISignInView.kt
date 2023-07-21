@@ -19,5 +19,7 @@ interface ISignInView {
 
   fun setInvalidTextVisibilityTrue()
 
+  fun setInvalidTextVisibilityFalse()
+
   fun setStateFr(success : Boolean)
 }

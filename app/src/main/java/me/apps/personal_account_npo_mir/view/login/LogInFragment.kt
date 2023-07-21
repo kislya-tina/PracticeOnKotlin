@@ -42,10 +42,9 @@ class LogInFragment :
         invalidTextView.visibility = View.GONE
 
 
-         signInButton.setOnClickListener {
-             progressBar = ButtonLoading(it)
-             progressBar.setLoading()
-         }
+        signInButton.setOnClickListener(this)
+        loginEditText.setOnClickListener(this)
+        passwordEditText.setOnClickListener(this)
     }
 
 
@@ -64,7 +63,15 @@ class LogInFragment :
         if (view === signInButton) {
             presenter.onLoginTextChanged(loginEditText.text.toString())
             presenter.onPasswordChanged(passwordEditText.text.toString())
+            progressBar = ButtonLoading(view)
             presenter.onEnterButtonPressed()
+            progressBar.setLoading()
+        }
+        if(view == loginEditText){
+            progressBar.reset()
+
+            // TODO: сделать ресет полей
+            invalidTextView.visibility = View.GONE
         }
     }
 

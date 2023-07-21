@@ -20,6 +20,7 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
     override fun onRequestSuccess(result: SignInRequestResult) {
         App.userDataService.token = result.token
         App.userDataService.username = result.username
+        view?.setStateFr(true)
         view?.startMainActivity()
     }
 
@@ -32,6 +33,10 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
         if(enum == 404){
             dialog
         }*/
+        view?.setStateFr(false)
+        view?.setPasswordBackground(R.drawable.ic_warning_frame)
+        view?.setLoginBackground(R.drawable.ic_warning_frame)
+        view?.setInvalidTextVisibilityTrue()
     }
 
     /**
@@ -69,7 +74,6 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
 
         if (success) {
             App.loginService.signIn(username, password, this)
-            view?.setStateFr(true)
 
         } else {
             view?.setStateFr(false)

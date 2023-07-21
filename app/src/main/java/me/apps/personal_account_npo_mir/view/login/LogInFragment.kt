@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatButton
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
-import me.apps.personal_account_npo_mir.di.App
-import me.apps.personal_account_npo_mir.presentation.login.LoginPresenter
 import me.apps.personal_account_npo_mir.presentation.login.SignInPresenter
-import me.apps.personal_account_npo_mir.view.abstractions.login.ILoginView
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personal_account_npo_mir.view.main.instruments.InstrumentActivity
 import me.apps.personalaccountnpomir.R
@@ -19,7 +17,7 @@ import me.apps.personalaccountnpomir.R
 class LogInFragment :
     Fragment(),
     View.OnClickListener,
-    ISignInView{
+    ISignInView {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,20 +32,22 @@ class LogInFragment :
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.onViewCreated(this)
 
         signInButton = view.findViewById(R.id.sign_in_button)
-        signInButton.setOnClickListener(this)
-
         loginEditText = view.findViewById(R.id.sign_in_login_edit_text)
         passwordEditText = view.findViewById(R.id.sign_in_password_edit_text)
+        invalidTextView = view.findViewById(R.id.invalid_login_password_text_view)
 
-        presenter.onViewCreated(this)
+        invalidTextView.visibility = View.GONE
+
+
+        signInButton.setOnClickListener(this)
+        loginEditText.setOnClickListener(this)
+        passwordEditText.setOnClickListener(this)
     }
 
-    /**
-     * Колбэк при уничтожении фрагмента
-     * В нем освобождаем ресурсы
-     */
+
     override fun onDestroy() {
         super.onDestroy()
         //Удаляем слушателя OnClick кнопки вход
@@ -63,7 +63,15 @@ class LogInFragment :
         if (view === signInButton) {
             presenter.onLoginTextChanged(loginEditText.text.toString())
             presenter.onPasswordChanged(passwordEditText.text.toString())
+            progressBar = ButtonLoading(view)
             presenter.onEnterButtonPressed()
+            progressBar.setLoading()
+        }
+        if(view == loginEditText){
+            progressBar.reset()
+
+            // TODO: сделать ресет полей
+            invalidTextView.visibility = View.GONE
         }
     }
 
@@ -75,6 +83,14 @@ class LogInFragment :
         passwordEditText.setBackgroundResource(resourceId)
     }
 
+    override fun setInvalidTextVisibilityTrue() {
+        invalidTextView.visibility = View.VISIBLE
+    }
+
+    override fun setStateFr(success : Boolean){
+        progressBar.setState(success){}
+    }
+
     override fun startMainActivity() {
         val intent = Intent(context, InstrumentActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -82,10 +98,13 @@ class LogInFragment :
         activity?.finish()
     }
 
-    private lateinit var signInButton: AppCompatButton
+    private lateinit var progressBar: ButtonLoading
+    private lateinit var signInButton: LinearLayout
     private lateinit var loginEditText: AppCompatEditText
     private lateinit var passwordEditText: AppCompatEditText
+    private lateinit var invalidTextView: TextView
     private val presenter = SignInPresenter()
+
 
     companion object {
         /**

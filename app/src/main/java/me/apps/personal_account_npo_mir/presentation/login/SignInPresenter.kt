@@ -1,11 +1,14 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
 import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
+import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
+import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personalaccountnpomir.R
 
-class SignInPresenter : IPresenter<ISignInView> {
+class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<SignInRequestResult> {
 
     override fun onViewCreated(view: ISignInView) {
         this.view = view
@@ -14,12 +17,33 @@ class SignInPresenter : IPresenter<ISignInView> {
     override fun onDestroy() {
         view = null
     }
+    override fun onRequestSuccess(result: SignInRequestResult) {
+        App.userDataService.token = result.token
+        App.userDataService.username = result.username
+        view?.setStateFr(true)
+        view?.startMainActivity()
+    }
+
+    override fun onRequestFail(message: ErrorCode) {
+        /*if(enum == incorrect401) {
+            view?.setLoginBackground(R.drawable.ic_warning_frame)
+            view?.setPasswordBackground(R.drawable.ic_warning_frame)
+        }
+
+        if(enum == 404){
+            dialog
+        }*/
+        view?.setStateFr(false)
+        view?.setPasswordBackground(R.drawable.ic_warning_frame)
+        view?.setLoginBackground(R.drawable.ic_warning_frame)
+        view?.setInvalidTextVisibilityTrue()
+    }
 
     /**
      * Колбэк при изменении текста в поле "Логин"
      */
     fun onLoginTextChanged(login: String) {
-        this.login = login
+        this.username = login
     }
 
     /**
@@ -34,7 +58,7 @@ class SignInPresenter : IPresenter<ISignInView> {
      */
     fun onEnterButtonPressed() {
         var success = true
-        if (login.isBlank()){
+        if (username.isBlank()){
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
@@ -48,16 +72,20 @@ class SignInPresenter : IPresenter<ISignInView> {
             view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
 
-//        if(success && App.loginService.signIn(login, password)){
-//            token = App.userDataService.token
-        if(success){
-            view?.startMainActivity()
+        if (success) {
+            App.loginService.signIn(username, password, this)
+
+        } else {
+            view?.setStateFr(false)
+            view?.setPasswordBackground(R.drawable.ic_warning_frame)
+            view?.setLoginBackground(R.drawable.ic_warning_frame)
+            view?.setInvalidTextVisibilityTrue()
         }
+
     }
 
-    private var login: String = ""
+    private var username: String = ""
     private var password: String = ""
-    private var token: String = ""
 
     private var view: ISignInView? = null
 }

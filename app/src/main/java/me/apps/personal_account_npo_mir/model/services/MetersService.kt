@@ -1,14 +1,16 @@
 package me.apps.personal_account_npo_mir.model.services
 
+import kotlinx.coroutines.CoroutineScope
 import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
 import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import kotlin.math.round
 import kotlin.random.Random
 import kotlin.random.nextInt
 
-class MetersService : IMetersService {
+class MetersService(private val scope: CoroutineScope) : IMetersService {
+    val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
+ //   val token: String = App.userDataService.token
     override fun getLastMeasures(DeviceID: Int, Token:String): Map<String, Any> {
         val tariff1:Int = generateId()
         val tariff2:Int = generateId()
@@ -28,6 +30,15 @@ class MetersService : IMetersService {
         Meter(generateId(), generateMeterName(), generateSerialContractNumber(), generateSerialContractNumber(),"Герцена 49/1"),
         Meter(generateId(), generateMeterName(), generateSerialContractNumber(), generateSerialContractNumber(),"Малиновского 13"),
     )
+    //не возвращает лист метеров, возвращает стринг
+    /*override fun getMeters(
+                           resultListener: IServerRequestResultListener<GetMetersRequestResult>
+    ):List<Meter>{
+        val request = GetMetersServerRequest(urlForHostLoopbackInterface, token, scope)
+        request.setServerRequestListener(resultListener)
+        request.run()
+
+    }*/
 
 
 

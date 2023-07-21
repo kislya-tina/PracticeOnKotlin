@@ -44,6 +44,7 @@
     <string name="indications_by_date">Показания с</string>
     <string name="before">до</string>
     <string name="meters_from">Показания от</string>
+    <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку</string>
 
 
 </resources>

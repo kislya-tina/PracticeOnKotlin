@@ -1,32 +1,42 @@
 package me.apps.personal_account_npo_mir.model.services
 
-import me.apps.personal_account_npo_mir.di.App
+import kotlinx.coroutines.*
 import me.apps.personal_account_npo_mir.model.abstractions.login.ILoginService
-import me.apps.personal_account_npo_mir.model.server_connect.ServerConnection
+import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
+import me.apps.personal_account_npo_mir.model.server_connect.signup.SignUpServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInServerRequest
 
 
-class LoginService() : ILoginService {
-    override var username: String
-        get() = username
-        set(value) {
-            username = value
-        }
+class SignInService(private val scope: CoroutineScope) : ILoginService {
 
 
-    override fun signIn(username: String, password: String): Boolean {
-        val token:String = ServerConnection().signIn(username,password)
-        App.userDataService.token = token
-        return token.isNotBlank()
+val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
+    override fun signIn(
+        username: String,
+        password: String,
+        resultListener: IServerRequestResultListener<SignInRequestResult>
+    ) {
+
+        val request = SignInServerRequest(urlForHostLoopbackInterface, username,password, scope)
+        request.setServerRequestListener(resultListener)
+        request.run()
     }
 
     override fun signOut(): Boolean {
         return true
     }
 
-    override fun signUp(username: String, password: String, email: String, phoneNumber: String): Boolean {
-        val token:String = ServerConnection().signUp(username,password)
-        App.userDataService.token = token
-        return token.isNotEmpty()
+    override fun signUp(
+        username: String,
+        password: String,
+        email: String,
+        phoneNumber: String,
+        resultListener: IServerRequestResultListener<SignInRequestResult>
+    ) {
+        val request = SignUpServerRequest(urlForHostLoopbackInterface, username,password, scope)
+        request.setServerRequestListener(resultListener)
+        request.run()
     }
 
 }

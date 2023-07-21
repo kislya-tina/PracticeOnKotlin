@@ -84,4 +84,5 @@ class LoginPresenter(private val loginService: ILoginService) : IPresenter<ILogi
         private const val SIGN_IN_STATE = 0 //Фрагмент вход
         private const val SIGN_UP_STATE = 1 //фрагмент регистрация
     }
+
 }

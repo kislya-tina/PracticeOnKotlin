@@ -16,4 +16,8 @@ interface ISignInView {
    * Запустить главное окно
    */
   fun startMainActivity()
+
+  fun setInvalidTextVisibilityTrue()
+
+  fun setStateFr(success : Boolean)
 }

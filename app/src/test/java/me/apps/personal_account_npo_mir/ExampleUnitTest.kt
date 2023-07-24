@@ -25,14 +25,14 @@ class ExampleUnitTest {
             val password = "password"
             val token: String = ServerConnection().signIn(username, password)
             println(token)
-            val measure: Measure = Measure(1000, 1000, 1000, 100, 1, "2023-07-20T05:35:16.675Z")
+            val measure: Measure = Measure(100.0, 100.0, 100.0, 10.0, 1.0, "2023-07-20T05:35:16.675Z")
             println(ServerConnection().PutMeasure(10, token, measure))
         }
         @Test
         fun PutMeasures() {
             println("EIGHTH TEST")
             val Token = "{\"SessionId\":137,\"Username\":\"user\"}.EF9B9C061914E814BC30CA48F278E505"
-            val measure: Measure = Measure(1000, 1000, 1000, 100, 1, "2023-07-20T05:35:16.675Z")
+            val measure: Measure = Measure(1000.0, 100.0, 100.0, 10.0, 1.0, "2023-07-20T05:35:16.675Z")
             println(ServerConnection().PutMeasure(10, Token, measure))
         }
 

@@ -9,6 +9,6 @@ class UserDataService() : IUserDataService {
     override var username:String
         get() = _username
         set(value) {_username=value}
-    var _token: String = ""
-    var _username:String = ""
+    private var _token: String = ""
+    private var _username:String = ""
 }

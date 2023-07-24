@@ -1,19 +1,18 @@
 package me.apps.personal_account_npo_mir.model.services
 import kotlinx.coroutines.CoroutineScope
 import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
-import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-import me.apps.personal_account_npo_mir.model.server_connect.bindMeter.BindMeterRequestResult
-import me.apps.personal_account_npo_mir.model.server_connect.bindMeter.BindMeterServerRequest
-import me.apps.personal_account_npo_mir.model.server_connect.getMeters.GetMetersRequestResult
-import me.apps.personal_account_npo_mir.model.server_connect.getMeters.GetMetersServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersServerRequest
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 class MetersService(private val scope: CoroutineScope) : IMetersService {
-    val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
+    private val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
 
 
     override fun getLastMeasures(DeviceID: Int, Token: String): Map<String, Any> {

@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model.server_connect.bindMeter
+package me.apps.personal_account_npo_mir.model.server_connect.get_meters
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -7,19 +7,18 @@ import kotlinx.coroutines.withContext
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequest
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-import okio.use
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class BindMeterServerRequest(val url:String,
-                             val deviceId:Int,
-                             val token:String,
-                             val scope: CoroutineScope):IServerRequest<BindMeterRequestResult> {
-    override fun setServerRequestListener(listener: IServerRequestResultListener<BindMeterRequestResult>) {
-        TODO("Not yet implemented")
+class GetMetersServerRequest(private val url:String,
+                             private val token:String,
+                             private val scope:CoroutineScope):IServerRequest<GetMetersRequestResult>    {
+    override fun setServerRequestListener(listener: IServerRequestResultListener<GetMetersRequestResult>) {
+        //почему-то не работает
+        //this.listener = listener
     }
 
     override fun run() {
@@ -37,33 +36,31 @@ class BindMeterServerRequest(val url:String,
             } else {
                 var httpURLConnection: HttpURLConnection? = null
                 var streamReader: InputStreamReader? = null
-                var requestCode: String = ""
-                val urlAddress = URL(url + "Devices/linktouser?deviceId=" + deviceId)
                 try {
+                    val urlAddress: String = url + "Devices/getdevices"
+                    var devices: String = ""
                     httpURLConnection =
-                        urlAddress.openConnection() as HttpURLConnection
+                        URL(urlAddress).openConnection() as HttpURLConnection
                     httpURLConnection.setRequestProperty("X-User-Token", token)
                     httpURLConnection.apply {
                         connectTimeout = 10000
                         doInput = true
-                        requestMethod = "POST"
                     }
                     streamReader = InputStreamReader(httpURLConnection.inputStream)
-                    streamReader.use { requestCode = it.readText() }
+                    streamReader.use { devices = it.readText() }
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestSuccess(BindMeterRequestResult(requestCode.toInt()))
+                        //кислый не добавил презентер
+                        listener?.onRequestSuccess(GetMetersRequestResult(devices))
                     }
-
-                } catch (e: MalformedURLException) {
-                    withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
-                    }
-                } catch (e:IOException) {
+                }catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
                         listener?.onRequestFail(ErrorCode.BLANK_URL)
                     }
-                }
-                finally {
+                } catch (e: IOException) {
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
+                    }
+                } finally {
                     httpURLConnection?.disconnect()
                     streamReader?.close()
                 }
@@ -72,5 +69,6 @@ class BindMeterServerRequest(val url:String,
             listener = null
         }
     }
-    private var listener: IServerRequestResultListener<BindMeterRequestResult>? = null
+    private var listener: IServerRequestResultListener<GetMetersRequestResult>? = null
+
 }

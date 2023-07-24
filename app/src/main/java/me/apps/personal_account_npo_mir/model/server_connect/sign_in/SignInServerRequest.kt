@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model.server_connect.signin
+package me.apps.personal_account_npo_mir.model.server_connect.sign_in
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

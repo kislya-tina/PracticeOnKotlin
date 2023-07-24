@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model.server_connect.putMeasure
+package me.apps.personal_account_npo_mir.model.server_connect.put_measure
 
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope

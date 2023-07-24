@@ -1,6 +1,4 @@
-package me.apps.personal_account_npo_mir.model.server_connect.signup
-
-import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
+package me.apps.personal_account_npo_mir.model.server_connect.bind_meter
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -9,21 +7,20 @@ import kotlinx.coroutines.withContext
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequest
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-
+import okio.use
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class SignUpServerRequest(private val url:String,
-                          private val username: String,
-                          private val password:String,
-                          private val scope: CoroutineScope): IServerRequest<SignInRequestResult> {
-    override fun setServerRequestListener(listener: IServerRequestResultListener<SignInRequestResult>) {
-        this.listener = listener
+class BindMeterServerRequest(val url:String,
+                             val deviceId:Int,
+                             val token:String,
+                             val scope: CoroutineScope):IServerRequest<BindMeterRequestResult> {
+    override fun setServerRequestListener(listener: IServerRequestResultListener<BindMeterRequestResult>) {
+        TODO("Not yet implemented")
     }
-
 
     override fun run() {
         scope.launch {
@@ -33,40 +30,40 @@ class SignUpServerRequest(private val url:String,
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_URL)
                 }
-            } else if (username == "") {
-                withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
-                }
-            } else if (password == "") {
+            } else if (token == "") {
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
                 }
             } else {
                 var httpURLConnection: HttpURLConnection? = null
                 var streamReader: InputStreamReader? = null
+                var requestCode: String = ""
+                val urlAddress = URL(url + "Devices/linktouser?deviceId=" + deviceId)
                 try {
-                    val URLAddress: String = url +"SignUp" + "/"+username+"/"+password
-                    var token: String = ""
                     httpURLConnection =
-                        URL(URLAddress).openConnection() as HttpURLConnection
+                        urlAddress.openConnection() as HttpURLConnection
+                    httpURLConnection.setRequestProperty("X-User-Token", token)
                     httpURLConnection.apply {
                         connectTimeout = 10000
                         doInput = true
+                        requestMethod = "POST"
                     }
                     streamReader = InputStreamReader(httpURLConnection.inputStream)
-                    streamReader.use { token = it.readText() }
+                    streamReader.use { requestCode = it.readText() }
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestSuccess(SignInRequestResult(token, username))
+                        listener?.onRequestSuccess(BindMeterRequestResult(requestCode.toInt()))
                     }
-                }catch (e: MalformedURLException) {
+
+                } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
                         listener?.onRequestFail(ErrorCode.BLANK_URL)
                     }
-                } catch (e: IOException) {
+                } catch (e:IOException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.USER_EXIST)
+                        listener?.onRequestFail(ErrorCode.BLANK_URL)
                     }
-                } finally {
+                }
+                finally {
                     httpURLConnection?.disconnect()
                     streamReader?.close()
                 }
@@ -75,5 +72,5 @@ class SignUpServerRequest(private val url:String,
             listener = null
         }
     }
-    private var listener: IServerRequestResultListener<SignInRequestResult>? = null
+    private var listener: IServerRequestResultListener<BindMeterRequestResult>? = null
 }

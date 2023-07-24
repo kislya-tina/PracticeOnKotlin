@@ -3,9 +3,9 @@ package me.apps.personal_account_npo_mir.model.services
 import kotlinx.coroutines.*
 import me.apps.personal_account_npo_mir.model.abstractions.login.ILoginService
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-import me.apps.personal_account_npo_mir.model.server_connect.signUp.SignUpServerRequest
-import me.apps.personal_account_npo_mir.model.server_connect.signIn.SignInRequestResult
-import me.apps.personal_account_npo_mir.model.server_connect.signIn.SignInServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.sign_up.SignUpServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInServerRequest
 
 
 class SignInService(private val scope: CoroutineScope) : ILoginService {

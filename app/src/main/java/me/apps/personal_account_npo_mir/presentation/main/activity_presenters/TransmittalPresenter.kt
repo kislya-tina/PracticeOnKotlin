@@ -1,5 +1,10 @@
 package me.apps.personal_account_npo_mir.presentation.main.activity_presenters
 
+import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.model.abstractions.measures.Measure
+import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
+import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
+import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureRequestResult
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.presentation.abstraction.ISupportWarningDialogPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.dialogs.IWarningDialogView
@@ -7,7 +12,8 @@ import me.apps.personal_account_npo_mir.view.abstractions.main.ITransmittalView
 import me.apps.personalaccountnpomir.R
 
 class TransmittalPresenter : IPresenter<ITransmittalView>,
-    ISupportWarningDialogPresenter {
+    ISupportWarningDialogPresenter,
+    IServerRequestResultListener<PutMeasureRequestResult> {
 
     /**
      * Колбэк при создании View
@@ -91,19 +97,26 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
         } else {
             view?.setTariff4Background(R.drawable.rec_trans)
         }
-        /*if (success) {
-            App.measureService.putMeasure(measureID, userToken,
-                Measure(summary, tariff1, tariff2, tariff3, tariff4, timestamp))
-        }
-        } else {
-//            exception
-        }
-*/
         if (success) {
-            // TODO: we need to create new service for measures
-            view?.showDialog()
+            //Обращение к серверу
+            App.measuresService.putMeasure(
+                1, App.userDataService.token,
+                Measure(
+                    summary.toDouble(), tariff1.toDouble(), tariff2.toDouble(),
+                    tariff3.toDouble(), tariff4.toDouble(), "timestamp"
+                ),
+                this
+            )
         }
+    }
 
+
+    override fun onRequestSuccess(result: PutMeasureRequestResult) {
+        view?.showDialog()
+    }
+
+    override fun onRequestFail(message: ErrorCode) {
+        
     }
 
     /**
@@ -146,7 +159,6 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
     override fun onCancelButtonClick() {
 
     }
-
     private var view: ITransmittalView? = null
     private var summary: String = ""
     private var tariff1: String = ""

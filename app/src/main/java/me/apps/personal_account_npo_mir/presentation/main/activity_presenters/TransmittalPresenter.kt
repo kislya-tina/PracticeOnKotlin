@@ -100,7 +100,7 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
         if (success) {
             //Обращение к серверу
             App.measuresService.putMeasure(
-                1, App.userDataService.token,
+                10, App.userDataService.token,
                 Measure(
                     summary.toDouble(), tariff1.toDouble(), tariff2.toDouble(),
                     tariff3.toDouble(), tariff4.toDouble(), "timestamp"
@@ -112,11 +112,15 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
 
 
     override fun onRequestSuccess(result: PutMeasureRequestResult) {
-        view?.showDialog()
+        if(result.responseCode == 200){
+            view?.showDialog()
+        }else{
+            throw java.lang.Exception("Error with connecting to server")
+        }
     }
 
     override fun onRequestFail(message: ErrorCode) {
-        
+        throw Exception("server error")
     }
 
     /**

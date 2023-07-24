@@ -7,7 +7,9 @@ import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMeterListViewItem
 
 class InstrumentPresenter : IPresenter<IMainView> {
-
+    /**
+     * Колбэк при создании View
+     */
     override fun onViewCreated(view: IMainView) {
         this.view = view
         val username = App.userDataService.username
@@ -16,6 +18,9 @@ class InstrumentPresenter : IPresenter<IMainView> {
 //        meterID = App.metersService.getMeterID()
     }
 
+    /**
+     * Колбэк при завершении работы презентера
+     */
     override fun onDestroy() {
         view = null
     }
@@ -30,18 +35,30 @@ class InstrumentPresenter : IPresenter<IMainView> {
         view.setIndications(meters[position].serialNumber.toString())
     }
 
+    /**
+     * Колбэк при нажатии на кнопку "Архив показаний"
+     */
     fun onArchiveButtonClick(){
         view?.startArchiveActivity()
     }
 
+    /**
+     * Колбэк при нажатии на кнопку "Диагностика"
+     */
     fun onDiagnosticButtonClick(){
         view?.startDiagnosticActivity()
     }
 
+    /**
+     * Колбэк при нажатии на кнопку "Передача показаний"
+     */
     fun onTransmittalButtonClick(){
         view?.startTransmittalActivity()
     }
 
+    /**
+     * Колбэк при нажатии на кнопку "Информация"
+     */
     fun onInformationButtonClick(){
         view?.startInformationActivity()
     }
@@ -54,5 +71,4 @@ class InstrumentPresenter : IPresenter<IMainView> {
 
     private lateinit var meters: List<Meter>
     private var view: IMainView? = null
-    private var meterID: Int = 0
 }

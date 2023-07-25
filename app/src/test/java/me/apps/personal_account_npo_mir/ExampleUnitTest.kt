@@ -32,8 +32,8 @@ class ExampleUnitTest {
         fun PutMeasures() {
             println("EIGHTH TEST")
             val Token = "{\"SessionId\":137,\"Username\":\"user\"}.EF9B9C061914E814BC30CA48F278E505"
-            val measure: Measure = Measure(1000.0, 100.0, 100.0, 10.0, 1.0, "2023-07-20T05:35:16.675Z")
-            println(ServerConnection().PutMeasure(10, Token, measure))
+            val measure: Measure = Measure(1001212344.0, 11213423400.0, 1021423412340.0, 142423340.0, 1421342314.0, "2023-07-20T05:35:16.675Z")
+            println(ServerConnection().PutMeasure(79, Token, measure))
         }
 
         @Test

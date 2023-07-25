@@ -23,7 +23,7 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
         val summary: Int = tariff1 + tariff2 + tariff3 + tariff4
         val measure = mapOf(
             "summary" to summary, "tariff1" to tariff1, "tariff2" to tariff2,
-            "tariff3" to tariff3, "tariff4" to tariff4, "timestamp" to LocalDateTime.now().format(
+            "tariff3" to tariff3, "tariff4" to  tariff4, "timestamp" to LocalDateTime.now().format(
                 DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
             )
         )

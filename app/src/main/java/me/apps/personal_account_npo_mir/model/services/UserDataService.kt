@@ -11,4 +11,5 @@ class UserDataService() : IUserDataService {
         set(value) {_username=value}
     private var _token: String = ""
     private var _username:String = ""
+
 }

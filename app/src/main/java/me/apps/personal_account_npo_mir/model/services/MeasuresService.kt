@@ -9,7 +9,7 @@ import me.apps.personal_account_npo_mir.model.server_connect.get_last_measure.Ge
 import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureServerRequest
 
-val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
+const val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
 class MeasuresService(private val scope: CoroutineScope):ImeasureService {
     override fun putMeasure(deviceId: Int,
                             token:String,

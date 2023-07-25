@@ -110,6 +110,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
      */
     override fun onRequestFail(message: ErrorCode) {
         // TODO: реализовать функцию
+        // TODO: сделать исключения
     }
 
     private var login: String = ""

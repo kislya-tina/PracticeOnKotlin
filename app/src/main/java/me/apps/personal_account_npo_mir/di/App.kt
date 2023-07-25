@@ -21,7 +21,7 @@ class App : Application() {
         metersService = MetersService(networkScope)
         userDataService = UserDataService()
     }
-    // TODO: если токен есть в референс, пропускать первую активити
+    // TODO: если токен есть в файл, пропускать первую активити
 
     companion object {
         lateinit var measuresService:ImeasureService

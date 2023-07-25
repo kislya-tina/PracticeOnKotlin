@@ -4,6 +4,7 @@ import me.apps.personal_account_npo_mir.model.abstractions.user_data.IUserDataSe
 
 class UserDataService() : IUserDataService {
     // TODO: добавить в конструктор
+    // TODO: нужно сделать через создание файла и записи туда токена/ов
     /*
     val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
     var editor = sharedPreference.edit()

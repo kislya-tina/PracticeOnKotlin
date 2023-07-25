@@ -21,7 +21,7 @@
 
     <!--Стиль для полей ввода-->
     <style name="Theme.MIR.EditText" parent="Theme.MIR">
-        <item name="android:background">@drawable/rectangle_reg</item>
+        <item name="android:background">@drawable/ic_edit_text_background</item>
         <item name="android:textColor">@color/light_gray</item>
         <item name="android:textSize">13sp</item>
         <item name="android:drawablePadding">5dp</item>

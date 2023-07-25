@@ -31,7 +31,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
     }
 
     fun onRepeatPasswordChanged(password: String) {
-        this.password = password
+        this.repeatedPassword = password
     }
 
     fun onPhoneChanged(phone: String) {
@@ -49,6 +49,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
         } else {
             view?.setLoginBackground(R.drawable.ic_edit_text_background)
         }
+
         if (password.isBlank()){
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
@@ -70,6 +71,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
             view?.setPhoneBackground(R.drawable.ic_edit_text_background)
         }
 
+
         if(password != repeatedPassword){
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
@@ -80,7 +82,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
         }
 
         if(success) {
-            App.loginService.signUp(login, password, repeatedPassword, phone, this)
+            App.loginService.signUp(login, password, phone, this)
 
         }
     }

@@ -30,7 +30,6 @@ val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
     override fun signUp(
         username: String,
         password: String,
-        email: String,
         phoneNumber: String,
         resultListener: IServerRequestResultListener<SignInRequestResult>
     ) {

@@ -15,7 +15,6 @@ interface ILoginService {
     fun signUp(
         username: String,
         password: String,
-        email: String,
         phoneNumber: String,
         resultListener: IServerRequestResultListener<SignInRequestResult>
     )

@@ -1,7 +1,7 @@
 package me.apps.personal_account_npo_mir.model.abstractions.login
 
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInRequestResult
 
 interface ILoginService {
     fun signIn(

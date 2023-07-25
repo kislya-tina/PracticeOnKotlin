@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model.server_connect.putMeasure
+package me.apps.personal_account_npo_mir.model.server_connect.put_measure
 
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -14,6 +14,7 @@ import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
+import java.time.LocalDateTime
 
 class PutMeasureServerRequest(
     val urlForHostLoopbackInterface: String,
@@ -53,6 +54,8 @@ class PutMeasureServerRequest(
                     connection.setRequestProperty("Content-Type", "application/json")
                     connection.setRequestProperty("X-User-Token", token)
                     connection.doOutput = true
+                    val datetime = LocalDateTime.now()
+                    measure.timestamp = datetime.toString()
                     val measureJson = gson.toJson(measure)
                     println(measureJson)
                     val outputStream = OutputStreamWriter(connection.outputStream)

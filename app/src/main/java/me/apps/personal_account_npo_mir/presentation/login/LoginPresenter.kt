@@ -8,7 +8,7 @@ import me.apps.personalaccountnpomir.R
 
 class LoginPresenter(private val loginService: ILoginService) : IPresenter<ILoginView> {
     /**
-     * @inheritDoc
+     * Колбэк при создании View
      */
     override fun onViewCreated(view: ILoginView) {
         this.view = view
@@ -16,7 +16,7 @@ class LoginPresenter(private val loginService: ILoginService) : IPresenter<ILogi
     }
 
     /**
-     * @inheritDoc
+     * Колбэк при завершении работы презентера
      */
     override fun onDestroy() {
         view = null
@@ -55,34 +55,25 @@ class LoginPresenter(private val loginService: ILoginService) : IPresenter<ILogi
     }
 
     /**
-     * Установить фрагменты
+     * Смена фрагментов в зависимости от состояния кнопки
      */
     private fun setupFragments() {
-        //Проверяем текущее состояние кнопки
         if (currentSwitchButtonState == SIGN_IN_STATE) {
-            //если должен быть показан фрагмент входа
-            //показываем фрагмент входа
             view?.showSignInFragment()
-            //Меняем текст кнопки на "регистрация"
             view?.setSwitchText(R.string.registration)
 
         } else {
-            //если должен быть показан фрагмент регистрации
-            //показываем фрагмент регистрации
             view?.showSignUpFragment()
-            //Меняем текст кнопки на "вход"
             view?.setSwitchText(R.string.sign_in)
         }
     }
 
-    private var view: ILoginView? = null
-
     //Переменная, указывающая какой фрагмент в текущий момент показан на экране
     private var currentSwitchButtonState = SIGN_IN_STATE
+    private var view: ILoginView? = null
 
     companion object {
         private const val SIGN_IN_STATE = 0 //Фрагмент вход
         private const val SIGN_UP_STATE = 1 //фрагмент регистрация
     }
-
 }

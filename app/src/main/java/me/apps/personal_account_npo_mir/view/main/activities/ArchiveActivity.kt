@@ -9,7 +9,6 @@ import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.Ar
 import me.apps.personal_account_npo_mir.view.OnDateArchiveActivity
 import me.apps.personal_account_npo_mir.view.abstractions.main.IArchiveView
 import me.apps.personal_account_npo_mir.view.main.dates.DatesRowAdapter
-import me.apps.personal_account_npo_mir.view.main.instruments.InstrumentActivity
 import me.apps.personalaccountnpomir.R
 
 class ArchiveActivity : AppCompatActivity(), IArchiveView {
@@ -20,6 +19,12 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView {
             .apply {
                 adapter = this@ArchiveActivity.adapter
             }
+        presenter.onViewCreated(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
     override fun setHeader(header: String) {
@@ -30,9 +35,10 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView {
     override fun refreshItems() {
         adapter.notifyDataSetChanged()
     }
-
-    override fun startItemActivity() {
+// getMeasure(deviceID, from, to, 1, 10, token) ??в адапетере??о_О
+    override fun startItemActivity(date : Long) {
         val intent = Intent(this, OnDateArchiveActivity::class.java)
+        // TODO: сделать передачу даты в следующую активити
         startActivity(intent)
     }
 

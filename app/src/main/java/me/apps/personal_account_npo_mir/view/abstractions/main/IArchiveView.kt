@@ -5,5 +5,5 @@ interface IArchiveView {
 
     fun refreshItems()
 
-    fun startItemActivity()
+    fun startItemActivity(date : Long)
 }

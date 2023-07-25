@@ -1,13 +1,11 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-import android.widget.Toast
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.IRegistrationView
-import me.apps.personal_account_npo_mir.view.dialogs.WarningDialogFragment
 import me.apps.personalaccountnpomir.R
 
 class RegistrationPresenter : IPresenter<IRegistrationView>,
@@ -20,7 +18,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
         this.view = null
         login = ""
         password = ""
-        email = ""
+        repeatedPassword = ""
         phone = ""
     }
 
@@ -51,7 +49,6 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
         } else {
             view?.setLoginBackground(R.drawable.ic_edit_text_background)
         }
-
         if (password.isBlank()){
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
@@ -59,7 +56,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
             view?.setPasswordBackground(R.drawable.ic_edit_text_background)
         }
 
-        if (email.isBlank()){
+        if (repeatedPassword.isBlank()){
             success = false
             view?.setRepeatPasswordBackground(R.drawable.ic_warning_frame)
         } else {
@@ -73,20 +70,21 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
             view?.setPhoneBackground(R.drawable.ic_edit_text_background)
         }
 
+        if(password != repeatedPassword){
+            success = false
+            view?.setPasswordBackground(R.drawable.ic_warning_frame)
+            view?.setRepeatPasswordBackground(R.drawable.ic_warning_frame)
+        } else {
+            view?.setPasswordBackground(R.drawable.ic_edit_text_background)
+            view?.setRepeatPasswordBackground(R.drawable.ic_edit_text_background)
+        }
+
         if(success) {
-            App.loginService.signUp(login, password, email, phone, this)
+            App.loginService.signUp(login, password, repeatedPassword, phone, this)
 
         }
     }
 
-    private var login: String = ""
-    private var password: String = ""
-    private var email: String = ""
-    private var phone: String = ""
-
-    private var token: String = ""
-
-    private var view : IRegistrationView? = null
     override fun onRequestSuccess(result: SignInRequestResult) {
         App.userDataService.token = result.token
         App.userDataService.username = result.username
@@ -97,4 +95,12 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
 
 
     }
+
+    private var login: String = ""
+    private var phone: String = ""
+    private var password: String = ""
+    private var repeatedPassword: String = ""
+
+    private var token: String = ""
+    private var view : IRegistrationView? = null
 }

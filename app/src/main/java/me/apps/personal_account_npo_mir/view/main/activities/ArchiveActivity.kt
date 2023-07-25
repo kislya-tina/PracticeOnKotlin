@@ -1,5 +1,7 @@
 package me.apps.personal_account_npo_mir.view.main.activities
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +15,7 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_archive)
         recyclerView = findViewById<RecyclerView?>(R.id.archiveRecycler)
-            .apply{
+            .apply {
                 adapter = this@ArchiveActivity.adapter
             }
     }
@@ -22,12 +24,14 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView {
         supportActionBar?.title = header
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun refreshItems() {
-        TODO("Not yet implemented")
+        adapter.notifyDataSetChanged()
     }
 
     override fun startItemActivity() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, OnDateArchiveActivity::class.java)
+        startActivity(intent)
     }
 
     private lateinit var recyclerView: RecyclerView

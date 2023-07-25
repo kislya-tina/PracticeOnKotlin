@@ -1,12 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="325dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:background="@drawable/search_devices_rectangle"
-    tools:context="me.apps.personal_account_npo_mir.view.SearchDevicesFragment">
-
+>
 
     <TextView
         android:id="@+id/devicesNameTextView"
@@ -14,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:layout_marginStart="9dp"
-        android:text="555"
+        android:text=""
         android:textSize="15sp"
         android:textColor="@color/dark"
         app:layout_constraintBottom_toTopOf="@id/textView"
@@ -38,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="9dp"
-        android:text="55555"
+        android:text=""
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/textView"

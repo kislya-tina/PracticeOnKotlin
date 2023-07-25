@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.Button
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -15,25 +15,15 @@ import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
+import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
 
-private const val NUM_PAGES = 5
-
-class InstrumentActivity : FragmentActivity(),
+class InstrumentActivity : AppCompatActivity(),
     IMainView,
-    OnClickListener{
+    OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instrument)
-
-        archiveButton = findViewById(R.id.archiveButton)
-        archiveButton.setOnClickListener(this)
-        diagnosticButton = findViewById(R.id.diagnosticButton)
-        diagnosticButton.setOnClickListener(this)
-        transmittalButton = findViewById(R.id.transButton)
-        transmittalButton.setOnClickListener(this)
-        informationButton = findViewById(R.id.informationButton)
-        informationButton.setOnClickListener(this)
 
         adapter = DeviceAdapter(this)
         viewPager = findViewById(R.id.view_pager)
@@ -45,24 +35,24 @@ class InstrumentActivity : FragmentActivity(),
             tab.text = "${(position + 1)}"
         }.attach()
 
+        addDevicesButton = findViewById(R.id.addDevicesButton)
+        addDevicesButton.setOnClickListener(this)
+
         presenter.onViewCreated(this)
     }
 
 
     override fun onClick(view: View?) {
-        if (view === archiveButton) {
-            presenter.onArchiveButtonClick()
-        }
-        if (view === diagnosticButton) {
-            presenter.onDiagnosticButtonClick()
-        }
-        if (view === transmittalButton) {
-            presenter.onTransmittalButtonClick()
-        }
-        if (view === informationButton) {
-            presenter.onInformationButtonClick()
+        if (view === addDevicesButton) {
+            presenter.onAddDevicesButtonClick()
         }
     }
+
+    override fun startSearchDevicesActivity() {
+        val intent = Intent(this, SearchDevicesActivity::class.java)
+        startActivity(intent)
+    }
+
 
     override fun refreshItems() {
 
@@ -96,20 +86,18 @@ class InstrumentActivity : FragmentActivity(),
     override fun onDestroy() {
         super.onDestroy()
 
-        archiveButton.setOnClickListener(null)
-        diagnosticButton.setOnClickListener(null)
-        transmittalButton.setOnClickListener(null)
-        informationButton.setOnClickListener(null)
+        /* archiveButton.setOnClickListener(null)
+         diagnosticButton.setOnClickListener(null)
+         transmittalButton.setOnClickListener(null)
+         informationButton.setOnClickListener(null)*/
 
         presenter.onDestroy()
     }
 
-    private lateinit var archiveButton: Button
-    private lateinit var diagnosticButton: Button
-    private lateinit var transmittalButton: Button
-    private lateinit var informationButton: Button
     private lateinit var adapter: DeviceAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
+    private lateinit var addDevicesButton: AppCompatButton
     private var presenter = InstrumentPresenter()
 }
+

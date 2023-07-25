@@ -1,21 +1,10 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="72dp"
-    android:height="72dp"
-    android:viewportWidth="72"
-    android:viewportHeight="72">
-  <path
-      android:pathData="M36,36m-30,0a30,30 0,1 1,60 0a30,30 0,1 1,-60 0"
-      android:fillColor="#ffffff"/>
-  <path
-      android:pathData="M36,19L36,53"
-      android:strokeWidth="4"
-      android:fillColor="#00000000"
-      android:strokeColor="#0C54A0"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M19,36L53,36"
-      android:strokeWidth="4"
-      android:fillColor="#00000000"
-      android:strokeColor="#0C54A0"
-      android:strokeLineCap="round"/>
-</vector>
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/search_edit_text_light_gray">
+  <item>
+    <shape android:shape="oval">
+      <size android:width="80dp" android:height="80dp"/>
+      <solid android:color="@color/white"/>
+    </shape>
+  </item>
+</ripple>

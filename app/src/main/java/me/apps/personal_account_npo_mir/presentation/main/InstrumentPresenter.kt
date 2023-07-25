@@ -46,6 +46,10 @@ class InstrumentPresenter : IPresenter<IMainView> {
         view?.startInformationActivity()
     }
 
+    fun onAddDevicesButtonClick(){
+        view?.startSearchDevicesActivity()
+    }
+
     /**
      * Кол-во элементов в списке
      */

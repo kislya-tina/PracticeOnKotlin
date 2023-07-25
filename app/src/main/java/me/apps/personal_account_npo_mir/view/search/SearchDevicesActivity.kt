@@ -20,7 +20,7 @@ class SearchDevicesActivity : AppCompatActivity(), OnClickListener {
 
     }
 
-    override fun onClick(p0: View?) {
+    override fun onClick(v: View?) {
     }
 
     private lateinit var textView: TextView

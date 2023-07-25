@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <attr name="warningColor" format="reference" />
 
-    <style name="Theme.MIR" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MIR" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dark_blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
@@ -15,6 +15,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
         <item name="warningColor">@color/red</item>
     </style>
 
@@ -46,7 +47,7 @@
 
     <!--Стиль для кнопок в Main Activity-->
     <style name="Theme.MIR.Buttons" parent="Theme.MIR">
-        <item name="android:background">@drawable/button_on_main_activity</item>
+        <item name="android:background">@drawable/buttons_on_main_activity</item>
         <item name="textAllCaps">false</item>
         <item name="fontFamily">open_sans</item>
         <item name="android:textSize">20sp</item>
@@ -62,4 +63,7 @@
         <item name="fontFamily">@font/open_sans_semibold</item>
         <item name="android:textColor">@color/dark_blue</item>
     </style>
+
+
+
 </resources>

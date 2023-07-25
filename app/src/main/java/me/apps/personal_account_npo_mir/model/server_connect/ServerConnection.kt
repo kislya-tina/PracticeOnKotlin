@@ -112,16 +112,6 @@ class ServerConnection {
     fun signOut(): Boolean {
         TODO("Not yet implemented")
     }
-
-
-
-    var username: String
-        get() = TODO("Not yet implemented")
-        set(value) {}
-    var token: String
-        get() = TODO("Not yet implemented")
-        set(value) {}
-
     fun getMeters(Token: String): String{
         val urlAddress = URL(ENDPOINT + "Devices/getdevices")
         var httpURLConnection: HttpURLConnection? = null

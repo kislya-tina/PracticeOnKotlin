@@ -112,11 +112,15 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
 
 
     override fun onRequestSuccess(result: PutMeasureRequestResult) {
-        view?.showDialog()
+        if(result.responseCode == 200){
+            view?.showDialog()
+        }else{
+            throw java.lang.Exception("Error with connecting to server")
+        }
     }
 
     override fun onRequestFail(message: ErrorCode) {
-        
+        throw Exception("server error")
     }
 
     /**

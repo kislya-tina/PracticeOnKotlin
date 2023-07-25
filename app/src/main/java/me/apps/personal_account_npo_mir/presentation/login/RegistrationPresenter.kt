@@ -76,9 +76,6 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
             view?.setRepeatPasswordBackground(R.drawable.ic_warning_frame)
-        } else {
-            view?.setPasswordBackground(R.drawable.ic_edit_text_background)
-            view?.setRepeatPasswordBackground(R.drawable.ic_edit_text_background)
         }
 
         if(success) {

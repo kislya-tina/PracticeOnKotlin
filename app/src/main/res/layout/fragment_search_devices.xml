@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:background="@drawable/search_devices_rectangle"
-    tools:context="me.apps.personal_account_npo_mir.view.SearchDevicesFragment">
-
+>
 
     <TextView
         android:id="@+id/devicesNameTextView"

@@ -32,8 +32,8 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
         this.password = password
     }
 
-    fun onEmailChanged(email: String) {
-        this.email = email
+    fun onRepeatPasswordChanged(password: String) {
+        this.password = password
     }
 
     fun onPhoneChanged(phone: String) {
@@ -61,9 +61,9 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
 
         if (email.isBlank()){
             success = false
-            view?.setEmailBackground(R.drawable.ic_warning_frame)
+            view?.setRepeatPasswordBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setEmailBackground(R.drawable.ic_edit_text_background)
+            view?.setRepeatPasswordBackground(R.drawable.ic_edit_text_background)
         }
 
         if (phone.isBlank()){

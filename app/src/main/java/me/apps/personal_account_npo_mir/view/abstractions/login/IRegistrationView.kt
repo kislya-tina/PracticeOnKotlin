@@ -5,7 +5,7 @@ interface IRegistrationView {
 
     fun setPasswordBackground(resourceID : Int)
 
-    fun setEmailBackground(resourceID : Int)
+    fun setRepeatPasswordBackground(resourceID : Int)
 
     fun setPhoneBackground(resourceID : Int)
 

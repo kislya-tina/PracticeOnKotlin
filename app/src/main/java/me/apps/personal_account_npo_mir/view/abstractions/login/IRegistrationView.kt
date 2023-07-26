@@ -10,4 +10,6 @@ interface IRegistrationView {
     fun setPhoneBackground(resourceID : Int)
 
     fun startMainActivity()
+
+    fun setPasswordMismatchVisibility(boolean: Boolean)
 }

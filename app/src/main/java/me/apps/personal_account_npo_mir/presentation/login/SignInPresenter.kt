@@ -88,7 +88,6 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
         } else {
             view?.setPasswordBackground(R.drawable.rectangle_reg)
         }
-
         if (success) {
             //Обращение к серверу
             App.loginService.signIn(username, password, this)

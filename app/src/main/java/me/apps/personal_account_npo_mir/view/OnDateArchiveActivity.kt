@@ -8,5 +8,9 @@ class OnDateArchiveActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_date_archive)
+        val arguments = intent.extras
+        date = arguments?.getLong("date") as Long
     }
+
+    private var date : Long = 0
 }

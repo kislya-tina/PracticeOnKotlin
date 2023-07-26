@@ -35,10 +35,13 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView {
     override fun refreshItems() {
         adapter.notifyDataSetChanged()
     }
-// getMeasure(deviceID, from, to, 1, 10, token) ??в адапетере??о_О
-    override fun startItemActivity(date : Long) {
-        val intent = Intent(this, OnDateArchiveActivity::class.java)
-        // TODO: сделать передачу даты в следующую активити
+
+    // getMeasure(deviceID, from, to, 1, 10, token)
+
+    override fun startItemActivity(date: Long) {
+        val intent = Intent(this, OnDateArchiveActivity::class.java).apply {
+            intent.putExtra("date", date)
+        }
         startActivity(intent)
     }
 

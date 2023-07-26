@@ -25,5 +25,7 @@ class DatesRowAdapter(private val presenter: ArchivePresenter): RecyclerView.Ada
         holder.onCleanUp()
     }
 
-    override fun getItemCount(): Int = presenter.itemsCount
+    override fun getItemCount(): Int {
+       return  presenter.itemsCount
+    }
 }

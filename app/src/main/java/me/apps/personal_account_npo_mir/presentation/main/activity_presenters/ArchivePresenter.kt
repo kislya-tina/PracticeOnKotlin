@@ -14,7 +14,8 @@ class ArchivePresenter : IPresenter<IArchiveView> {
         this.view = view
         val username = App.userDataService.username
         view.setHeader(username)
-        dates = App.archiveDateService.dates
+//        dates = App.archiveDateService.dates
+//        view.refreshItems()
     }
 
     /**
@@ -40,9 +41,9 @@ class ArchivePresenter : IPresenter<IArchiveView> {
     }
 
     val itemsCount
-        get() = 10
+        get() = dates.size
 
-    private lateinit var dates: List<Long>
+    private var dates: List<Long> = App.archiveDateService.dates
     private var view: IArchiveView? = null
     private var currentClickedPosition: Int = -1
 

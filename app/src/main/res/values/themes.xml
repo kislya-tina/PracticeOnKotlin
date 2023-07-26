@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <attr name="warningColor" format="reference" />
 
-    <style name="Theme.MIR" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MIR" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dark_blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
@@ -15,15 +15,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
         <item name="warningColor">@color/red</item>
     </style>
 
     <!--Стиль для полей ввода-->
     <style name="Theme.MIR.EditText" parent="Theme.MIR">
-        <item name="android:background">@drawable/rectangle_reg</item>
+        <item name="android:background">@drawable/ic_edit_text_background</item>
         <item name="android:textColor">@color/light_gray</item>
         <item name="android:textSize">13sp</item>
         <item name="android:drawablePadding">5dp</item>
+        <item name="android:layout_margin">5dp</item>
         <item name="android:padding">10dp</item>
     </style>
 

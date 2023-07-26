@@ -34,7 +34,7 @@ class RegistrationFragment :
         loginEditText = view.findViewById(R.id.sign_up_username_edit_text)
         passwordEditText = view.findViewById(R.id.sign_up_password_edit_text)
         phoneEditText = view.findViewById(R.id.sign_up_phone_edit_text)
-        emailEditText = view.findViewById(R.id.sign_up_email_edit_text)
+        repeatPasswordEditText = view.findViewById(R.id.sign_up_repeat_password_edit_text)
 
         presenter.onViewCreated(this)
     }
@@ -48,9 +48,9 @@ class RegistrationFragment :
     override fun onClick(view: View?) {
         if (view === signUpButton) {
             presenter.onLoginTextChanged(loginEditText.text.toString())
-            presenter.onPasswordChanged(passwordEditText.text.toString())
-            presenter.onEmailChanged(emailEditText.text.toString())
             presenter.onPhoneChanged(phoneEditText.text.toString())
+            presenter.onPasswordChanged(passwordEditText.text.toString())
+            presenter.onRepeatPasswordChanged(repeatPasswordEditText.text.toString())
             presenter.onRegisterButtonClick()
         }
     }
@@ -63,8 +63,8 @@ class RegistrationFragment :
         passwordEditText.setBackgroundResource(resourceID)
     }
 
-    override fun setEmailBackground(resourceID : Int){
-        emailEditText.setBackgroundResource(resourceID)
+    override fun setRepeatPasswordBackground(resourceID : Int){
+        repeatPasswordEditText.setBackgroundResource(resourceID)
     }
 
     override fun setPhoneBackground(resourceID : Int){
@@ -82,7 +82,7 @@ class RegistrationFragment :
     private lateinit var loginEditText: AppCompatEditText
     private lateinit var passwordEditText: AppCompatEditText
     private lateinit var phoneEditText: AppCompatEditText
-    private lateinit var emailEditText: AppCompatEditText
+    private lateinit var repeatPasswordEditText: AppCompatEditText
     private val presenter = RegistrationPresenter()
 
     companion object {

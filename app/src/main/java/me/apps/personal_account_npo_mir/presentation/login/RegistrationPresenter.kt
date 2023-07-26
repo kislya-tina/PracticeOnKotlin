@@ -24,14 +24,14 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
         this.view = null
         login = ""
         password = ""
-        email = ""
+        repeatedPassword = ""
         phone = ""
     }
 
     /**
      * Колбэк при изменении текста в поле "login"
      */
-    fun onLoginTextChanged(login: String) {
+    fun onLoginTextChanged(login : String){
         this.login = login
     }
 
@@ -43,10 +43,10 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
     }
 
     /**
-     * Колбэк при изменении текста в поле "email"
+     * Колбэк при изменении текста в поле "repeatedPassword"
      */
-    fun onEmailChanged(email: String) {
-        this.email = email
+    fun onRepeatPasswordChanged(password: String) {
+        this.repeatedPassword = password
     }
 
     /**
@@ -59,7 +59,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
     /**
      * Колбэк при нажатии на кнопку "Регистрация"
      */
-    fun onRegisterButtonClick() {
+    fun onRegisterButtonClick(){
         var success = true
         //Проверка текста в поле "login"
         if (login.isBlank()) {
@@ -76,11 +76,11 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
             view?.setPasswordBackground(R.drawable.ic_edit_text_background)
         }
         //Проверка текста в поле "email"
-        if (email.isBlank()) {
+        if (repeatedPassword.isBlank()) {
             success = false
-            view?.setEmailBackground(R.drawable.ic_warning_frame)
+            view?.setRepeatPasswordBackground(R.drawable.ic_warning_frame)
         } else {
-            view?.setEmailBackground(R.drawable.ic_edit_text_background)
+            view?.setRepeatPasswordBackground(R.drawable.ic_edit_text_background)
         }
         //Проверка текста в поле "phone"
         if (phone.isBlank()) {
@@ -90,9 +90,17 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
             view?.setPhoneBackground(R.drawable.ic_edit_text_background)
         }
 
-        if (success) {
-            //Обращение к серверу
-            App.loginService.signUp(login, password, email, phone, this)
+
+        if(password != repeatedPassword){
+            success = false
+            view?.setPasswordBackground(R.drawable.ic_warning_frame)
+            view?.setRepeatPasswordBackground(R.drawable.ic_warning_frame)
+        }
+
+
+        if(success) {
+            App.loginService.signUp(login, password, phone, this)
+
         }
     }
 
@@ -114,8 +122,10 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
     }
 
     private var login: String = ""
-    private var password: String = ""
-    private var email: String = ""
     private var phone: String = ""
-    private var view: IRegistrationView? = null
+    private var password: String = ""
+    private var repeatedPassword: String = ""
+
+    private var token: String = ""
+    private var view : IRegistrationView? = null
 }

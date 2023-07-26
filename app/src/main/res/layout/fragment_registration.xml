@@ -13,6 +13,7 @@
         android:id="@+id/npoMirLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="50dp"
         android:src="@drawable/npo_mir_svg" />
 
@@ -22,7 +23,7 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/user"
-        android:hint="@string/name_surname_enter"
+        android:hint="@string/login"
         android:inputType="text" />
 
 
@@ -36,15 +37,6 @@
         android:inputType="phone"/>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/sign_up_email_edit_text"
-        style="@style/Theme.MIR.EditText"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/mail"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_password_edit_text"
         style="@style/Theme.MIR.EditText"
         android:layout_width="240dp"
@@ -52,6 +44,16 @@
         android:drawableStart="@drawable/lock"
         android:hint="@string/password"
         android:inputType="textPassword"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/sign_up_repeat_password_edit_text"
+        style="@style/Theme.MIR.EditText"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/lock"
+        android:hint="@string/repeat_password"
+        android:inputType="textPassword"/>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_up_button"

@@ -24,6 +24,9 @@ class ButtonLoading(view: View) {
         loginText.visibility = View.GONE
         progressBar.visibility = View.VISIBLE
         ic_success.visibility = View.GONE
+
+        progressBar.scaleX = 1f
+        ic_success.scaleX  = 0f
     }
 
     fun setState(isSuccess: Boolean) {

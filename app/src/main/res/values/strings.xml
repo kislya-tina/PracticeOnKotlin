@@ -45,6 +45,7 @@
     <string name="before">до</string>
     <string name="meters_from">Показания от</string>
     <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку</string>
+    <string name="add_devices_please">Привяжите приборы учета с помощью кнопки "+"</string>
 
 
 </resources>

@@ -62,11 +62,13 @@ class LogInFragment :
             presenter.onEnterButtonPressed()
             progressBar.setLoading()
         }
+
         if(view === loginEditText){
             progressBar.reset()
             presenter.onLoginTextChanged(loginEditText.text.toString())
             invalidTextView.visibility = View.GONE
         }
+
         if(view === passwordEditText){
             progressBar.reset()
             presenter.onPasswordChanged(passwordEditText.text.toString())

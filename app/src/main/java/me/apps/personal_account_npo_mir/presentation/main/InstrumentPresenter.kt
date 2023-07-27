@@ -76,6 +76,11 @@ class InstrumentPresenter : IPresenter<IMainView>,
     fun onInformationButtonClick() {
         view?.startInformationActivity()
     }
+
+    fun onLogoutButtonClick(){
+        view?.startLogRegActivity()
+    }
+
     /**
      * Кол-во элементов в списке
      */

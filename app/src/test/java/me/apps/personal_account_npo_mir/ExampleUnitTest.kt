@@ -1,8 +1,12 @@
 package me.apps.personal_account_npo_mir
 
+import android.os.Environment
 import me.apps.personal_account_npo_mir.model.abstractions.measures.Measure
 import me.apps.personal_account_npo_mir.model.server_connect.ServerConnection
+import me.apps.personal_account_npo_mir.view.login.LogRegActivity
 import org.junit.Test
+import org.junit.runner.manipulation.Ordering.Context
+import java.io.File
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -20,6 +24,14 @@ class ExampleUnitTest {
     }
    */
         @Test
+        fun tokens(context:Context){
+        //println(Environment.getExternalStorageDirectory())
+        //val file = File(Environment.getExternalStorageDirectory()+"/path/to/myfile.txt")
+        //file.writeText("This will be written to the file!")
+
+        //val contents = file.readText() // Read file
+        }
+        @Test
         fun signIn() {
             val username = "user"
             val password = "password"
@@ -27,6 +39,7 @@ class ExampleUnitTest {
             println(token)
             val measure: Measure = Measure(100.0, 100.0, 100.0, 10.0, 1.0, "2023-07-20T05:35:16.675Z")
             println(ServerConnection().PutMeasure(10, token, measure))
+            //println(Environment.getExternalStorageDirectory())
         }
         @Test
         fun PutMeasures() {

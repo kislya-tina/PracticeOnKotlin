@@ -1,5 +1,6 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
+import android.os.Environment
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
@@ -14,6 +15,11 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
      */
     override fun onViewCreated(view: ISignInView) {
         this.view = view
+        if(App.userDataService.token.isNotEmpty()){
+            view.startMainActivity()
+        }
+        //проверка на файл и токены
+        // если есть токен, ывзвать метолд в фрагменте в котором запустить след
     }
 
     /**

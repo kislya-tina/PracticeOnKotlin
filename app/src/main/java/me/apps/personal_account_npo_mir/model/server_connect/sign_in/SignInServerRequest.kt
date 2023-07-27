@@ -54,8 +54,6 @@ class SignInServerRequest(private val url:String,
                         streamReader = InputStreamReader(httpURLConnection.inputStream)
                         streamReader.use { token = it.readText() }
                         withContext(Dispatchers.Main) {
-                            //App.userDataService.token = token
-                            //val token = username.length + password.length
                             listener?.onRequestSuccess(SignInRequestResult(token, username))
                         }
                     }catch (e: MalformedURLException) {

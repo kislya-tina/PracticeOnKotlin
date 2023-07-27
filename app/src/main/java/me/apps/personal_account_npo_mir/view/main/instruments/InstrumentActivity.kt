@@ -17,8 +17,6 @@ import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
 import me.apps.personalaccountnpomir.R
 
-private const val NUM_PAGES = 5
-
 class InstrumentActivity : FragmentActivity(),
     IMainView,
     OnClickListener{
@@ -38,7 +36,7 @@ class InstrumentActivity : FragmentActivity(),
         adapter = DeviceAdapter(this)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
-
+// TODO: переделать viewPager чтобы там были только наши счетчики
         tabLayout = findViewById(R.id.tab_layout)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

@@ -19,6 +19,7 @@ class App : Application() {
         metersService = MetersService(networkScope)
         archiveDateService = ArchiveDateService()
         userDataService = UserDataService()
+
     }
     // TODO: если токен есть в файл, пропускать первую активити
 

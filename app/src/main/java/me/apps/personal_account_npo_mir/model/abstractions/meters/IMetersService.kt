@@ -16,4 +16,6 @@ interface IMetersService {
     fun getLastMeasures(DeviceID: Int, Token:String): Map<String, Any>
 
     //fun getMeters(username: String)
+
+    var meters : Array<Meter>
 }

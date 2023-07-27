@@ -36,11 +36,9 @@ class ArchivePresenter : IPresenter<IArchiveView> {
      */
     fun onItemClick(position : Int){
         currentClickedPosition = position
+        App.archiveDateService.currentClickedDate = position
         view?.startItemActivity(dates[position])
     }
-
-    val itemsCount
-        get() = dates.size
 
     private var dates: List<Long> = App.archiveDateService.dates
     private var view: IArchiveView? = null

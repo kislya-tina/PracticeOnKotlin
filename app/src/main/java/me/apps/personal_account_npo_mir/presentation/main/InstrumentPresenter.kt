@@ -1,6 +1,8 @@
 package me.apps.personal_account_npo_mir.presentation.main
 
+import com.google.gson.Gson
 import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersRequestResult
@@ -21,17 +23,18 @@ class InstrumentPresenter : IPresenter<IMainView>,
         App.metersService.getMeters(token, this)
     }
 
-    /**
-     * Колбэк при завершении работы презентера
-     */
     override fun onRequestSuccess(result: GetMetersRequestResult) {
-        meters = result.toString()
+        App.metersService.meters = Gson().fromJson(result.toString(), Array<Meter>::class.java)
+        // TODO: добавляем метеры в сервис, потом брать их оттуда и выбранного ID передавать в следующие активити (Архив ->  onDateArchiveActivity)
     }
 
     override fun onRequestFail(message: ErrorCode) {
         TODO("Not yet implemented")
     }
 
+    /**
+     * Колбэк при завершении работы презентера
+     */
     override fun onDestroy() {
         view = null
     }
@@ -45,6 +48,7 @@ class InstrumentPresenter : IPresenter<IMainView>,
     fun onBindViewItem(view: IMeterListViewItem, position: Int) {
         //view.setName(meters[position].name)
         //view.setIndications(meters[position].serialNumber.toString())
+        // TODO: поставить имя счетчика
     }
 
     /**
@@ -80,8 +84,8 @@ class InstrumentPresenter : IPresenter<IMainView>,
     //val itemsCount
     //  get() = meters.size
 
-    private lateinit var meters: String
     private var view: IMainView? = null
     private var meterID: Int = 0
+    // TODO: meterID
 }
 

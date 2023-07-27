@@ -1,6 +1,5 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
-import android.os.Environment
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
@@ -9,13 +8,14 @@ import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personalaccountnpomir.R
 
-class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<SignInRequestResult> {
+class SignInPresenter() : IPresenter<ISignInView>,
+    IServerRequestResultListener<SignInRequestResult> {
     /**
      * Колбэк при создании View
      */
     override fun onViewCreated(view: ISignInView) {
         this.view = view
-        if(App.userDataService.token.isNotEmpty()){
+        if (App.userDataService.token.isNotEmpty()) {
             view.startMainActivity()
         }
         //проверка на файл и токены
@@ -36,6 +36,7 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
         App.userDataService.token = result.token
         // TODO: сохранять токен в файл
         App.userDataService.username = result.username
+        App.tokenService.saveToken(result.token)
 
         //Установка серых рамок и скрытие текста
         view?.setStateFr(true)
@@ -81,14 +82,14 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
     fun onEnterButtonPressed() {
         var success = true
         //Проверка текста в поле "username"
-        if (username.isBlank()){
+        if (username.isBlank()) {
             success = false
             view?.setLoginBackground(R.drawable.ic_warning_frame)
         } else {
             view?.setLoginBackground(R.drawable.rectangle_reg)
         }
         //Проверка текста в поле "password"
-        if (password.isBlank()){
+        if (password.isBlank()) {
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
         } else {

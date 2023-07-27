@@ -29,10 +29,10 @@ class App : Application() {
 
     companion object {
         lateinit var tokenService: ITokenService
-        lateinit var measuresService:ImeasureService
+        lateinit var measuresService: ImeasureService
         lateinit var loginService: ILoginService
         lateinit var metersService: IMetersService
         lateinit var userDataService: IUserDataService
-        lateinit var networkScope:CoroutineScope
+        lateinit var networkScope: CoroutineScope
     }
 }

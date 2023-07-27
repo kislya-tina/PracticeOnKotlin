@@ -14,8 +14,7 @@ class ArchivePresenter : IPresenter<IArchiveView> {
         this.view = view
         val username = App.userDataService.username
         view.setHeader(username)
-//        dates = App.archiveDateService.dates
-//        view.refreshItems()
+        view.refreshItems()
     }
 
     /**

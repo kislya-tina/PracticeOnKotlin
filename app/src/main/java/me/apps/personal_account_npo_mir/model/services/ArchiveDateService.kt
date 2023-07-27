@@ -17,6 +17,10 @@ class ArchiveDateService() : IArchiveDateService {
 
 
 
-    var _dates: List<Long> = listOf(12, 13, 14, 15, 16, 17, 18, 19, 20)
+    var _dates: List<Long> = listOf(12, 1990363765
+        , 14, 1690000000
+        , 16, 17, 1000363765
+        , 19, 20)
     var _datesCount: Int = 0
+    var currentClickedDate = 0
 }

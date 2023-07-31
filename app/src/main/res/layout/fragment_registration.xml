@@ -65,6 +65,40 @@
         android:textColor="@color/red"
         android:textSize="11sp" />
 
+    <TextView
+        android:id="@+id/password_short_text_view"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:text="@string/short_password"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/login_exist_text_view"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:text="@string/this_login_exist"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/incorrect_phone_number_text_view"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:text="@string/incorrect_phone_number"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_up_button"

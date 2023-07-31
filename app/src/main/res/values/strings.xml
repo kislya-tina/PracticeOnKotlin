@@ -47,6 +47,9 @@
     <string name="meters_from">Показания от</string>
     <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку.</string>
     <string name="password_mismatch">Пароли не совпадают.</string>
+    <string name="short_password">Пароль слишком короткий.</string>
+    <string name="this_login_exist">Пользователь с таким логином уже существует.</string>
+    <string name="incorrect_phone_number">Номер телефона введен неправильно.</string>
 
 
 </resources>

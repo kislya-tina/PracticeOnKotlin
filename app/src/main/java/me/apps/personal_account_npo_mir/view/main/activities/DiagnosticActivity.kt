@@ -17,12 +17,6 @@ class DiagnosticActivity : AppCompatActivity(), OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        if(view == backButton){
-            supportFragmentManager.beginTransaction().apply {
-                addToBackStack(null)
-                commit()
-            }
-        }
     }
 
     private lateinit var backButton: Button

@@ -35,6 +35,9 @@ class InstrumentActivity : FragmentActivity(),
         informationButton = findViewById(R.id.informationButton)
         informationButton.setOnClickListener(this)
 
+        logoutButton = findViewById(R.id.logout_btn)
+        logoutButton.setOnClickListener(this)
+
         adapter = DeviceAdapter(this)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
@@ -101,6 +104,8 @@ class InstrumentActivity : FragmentActivity(),
         transmittalButton.setOnClickListener(null)
         informationButton.setOnClickListener(null)
 
+        logoutButton.setOnClickListener(null)
+
         presenter.onDestroy()
     }
 
@@ -108,6 +113,7 @@ class InstrumentActivity : FragmentActivity(),
     private lateinit var diagnosticButton: Button
     private lateinit var transmittalButton: Button
     private lateinit var informationButton: Button
+    private lateinit var logoutButton: Button
     private lateinit var adapter: DeviceAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout

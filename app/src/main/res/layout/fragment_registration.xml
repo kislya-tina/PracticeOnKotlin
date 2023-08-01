@@ -9,10 +9,11 @@
     android:orientation="vertical"
     tools:context="me.apps.personal_account_npo_mir.view.login.RegistrationFragment">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/npoMirLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="50dp"
         android:src="@drawable/npo_mir_svg" />
 
@@ -22,7 +23,7 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/user"
-        android:hint="@string/name_surname_enter"
+        android:hint="@string/login"
         android:inputType="text" />
 
 
@@ -36,15 +37,6 @@
         android:inputType="phone"/>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/sign_up_email_edit_text"
-        style="@style/Theme.MIR.EditText"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/mail"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/sign_up_password_edit_text"
         style="@style/Theme.MIR.EditText"
         android:layout_width="240dp"
@@ -52,6 +44,61 @@
         android:drawableStart="@drawable/lock"
         android:hint="@string/password"
         android:inputType="textPassword"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/sign_up_repeat_password_edit_text"
+        style="@style/Theme.MIR.EditText"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/lock"
+        android:hint="@string/repeat_password"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/password_mismatch_text_view"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:text="@string/password_mismatch"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/password_short_text_view"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:text="@string/short_password"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/login_exist_text_view"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:text="@string/this_login_exist"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/incorrect_phone_number_text_view"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:text="@string/incorrect_phone_number"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_up_button"

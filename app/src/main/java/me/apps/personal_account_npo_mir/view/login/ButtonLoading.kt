@@ -24,17 +24,20 @@ class ButtonLoading(view: View) {
         loginText.visibility = View.GONE
         progressBar.visibility = View.VISIBLE
         ic_success.visibility = View.GONE
+
+        progressBar.scaleX = 1f
+        ic_success.scaleX = 0f
     }
 
-    fun setState(isSuccess: Boolean, onAnimationEnd: () -> Unit) {
+    fun setState(isSuccess: Boolean) {
         val bgAnim = ObjectAnimator.ofFloat(0f, 1f).setDuration(500L)
         bgAnim.start()
         bgAnim.doOnEnd {
             if (isSuccess) {
-                flipProgressBar(R.drawable.ic_done) { if (it) onAnimationEnd() }
+                flipProgressBar(R.drawable.ic_done)
             }
             else {
-                flipProgressBar(R.drawable.ic_fail) { if (it) onAnimationEnd() }
+                flipProgressBar(R.drawable.ic_fail)
             }
         }
     }
@@ -42,12 +45,12 @@ class ButtonLoading(view: View) {
 
 
 
-    private fun flipProgressBar(img: Int, isEnded: (Boolean) -> Unit) {
+    private fun flipProgressBar(img: Int) {
         ic_success.setImageResource(img)
         val flip1 = ObjectAnimator.ofFloat(progressBar, "scaleX", 1f, 0f)
         val flip2 = ObjectAnimator.ofFloat(ic_success, "scaleX", 0f, 1f)
-        flip1.duration = 400
-        flip2.duration = 400
+        flip1.duration = 200
+        flip2.duration = 200
         flip1.interpolator = DecelerateInterpolator()
         flip2.interpolator = AccelerateDecelerateInterpolator()
         flip1.addListener(object : AnimatorListenerAdapter() {
@@ -59,7 +62,6 @@ class ButtonLoading(view: View) {
             }
         })
         flip1.start()
-        flip2.doOnEnd { isEnded(true) }
     }
 
 

@@ -5,6 +5,8 @@
     <string name="register">Зарегистрироваться</string>
     <string name="username">Имя пользователя</string>
     <string name="password">Введите пароль</string>
+    <string name="repeat_password">Введите пароль повторно</string>
+    <string name="login">Введите ваш логин</string>
     <string name="phone">Введите ваш номер телефона</string>
     <string name="email">Введите ваш e-mail</string>
     <string name="electric_active_energy_units"> кВт•ч</string>
@@ -17,7 +19,7 @@
     <string name="success">Успешно!</string>
 
 
-    <string name="please_registration">Зарегистрируйтесь по e-mail или телефону</string>
+    <string name="please_registration">Зарегистрируйтесь по номеру телефона</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="name_surname_enter">Введите свое имя и фамилию</string>
     <string name="archive">Архив показаний</string>
@@ -44,7 +46,11 @@
     <string name="indications_by_date">Показания с</string>
     <string name="before">до</string>
     <string name="meters_from">Показания от</string>
-    <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку</string>
+    <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку.</string>
+    <string name="password_mismatch">Пароли не совпадают.</string>
+    <string name="short_password">Пароль слишком короткий.</string>
+    <string name="this_login_exist">Пользователь с таким логином уже существует.</string>
+    <string name="incorrect_phone_number">Номер телефона введен неправильно.</string>
 
 
 </resources>

@@ -6,7 +6,7 @@ import android.view.View.OnClickListener
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
-import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.transmittal.TransmittalPresenter
+import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.TransmittalPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.ITransmittalView
 import me.apps.personal_account_npo_mir.view.dialogs.WarningDialogFragment
 import me.apps.personalaccountnpomir.R

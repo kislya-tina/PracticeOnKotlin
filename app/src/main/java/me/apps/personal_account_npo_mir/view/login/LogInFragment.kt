@@ -41,9 +41,9 @@ class LogInFragment :
 
         invalidTextView.visibility = View.GONE
 
+        progressBar = ButtonLoading(signInButton)
 
         signInButton.setOnClickListener(this)
-        progressBar = ButtonLoading(signInButton)
         loginEditText.setOnClickListener(this)
         passwordEditText.setOnClickListener(this)
 
@@ -59,16 +59,18 @@ class LogInFragment :
 
     override fun onClick(view: View?) {
         if (view === signInButton) {
+            progressBar.setLoading()
             presenter.onLoginTextChanged(loginEditText.text.toString())
             presenter.onPasswordChanged(passwordEditText.text.toString())
             presenter.onEnterButtonPressed()
-            progressBar.setLoading()
         }
-        if(view == loginEditText){
+        if(view === loginEditText){
             progressBar.reset()
-
-            // TODO: сделать ресет полей
-            invalidTextView.visibility = View.GONE
+            presenter.onLoginTextChanged(loginEditText.text.toString())
+        }
+        if(view === passwordEditText){
+            progressBar.reset()
+            presenter.onPasswordChanged(passwordEditText.text.toString())
         }
     }
 
@@ -89,7 +91,7 @@ class LogInFragment :
     }
 
     override fun setStateFr(success : Boolean){
-        progressBar.setState(success){}
+        progressBar.setState(success)
     }
 
     override fun startMainActivity() {

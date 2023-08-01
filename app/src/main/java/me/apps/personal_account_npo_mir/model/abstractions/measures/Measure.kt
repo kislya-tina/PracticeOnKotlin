@@ -1,5 +1,5 @@
 package me.apps.personal_account_npo_mir.model.abstractions.measures
 
-data class Measure(val summary:Int, val tariff1:Int, val tariff2:Int,
-                   val tariff3:Int, val tariff4:Int, val timestamp:String) {
+data class Measure(val summary:Double, val tariff1:Double, val tariff2:Double,
+                   val tariff3:Double, val tariff4:Double, var timestamp:String) {
 }

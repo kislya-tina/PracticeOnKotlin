@@ -23,9 +23,9 @@ class InstrumentPresenter : IPresenter<IMainView>,
     }
 
     override fun onRequestSuccess(result: GetMetersRequestResult) {
-        val meters = Gson().fromJson(result.toString(), Array<Meter>::class.java)
-        App.metersService.meters = meters
-        App.metersService.id = meters[0].id
+//        val meters = Gson().fromJson(result.toString(), Array<Meter>::class.java)
+//        App.metersService.meters = meters
+//        App.metersService.id = meters[0].id
         // TODO: добавляем метеры в сервис, потом брать их оттуда и выбранного ID передавать в следующие активити (Архив ->  onDateArchiveActivity)
     }
 

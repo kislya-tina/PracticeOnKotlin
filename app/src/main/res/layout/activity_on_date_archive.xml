@@ -86,7 +86,7 @@
 
 
             <TextView
-                android:id="@+id/indicationOfSumTextView"
+                android:id="@+id/indicationOfSumTextView2"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
                 android:layout_margin="5dp"

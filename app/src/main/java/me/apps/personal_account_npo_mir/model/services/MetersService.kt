@@ -32,6 +32,15 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
         return measure
     }
 
+    override fun getMeterByID(id: Int): Meter? {
+        _meters.forEach {
+            if (it.id == id) {
+                return it
+            }
+        }
+        return null
+    }
+
     /*override fun getMeters(username: String): List<Meter> = listOf(
         Meter(
             generateId(),
@@ -111,11 +120,17 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
 
     override var meters: Array<Meter>
         get() {
-           return _meters
+            return _meters
         }
         set(value) {
             _meters = value
         }
+    override var id: Int
+        get() = _id
+        set(value) {
+            _id = value
+        }
 
+    private var _id = 0
     private var _meters: Array<Meter> = arrayOf(Meter())
 }

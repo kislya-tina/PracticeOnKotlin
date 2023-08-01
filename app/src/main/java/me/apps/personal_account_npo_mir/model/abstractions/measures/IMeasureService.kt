@@ -4,16 +4,19 @@ import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServe
 import me.apps.personal_account_npo_mir.model.server_connect.get_last_measure.GetLastMeasureRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureRequestResult
 
-interface ImeasureService {
+interface IMeasureService {
     fun putMeasure(
         deviceId: Int,
         token: String,
         measure: Measure,
         resultListener: IServerRequestResultListener<PutMeasureRequestResult>
     )
+
     fun getLastMeasure(
         deviceId: Int,
         token:String,
         resultListener: IServerRequestResultListener<GetLastMeasureRequestResult>
     )
+
+    var measure : Measure?
 }

@@ -37,6 +37,7 @@ class ArchivePresenter : IPresenter<IArchiveView> {
     fun onItemClick(position : Int){
         currentClickedPosition = position
         App.archiveDateService.currentClickedDate = position
+
         view?.startItemActivity(dates[position])
     }
 

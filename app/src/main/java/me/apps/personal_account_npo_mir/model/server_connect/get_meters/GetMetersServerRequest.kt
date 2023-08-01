@@ -17,8 +17,7 @@ class GetMetersServerRequest(private val url:String,
                              private val token:String,
                              private val scope:CoroutineScope):IServerRequest<GetMetersRequestResult>    {
     override fun setServerRequestListener(listener: IServerRequestResultListener<GetMetersRequestResult>) {
-        //почему-то не работает
-        //this.listener = listener
+        this.listener = listener
     }
 
     override fun run() {
@@ -49,7 +48,6 @@ class GetMetersServerRequest(private val url:String,
                     streamReader = InputStreamReader(httpURLConnection.inputStream)
                     streamReader.use { devices = it.readText() }
                     withContext(Dispatchers.Main) {
-                        //кислый не добавил презентер
                         listener?.onRequestSuccess(GetMetersRequestResult(devices))
                     }
                 }catch (e: MalformedURLException) {

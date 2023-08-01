@@ -50,6 +50,9 @@
     <string name="short_password">Пароль слишком короткий.</string>
     <string name="this_login_exist">Пользователь с таким логином уже существует.</string>
     <string name="incorrect_phone_number">Номер телефона введен неправильно.</string>
+    <string name="codeText">Код</string>
+    <string name="errorText">Ошибка</string>
+    <string name="text_00">00</string>
 
 
 </resources>

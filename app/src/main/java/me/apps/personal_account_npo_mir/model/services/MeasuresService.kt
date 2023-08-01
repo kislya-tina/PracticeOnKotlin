@@ -6,6 +6,8 @@ import me.apps.personal_account_npo_mir.model.abstractions.measures.Measure
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.get_last_measure.GetLastMeasureRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.get_last_measure.GetLastMeasureServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.get_measures.GetMeasuresRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.get_measures.GetMeasuresServerRequest
 import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureServerRequest
 
@@ -24,6 +26,17 @@ class MeasuresService(private val scope: CoroutineScope):ImeasureService {
                                 token:String,
                                 resultListener: IServerRequestResultListener<GetLastMeasureRequestResult>){
         val request = GetLastMeasureServerRequest(urlForHostLoopbackInterface,deviceId,token,scope)
+        request.setServerRequestListener(resultListener)
+        request.run()
+    }
+    override fun getMeasures(deviceId: Int,
+                             token:String,
+                             dateFrom:String,
+                             dateTo:String,
+                             pageNumber:Int,
+                             countInPage: Int,
+                             resultListener: IServerRequestResultListener<GetMeasuresRequestResult>){
+        val request = GetMeasuresServerRequest(urlForHostLoopbackInterface,deviceId,token,dateFrom,dateTo,pageNumber,countInPage,scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }

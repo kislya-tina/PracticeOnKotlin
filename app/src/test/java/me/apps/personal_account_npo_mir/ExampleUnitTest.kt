@@ -1,8 +1,10 @@
 package me.apps.personal_account_npo_mir
 
 import android.os.Environment
+import kotlinx.coroutines.CoroutineScope
 import me.apps.personal_account_npo_mir.model.abstractions.measures.Measure
 import me.apps.personal_account_npo_mir.model.server_connect.ServerConnection
+import me.apps.personal_account_npo_mir.model.services.urlForHostLoopbackInterface
 import me.apps.personal_account_npo_mir.view.login.LogRegActivity
 import org.junit.Test
 import org.junit.runner.manipulation.Ordering.Context
@@ -53,7 +55,14 @@ class ExampleUnitTest {
         fun signUp() {
             val username = "user"
             val password = "password"
-            println(ServerConnection().signUp(username, password))
+             val url: String = "asf"
+             val deviceId: Int = 23
+            val token: String = "23"
+             val dateFrom: String = "234"
+             val dateTo: String = "324"
+             val pageNumber: Int =324
+             val countInPage: Int =234
+            println( "$urlForHostLoopbackInterface/Measures/getmeasures/$deviceId/$dateFrom/$dateTo/$pageNumber/$countInPage")
         }
 
         @Test

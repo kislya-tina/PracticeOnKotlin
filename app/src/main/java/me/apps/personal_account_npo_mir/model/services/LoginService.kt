@@ -1,16 +1,11 @@
 package me.apps.personal_account_npo_mir.model.services
 
-import android.content.Context
 import kotlinx.coroutines.*
-import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.model.abstractions.login.ILoginService
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.sign_up.SignUpServerRequest
 import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInServerRequest
-import java.io.BufferedWriter
-import java.io.File
-import java.io.FileWriter
 
 
 class SignInService(private val scope: CoroutineScope) : ILoginService {

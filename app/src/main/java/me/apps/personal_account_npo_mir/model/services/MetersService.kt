@@ -4,6 +4,8 @@ import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.find_device.FindMeterRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.find_device.FindMeterServerRequest
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersServerRequest
 import java.time.LocalDateTime
@@ -15,7 +17,7 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
     private val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
 
 
-    override fun getLastMeasures(DeviceID: Int, Token: String): Map<String, Any> {
+    override fun getLastMeasures(deviceID: Int, token: String): Map<String, Any> {
         val tariff1: Int = generateId()
         val tariff2: Int = generateId()
         val tariff3: Int = generateId()
@@ -80,6 +82,12 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
         resultListener: IServerRequestResultListener<GetMetersRequestResult>
     ) {
         val request = GetMetersServerRequest(urlForHostLoopbackInterface, token, scope)
+        request.setServerRequestListener(resultListener)
+        request.run()
+    }
+
+    override fun findMeter(key: Int, limit: Int, token: String, resultListener:IServerRequestResultListener<FindMeterRequestResult>) {
+        val request = FindMeterServerRequest(urlForHostLoopbackInterface, key, limit, token, scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }

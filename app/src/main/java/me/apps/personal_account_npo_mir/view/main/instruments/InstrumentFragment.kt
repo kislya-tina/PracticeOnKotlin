@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentFragmentPresenter
+import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personalaccountnpomir.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,6 +28,9 @@ class InstrumentFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        presenter.onViewCreated(this)
+
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             val meterName: TextView = view.findViewById(R.id.meterNameTextView2)
             val dateView: TextView = view.findViewById(R.id.dateTextView)
@@ -34,10 +38,16 @@ class InstrumentFragment : Fragment() {
 
             val meterIndex = this.getInt(ARG_OBJECT)
             val meterID = App.metersService.meters[meterIndex].id
-            App.measuresService.getLastMeasure(meterID, App.userDataService.token, presenter)
+
+            //App.metersService.getMeters()
+
+            //App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter)
+            //App.measuresService.getLastMeasure(1, App.userDataService.token, presenter)
             sumIndications = App.measuresService.measure?.summary.toString()
 
-            meterName.text = App.metersService.getMeterByID(meterID)?.name
+            meterName.text = presenter.name
+            println(App.metersService.meters[0].name)
+            //meterName.text = App.metersService.getMeterByID(1)?.name
             indicationsTextView.text = sumIndications
             dateView.text = currentDate.toString()
         }

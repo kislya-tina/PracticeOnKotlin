@@ -102,8 +102,8 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
             App.measuresService.putMeasure(
                 10, App.userDataService.token,
                 Measure(
-                    summary.toDouble(), tariff1.toDouble(), tariff2.toDouble(),
-                    tariff3.toDouble(), tariff4.toDouble(), "timestamp"
+                    summary.toString(), tariff1.toString(), tariff2.toString(),
+                    tariff3.toString(), tariff4.toString(), "timestamp"
                 ),
                 this
             )

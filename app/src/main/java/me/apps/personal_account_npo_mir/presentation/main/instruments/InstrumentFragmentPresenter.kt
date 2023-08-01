@@ -14,6 +14,7 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
 
     override fun onViewCreated(view: InstrumentFragment) {
         this.view = view
+        name = App.metersService.meters[0].name
     }
 
     override fun onDestroy() {
@@ -23,8 +24,8 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
     override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
         try {
             App.measuresService.measure = Gson().fromJson(result.toString(), Measure::class.java)
-        }
-        catch (e:Exception){
+            println(result)
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -33,5 +34,6 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
 
     }
 
-    private var view : InstrumentFragment? = null
+    private var view: InstrumentFragment? = null
+    var name : String = ""
 }

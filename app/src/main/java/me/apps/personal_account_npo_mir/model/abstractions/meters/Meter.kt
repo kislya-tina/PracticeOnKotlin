@@ -1,8 +1,8 @@
 package me.apps.personal_account_npo_mir.model.abstractions.meters
 
-data class Meter (val id: Int, val name: String, val serialNumber:Long,
-                  val contractNumber: Long,val address:String){
-    constructor() : this(0, "", 0, 0, " ") {
+data class Meter (val id: String, val name: String, val serialNumber:String,
+                  val contractNumber: String,val address:String){
+    constructor() : this("", "", "", "", " ") {
 
     }
 }

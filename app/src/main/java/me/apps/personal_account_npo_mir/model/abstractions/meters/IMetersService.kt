@@ -10,7 +10,7 @@ interface IMetersService {
      * @param username Имя пользователя
      */
     //пока не добавил лист метеров
-    fun getMeters(token: String, resultListener: IServerRequestResultListener<GetMetersRequestResult>)
+    //fun getMeters(token: String, resultListener: IServerRequestResultListener<GetMetersRequestResult>)
     fun bindMeter(deviceId:Int, token:String,resultListener: IServerRequestResultListener<BindMeterRequestResult>)
     //заглушка
     fun getLastMeasures(DeviceID: Int, Token:String): Map<String, Any>
@@ -21,4 +21,5 @@ interface IMetersService {
 
     var meters : Array<Meter>
     var id: Int
+    fun saveMeters(meters: Array<Meter>)
 }

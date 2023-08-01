@@ -34,7 +34,7 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
 
     override fun getMeterByID(id: Int): Meter? {
         _meters.forEach {
-            if (it.id == id) {
+            if (it.id.toIntOrNull() == id) {
                 return it
             }
         }
@@ -86,13 +86,10 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
         ),
     )*/
 
-    override fun getMeters(
-        token: String,
-        resultListener: IServerRequestResultListener<GetMetersRequestResult>
+    override fun saveMeters(
+       meters: Array<Meter>
     ) {
-        val request = GetMetersServerRequest(urlForHostLoopbackInterface, token, scope)
-        request.setServerRequestListener(resultListener)
-        request.run()
+        this.meters = meters
     }
 
     override fun bindMeter(

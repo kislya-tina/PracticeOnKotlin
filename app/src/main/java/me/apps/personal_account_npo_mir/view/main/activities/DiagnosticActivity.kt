@@ -1,10 +1,10 @@
 package me.apps.personal_account_npo_mir.view.main.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import me.apps.personalaccountnpomir.R
 
 class DiagnosticActivity : AppCompatActivity(), OnClickListener {
@@ -17,7 +17,11 @@ class DiagnosticActivity : AppCompatActivity(), OnClickListener {
     }
 
     override fun onClick(view: View?) {
+        if (view === backButton){
+            onBackPressedDispatcher.onBackPressed()        }
     }
 
     private lateinit var backButton: Button
+
+
 }

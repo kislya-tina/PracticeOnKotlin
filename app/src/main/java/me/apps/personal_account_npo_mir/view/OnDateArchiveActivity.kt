@@ -19,13 +19,9 @@ class OnDateArchiveActivity : AppCompatActivity(), OnClickListener {
 
     override fun onClick(view: View?) {
         if(view == backButton){
-            supportFragmentManager.beginTransaction().apply {
-                addToBackStack(null)
+            onBackPressedDispatcher.onBackPressed()
             }
         }
-    }
-
-
 
     private lateinit var backButton: Button
 

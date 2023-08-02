@@ -14,66 +14,68 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class SignInServerRequest(private val url:String,
-                          private val username: String,
-                          private val password:String,
-                          private val scope: CoroutineScope): IServerRequest<SignInRequestResult> {
+class SignInServerRequest(
+    private val url: String,
+    private val username: String,
+    private val password: String,
+    private val scope: CoroutineScope
+) : IServerRequest<SignInRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<SignInRequestResult>) {
         this.listener = listener
     }
 
 
     override fun run() {
-        scope.launch {
-
-
-                if (url == "") {
-                    withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
-                    }
-                } else if (username == "") {
-                    withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
-                    }
-                } else if (password == "") {
-                    withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
-                    }
-                } else {
-                    var httpURLConnection: HttpURLConnection? = null
-                    var streamReader: InputStreamReader? = null
-                    try {
-                        val urlAddress: String = url + "SignIn" + "/" + username + "/" + password
-                        var token: String = ""
-                        httpURLConnection =
-                            URL(urlAddress).openConnection() as HttpURLConnection
-                        httpURLConnection.apply {
-                            connectTimeout = 10000
-                            doInput = true
-                        }
-                        streamReader = InputStreamReader(httpURLConnection.inputStream)
-                        streamReader.use { token = it.readText() }
-                        withContext(Dispatchers.Main) {
-                            //App.userDataService.token = token
-                            //val token = username.length + password.length
-                            listener?.onRequestSuccess(SignInRequestResult(token, username))
-                        }
-                    }catch (e: MalformedURLException) {
+                scope.launch {
+                    if (url == "") {
                         withContext(Dispatchers.Main) {
                             listener?.onRequestFail(ErrorCode.BLANK_URL)
                         }
-                    } catch (e: IOException) {
+                    } else if (username == "") {
                         withContext(Dispatchers.Main) {
-                            listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
+                            listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
                         }
-                    } finally {
-                        httpURLConnection?.disconnect()
-                        streamReader?.close()
+                    } else if (password == "") {
+                        withContext(Dispatchers.Main) {
+                            listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
+                        }
+                    } else {
+                        var httpURLConnection: HttpURLConnection? = null
+                        var streamReader: InputStreamReader? = null
+                        try {
+                            val urlAddress: String =
+                                url + "SignIn" + "/" + username + "/" + password
+                            var token = ""
+                            httpURLConnection =
+                                withContext(Dispatchers.IO) {
+                                    URL(urlAddress).openConnection()
+                                } as HttpURLConnection
+                            httpURLConnection.apply {
+                                connectTimeout = 10000
+                                doInput = true
+                            }
+                            streamReader = InputStreamReader(httpURLConnection.inputStream)
+                            streamReader.use { token = it.readText() }
+                            withContext(Dispatchers.Main) {
+                                listener?.onRequestSuccess(SignInRequestResult(token, username))
+                            }
+                        } catch (e: MalformedURLException) {
+                            withContext(Dispatchers.Main) {
+                                listener?.onRequestFail(ErrorCode.BLANK_URL)
+                            }
+                        } catch (e: IOException) {
+                            withContext(Dispatchers.Main) {
+                                listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
+                            }
+                        } finally {
+                            httpURLConnection?.disconnect()
+                            streamReader?.close()
+                        }
                     }
-                }
 
-            listener = null
-        }
+                    listener = null
+                }
     }
+
     private var listener: IServerRequestResultListener<SignInRequestResult>? = null
 }

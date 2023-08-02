@@ -21,6 +21,7 @@ class LogRegActivity :
      * Колбэк, вызываемый при создании Activity
      * Здесь проводим инициализацию необзодимых элементов
      */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Устанавливаем разметку UI

@@ -64,6 +64,10 @@ class InstrumentPresenter : IPresenter<IMainView>,
 //        // TODO: поставить имя счетчика
 //    }
 
+    fun onAddDevicesButtonClick(){
+        view?.startSearchDevicesActivity()
+    }
+
     /**
      * Колбэк при нажатии на кнопку "Архив показаний"
      */

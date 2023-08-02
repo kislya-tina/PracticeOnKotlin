@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import me.apps.personal_account_npo_mir.presentation.login.RegistrationPresenter
@@ -36,6 +37,11 @@ class RegistrationFragment :
         phoneEditText = view.findViewById(R.id.sign_up_phone_edit_text)
         repeatPasswordEditText = view.findViewById(R.id.sign_up_repeat_password_edit_text)
 
+        passwordMismatch = view.findViewById(R.id.password_mismatch_text_view)
+
+        passwordEditText.setOnClickListener(this)
+        repeatPasswordEditText.setOnClickListener(this)
+
         presenter.onViewCreated(this)
     }
 
@@ -55,23 +61,31 @@ class RegistrationFragment :
         }
     }
 
-    override fun setLoginBackground(resourceID : Int){
+    override fun setLoginBackground(resourceID: Int) {
         loginEditText.setBackgroundResource(resourceID)
     }
 
-    override fun setPasswordBackground(resourceID : Int){
+    override fun setPasswordBackground(resourceID: Int) {
         passwordEditText.setBackgroundResource(resourceID)
     }
 
-    override fun setRepeatPasswordBackground(resourceID : Int){
+    override fun setRepeatPasswordBackground(resourceID: Int) {
         repeatPasswordEditText.setBackgroundResource(resourceID)
     }
 
-    override fun setPhoneBackground(resourceID : Int){
+    override fun setPhoneBackground(resourceID: Int) {
         phoneEditText.setBackgroundResource(resourceID)
     }
 
-    override fun startMainActivity(){
+    override fun setPasswordMismatchVisibility(boolean: Boolean) {
+        if (boolean) {
+            passwordMismatch.visibility = View.VISIBLE
+        } else {
+            passwordMismatch.visibility = View.GONE
+        }
+    }
+
+    override fun startMainActivity() {
         val intent = Intent(context, InstrumentActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
@@ -83,6 +97,7 @@ class RegistrationFragment :
     private lateinit var passwordEditText: AppCompatEditText
     private lateinit var phoneEditText: AppCompatEditText
     private lateinit var repeatPasswordEditText: AppCompatEditText
+    private lateinit var passwordMismatch: TextView
     private val presenter = RegistrationPresenter()
 
     companion object {

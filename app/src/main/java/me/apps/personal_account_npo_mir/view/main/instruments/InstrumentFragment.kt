@@ -66,7 +66,6 @@ class InstrumentFragment : Fragment() {
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
 
-
     private val currentDate = simpleDate.format(Date())
     private var meterID = App.metersService.id
     private val presenter = InstrumentFragmentPresenter()

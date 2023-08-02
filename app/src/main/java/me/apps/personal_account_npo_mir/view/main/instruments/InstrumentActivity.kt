@@ -20,8 +20,6 @@ import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
 import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
 
-private const val NUM_PAGES = 5
-
 class InstrumentActivity : FragmentActivity(), IMainView,
     OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +39,8 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         informationButton = findViewById(R.id.informationButton)
         informationButton.setOnClickListener(this)
 
-        logoutButton = findViewById(R.id.logoutButton)
-        logoutButton.setOnClickListener(this)
+//        logoutButton = findViewById(R.id.logoutButton)
+//        logoutButton.setOnClickListener(this)
 
         addDevicesButton = findViewById(R.id.addDevicesBtn)
         addDevicesButton.setOnClickListener(this)
@@ -76,9 +74,9 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         if (view === addDevicesButton) {
             presenter.onAddDevicesButtonClick()
         }
-        if(view === logoutButton){
-            presenter.onLogoutButtonClick()
-        }
+//        if(view === logoutButton){
+//            presenter.onLogoutButtonClick()
+//        }
     }
 
     override fun refreshItems() {
@@ -109,10 +107,10 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         startActivity(intent)
     }
 
-    override fun startLogRegActivity() {
-        val intent = Intent(this, LogRegActivity::class.java)
-        startActivity(intent)
-    }
+//    override fun startLogRegActivity() {
+//        val intent = Intent(this, LogRegActivity::class.java)
+//        startActivity(intent)
+//    }
     override fun startSearchDevicesActivity(){
         val intent = Intent(this, SearchDevicesActivity::class.java)
         startActivity(intent)
@@ -134,7 +132,7 @@ class InstrumentActivity : FragmentActivity(), IMainView,
     private lateinit var diagnosticButton: Button
     private lateinit var transmittalButton: Button
     private lateinit var informationButton: Button
-    private lateinit var logoutButton: Button
+//    private lateinit var logoutButton: Button
     private lateinit var adapter: DeviceAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout

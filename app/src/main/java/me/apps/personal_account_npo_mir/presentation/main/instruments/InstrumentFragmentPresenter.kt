@@ -23,7 +23,9 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
 
     override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
         try {
-            App.measuresService.measure = Gson().fromJson(result.toString(), Measure::class.java)
+            var measure = Gson().fromJson(result.toString(), Measure::class.java)
+            App.measuresService.saveMeasure(measure)
+            view?.setMeterIndications()
             println(result)
         } catch (e: Exception) {
             e.printStackTrace()
@@ -31,7 +33,7 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
     }
 
     override fun onRequestFail(message: ErrorCode) {
-
+        println("pipipupu")
     }
 
     private var view: InstrumentFragment? = null

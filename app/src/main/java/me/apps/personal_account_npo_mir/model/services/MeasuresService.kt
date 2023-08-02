@@ -40,6 +40,9 @@ class MeasuresService(private val scope: CoroutineScope):IMeasureService {
         request.setServerRequestListener(resultListener)
         request.run()
     }
+    override fun saveMeasure(measure: Measure){
+        this.measure = measure
+    }
 
     override var measure : Measure? = null
 }

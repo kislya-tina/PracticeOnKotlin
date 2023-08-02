@@ -5,4 +5,6 @@ data class Meter (val id: String, val name: String, val serialNumber:String,
     constructor() : this("", "", "", "", " ") {
 
     }
+    constructor(meter: Meter):this(meter.id, meter.name, meter.serialNumber,
+                                    meter.contractNumber, meter.address)
 }

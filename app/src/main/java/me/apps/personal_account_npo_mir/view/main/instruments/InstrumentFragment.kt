@@ -36,6 +36,8 @@ class InstrumentFragment : Fragment() {
             val dateView: TextView = view.findViewById(R.id.dateTextView)
             val indicationsTextView = view.findViewById<TextView>(R.id.meterIndicationsTextView)
 
+
+
             val meterIndex = this.getInt(ARG_OBJECT)
             val meterID = App.metersService.meters[meterIndex].id
 
@@ -62,7 +64,7 @@ class InstrumentFragment : Fragment() {
             .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
     }
 
-    private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.GERMANY)
+    private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
 
 
     private val currentDate = simpleDate.format(Date())

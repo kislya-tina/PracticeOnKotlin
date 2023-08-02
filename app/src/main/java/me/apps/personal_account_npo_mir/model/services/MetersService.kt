@@ -129,5 +129,5 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
         }
 
     private var _id = 0
-    private var _meters: Array<Meter> = arrayOf(Meter())
+    private var _meters: Array<Meter> = arrayOf(Meter(), Meter(), Meter(), Meter())
 }

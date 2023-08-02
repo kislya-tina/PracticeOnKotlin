@@ -19,9 +19,9 @@ class App : Application() {
         networkScope = CoroutineScope(Dispatchers.IO)
         measuresService = MeasuresService(networkScope)
         loginService = SignInService(networkScope)
-        metersService = MetersService(networkScope)
         tokenService = TokenService(applicationContext)
         archiveDateService = ArchiveDateService()
+        metersService = MetersService(networkScope)
     }
 
     // TODO: если токен есть в файл, пропускать первую активити
@@ -30,9 +30,9 @@ class App : Application() {
         lateinit var tokenService: ITokenService
         lateinit var measuresService: IMeasureService
         lateinit var loginService: ILoginService
-        lateinit var metersService: IMetersService
         lateinit var userDataService: IUserDataService
         lateinit var networkScope: CoroutineScope
         lateinit var archiveDateService:IArchiveDateService
+        lateinit var metersService: IMetersService
     }
 }

@@ -24,6 +24,7 @@ class InstrumentActivity : FragmentActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instrument)
+        presenter.onViewCreated(this)
 
         archiveButton = findViewById(R.id.archiveButton)
         archiveButton.setOnClickListener(this)
@@ -49,7 +50,6 @@ class InstrumentActivity : FragmentActivity(),
             tab.text = "${(position + 1)}"
         }.attach()
 
-        presenter.onViewCreated(this)
     }
 
 

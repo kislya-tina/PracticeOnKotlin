@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
+            android:visibility="gone"
             android:text="@string/invalid_login_password"
             android:textColor="@color/red"
             android:textSize="11sp" />

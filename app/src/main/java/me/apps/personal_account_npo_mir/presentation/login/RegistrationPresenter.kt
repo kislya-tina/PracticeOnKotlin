@@ -40,6 +40,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
      */
     fun onPasswordChanged(password: String) {
         this.password = password
+      //  view?.setPasswordMismatchVisibility(false)
     }
 
     /**
@@ -47,6 +48,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
      */
     fun onRepeatPasswordChanged(password: String) {
         this.repeatedPassword = password
+      //  view?.setPasswordMismatchVisibility(false)
     }
 
     /**
@@ -95,6 +97,7 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
             success = false
             view?.setPasswordBackground(R.drawable.ic_warning_frame)
             view?.setRepeatPasswordBackground(R.drawable.ic_warning_frame)
+            view?.setPasswordMismatchVisibility(true)
         }
 
 

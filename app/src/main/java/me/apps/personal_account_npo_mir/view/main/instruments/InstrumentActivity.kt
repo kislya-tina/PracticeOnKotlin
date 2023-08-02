@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -15,11 +16,13 @@ import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
+import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
 
-class InstrumentActivity : FragmentActivity(),
-    IMainView,
-    OnClickListener{
+private const val NUM_PAGES = 5
+
+class InstrumentActivity : FragmentActivity(), IMainView,
+    OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instrument)
@@ -36,6 +39,9 @@ class InstrumentActivity : FragmentActivity(),
 
         informationButton = findViewById(R.id.informationButton)
         informationButton.setOnClickListener(this)
+
+        addDevicesButton = findViewById(R.id.addDevicesBtn)
+        addDevicesButton.setOnClickListener(this)
 
         adapter = DeviceAdapter(this, presenter)
         viewPager = findViewById(R.id.view_pager)
@@ -62,6 +68,9 @@ class InstrumentActivity : FragmentActivity(),
         }
         if (view === informationButton) {
             presenter.onInformationButtonClick()
+        }
+        if (view === addDevicesButton) {
+            presenter.onAddDevicesButtonClick()
         }
     }
 
@@ -93,6 +102,11 @@ class InstrumentActivity : FragmentActivity(),
         startActivity(intent)
     }
 
+    override fun startSearchDevicesActivity(){
+        val intent = Intent(this, SearchDevicesActivity::class.java)
+        startActivity(intent)
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -112,5 +126,6 @@ class InstrumentActivity : FragmentActivity(),
     private lateinit var adapter: DeviceAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
+    private lateinit var addDevicesButton: AppCompatButton
     private var presenter = InstrumentPresenter()
 }

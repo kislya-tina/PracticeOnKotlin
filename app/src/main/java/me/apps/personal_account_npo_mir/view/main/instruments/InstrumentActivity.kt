@@ -41,8 +41,8 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         informationButton = findViewById(R.id.informationButton)
         informationButton.setOnClickListener(this)
 
-        logoutButton = findViewById(R.id.logoutButton)
-        logoutButton.setOnClickListener(this)
+        //logoutButton = findViewById(R.id.logoutButton)
+        //logoutButton.setOnClickListener(this)
 
         addDevicesButton = findViewById(R.id.addDevicesBtn)
         addDevicesButton.setOnClickListener(this)
@@ -76,9 +76,9 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         if (view === addDevicesButton) {
             presenter.onAddDevicesButtonClick()
         }
-        if(view === logoutButton){
-            presenter.onLogoutButtonClick()
-        }
+        //if(view === logoutButton){
+          //  presenter.onLogoutButtonClick()
+        //}
     }
 
     override fun refreshItems() {
@@ -109,10 +109,10 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         startActivity(intent)
     }
 
-    override fun startLogRegActivity() {
-        val intent = Intent(this, LogRegActivity::class.java)
-        startActivity(intent)
-    }
+    //override fun startLogRegActivity() {
+      //  val intent = Intent(this, LogRegActivity::class.java)
+        //startActivity(intent)
+    //}
     override fun startSearchDevicesActivity(){
         val intent = Intent(this, SearchDevicesActivity::class.java)
         startActivity(intent)

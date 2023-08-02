@@ -1,9 +1,11 @@
 package me.apps.personal_account_npo_mir.model.services
 
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
 import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
+import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterServerRequest
@@ -16,11 +18,19 @@ import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 import kotlin.random.nextInt
 
-class MetersService(private val scope: CoroutineScope) : IMetersService {
+class MetersService(private val scope: CoroutineScope) : IMetersService, IServerRequestResultListener<GetMetersRequestResult> {
     private val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
 
     init{
-       // getMeters(App.userDataService.token, IServerRequestResultListener<GetMetersRequestResult>)
+       getMeters(App.userDataService.token, this)
+    }
+    override fun onRequestSuccess(result: GetMetersRequestResult) {
+        val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
+        this.meters = meters
+    }
+
+    override fun onRequestFail(message: ErrorCode) {
+        TODO("Not yet implemented")
     }
     override fun getMeters(token:String, resultListener: IServerRequestResultListener<GetMetersRequestResult>){
         val request = GetMetersServerRequest(me.apps.personal_account_npo_mir.model.services.urlForHostLoopbackInterface, token, App.networkScope)
@@ -65,4 +75,5 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
 
     private var _id = 0
     private var _meters: Array<Meter> = arrayOf(Meter(), Meter(), Meter(), Meter())
+
 }

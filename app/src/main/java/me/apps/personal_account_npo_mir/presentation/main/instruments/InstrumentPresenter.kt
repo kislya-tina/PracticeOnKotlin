@@ -32,7 +32,7 @@ class InstrumentPresenter : IPresenter<IMainView>,
     override fun onRequestSuccess(result: GetMetersRequestResult) {
         try {
             val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
-            App.metersService.saveMeters(meters)
+            //App.metersService.saveMeters(meters)
             //println(meters[0].name)
             //App.metersService.id = meters[0].id.toInt()
         }catch (e:Exception){
@@ -97,9 +97,9 @@ class InstrumentPresenter : IPresenter<IMainView>,
         view?.startInformationActivity()
     }
 
-    fun onLogoutButtonClick(){
-        view?.startLogRegActivity()
-    }
+    //fun onLogoutButtonClick(){
+      //  view?.startLogRegActivity()
+    //}
 
     /**
      * Кол-во элементов в списке

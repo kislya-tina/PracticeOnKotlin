@@ -41,9 +41,7 @@ class InstrumentFragment : Fragment() {
             val meterIndex = this.getInt(ARG_OBJECT)
             val meterID = App.metersService.meters[meterIndex].id
 
-            //App.metersService.getMeters()
-
-            //App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter)
+            App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter)
             //App.measuresService.getLastMeasure(1, App.userDataService.token, presenter)
             sumIndications = App.measuresService.measure?.summary.toString()
 
@@ -52,6 +50,7 @@ class InstrumentFragment : Fragment() {
             //meterName.text = App.metersService.getMeterByID(1)?.name
             indicationsTextView.text = sumIndications
             dateView.text = currentDate.toString()
+
         }
     }
 
@@ -70,6 +69,5 @@ class InstrumentFragment : Fragment() {
     private var meterID = App.metersService.id
     private val presenter = InstrumentFragmentPresenter()
     private var sumIndications :
-            String = App.measuresService.getLastMeasure(meterID, App.userDataService.token, presenter).toString()
-
+            String = ""
 }

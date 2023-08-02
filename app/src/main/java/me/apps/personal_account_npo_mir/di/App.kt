@@ -22,7 +22,7 @@ class App : Application() {
         measuresService = MeasuresService(networkScope)
         loginService = SignInService(networkScope)
         metersService = MetersService(networkScope)
-         tokenService = TokenService(applicationContext)
+        tokenService = TokenService(applicationContext)
     }
 
     // TODO: если токен есть в файл, пропускать первую активити

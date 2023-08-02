@@ -36,4 +36,6 @@ interface IMainView {
    * Запустить окно информации
    */
   fun startInformationActivity()
+
+  fun startLogRegActivity()
 }

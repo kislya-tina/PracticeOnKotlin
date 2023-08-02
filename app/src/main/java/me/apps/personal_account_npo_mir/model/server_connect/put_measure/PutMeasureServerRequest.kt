@@ -17,8 +17,8 @@ import java.net.URL
 import java.time.LocalDateTime
 
 class PutMeasureServerRequest(
-    val urlForHostLoopbackInterface: String,
-    val deviceId: Int,
+    private val urlForHostLoopbackInterface: String,
+    private val deviceId: Int,
     val token: String,
     val measure: Measure,
     private val scope:CoroutineScope
@@ -33,10 +33,6 @@ class PutMeasureServerRequest(
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_URL)
                 }
-            } else if (deviceId == null) {
-                withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
-                }
             } else if (token == "") {
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
@@ -44,12 +40,15 @@ class PutMeasureServerRequest(
             } else {
                 val urlAddress: String =
                     urlForHostLoopbackInterface + "Measures/PutMeasure?deviceId=" + deviceId
-                var httpURLConnection: HttpURLConnection? = null
-                var writer: OutputStreamWriter? = null
+                val httpURLConnection: HttpURLConnection? = null
+                val writer: OutputStreamWriter? = null
                 val gson = Gson()
                 try {
                     val url = URL(urlAddress)
-                    val connection = url.openConnection() as HttpURLConnection
+                    val connection =
+                        withContext(Dispatchers.IO) {
+                            url.openConnection()
+                        } as HttpURLConnection
                     connection.requestMethod = "POST"
                     connection.setRequestProperty("Content-Type", "application/json")
                     connection.setRequestProperty("X-User-Token", token)
@@ -59,10 +58,11 @@ class PutMeasureServerRequest(
                     val measureJson = gson.toJson(measure)
                     println(measureJson)
                     val outputStream = OutputStreamWriter(connection.outputStream)
-                    outputStream.write(measureJson)
-                    outputStream.flush()
-                    outputStream.close()
-
+                    withContext(Dispatchers.IO) {
+                        outputStream.write(measureJson)
+                        outputStream.flush()
+                        outputStream.close()
+                    }
                     val responseCode = connection.responseCode
                     withContext(Dispatchers.Main){
                         listener?.onRequestSuccess(PutMeasureRequestResult(responseCode))

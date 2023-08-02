@@ -10,6 +10,7 @@ import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMeter
 import me.apps.personal_account_npo_mir.model.services.urlForHostLoopbackInterface
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
+import me.apps.personal_account_npo_mir.view.abstractions.main.IMeterListViewItem
 
 class InstrumentPresenter : IPresenter<IMainView>,
     IServerRequestResultListener<GetMetersRequestResult> {
@@ -29,6 +30,7 @@ class InstrumentPresenter : IPresenter<IMainView>,
     }
 
     override fun onRequestSuccess(result: GetMetersRequestResult) {
+        meters = Gson().fromJson(result.toString(), Array<Meter>::class.java)
         try {
             val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
             App.metersService.saveMeters(meters)
@@ -91,13 +93,19 @@ class InstrumentPresenter : IPresenter<IMainView>,
     fun onInformationButtonClick() {
         view?.startInformationActivity()
     }
+
+    fun onLogoutButtonClick(){
+        view?.startLogRegActivity()
+    }
+
     /**
      * Кол-во элементов в списке
      */
-//    val itemsCount
-//      get() = meters.size
-    // TODO:
+    val itemsCount
+      get() = meters.size
 
+
+    private lateinit var meters: Array<Meter>
     private var view: IMainView? = null
 //    private var meters:
     // TODO:

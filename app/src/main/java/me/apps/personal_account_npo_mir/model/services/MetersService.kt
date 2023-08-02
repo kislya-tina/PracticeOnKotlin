@@ -6,6 +6,8 @@ import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.find_device.FindMeterRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.find_device.FindMeterServerRequest
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersServerRequest
 import java.time.LocalDateTime
@@ -17,7 +19,7 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
     private val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
 
 
-    override fun getLastMeasures(DeviceID: Int, Token: String): Map<String, Any> {
+    override fun getLastMeasures(deviceID: Int, token: String): Map<String, Any> {
         val tariff1: Int = generateId()
         val tariff2: Int = generateId()
         val tariff3: Int = generateId()
@@ -25,7 +27,7 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
         val summary: Int = tariff1 + tariff2 + tariff3 + tariff4
         val measure = mapOf(
             "summary" to summary, "tariff1" to tariff1, "tariff2" to tariff2,
-            "tariff3" to tariff3, "tariff4" to tariff4, "timestamp" to LocalDateTime.now().format(
+            "tariff3" to tariff3, "tariff4" to  tariff4, "timestamp" to LocalDateTime.now().format(
                 DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
             )
         )
@@ -90,6 +92,12 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
        meters: Array<Meter>
     ) {
         this.meters = meters
+    }
+
+    override fun findMeter(key: Int, limit: Int, token: String, resultListener:IServerRequestResultListener<FindMeterRequestResult>) {
+        val request = FindMeterServerRequest(urlForHostLoopbackInterface, key, limit, token, scope)
+        request.setServerRequestListener(resultListener)
+        request.run()
     }
 
     override fun bindMeter(

@@ -30,7 +30,6 @@ class InstrumentPresenter : IPresenter<IMainView>,
     }
 
     override fun onRequestSuccess(result: GetMetersRequestResult) {
-        meters = Gson().fromJson(result.toString(), Array<Meter>::class.java)
         try {
             val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
             App.metersService.saveMeters(meters)

@@ -12,8 +12,6 @@ import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeas
 import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureServerRequest
 
 const val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
-class MeasuresService(private val scope: CoroutineScope):ImeasureService {
-val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
 class MeasuresService(private val scope: CoroutineScope):IMeasureService {
     override fun putMeasure(deviceId: Int,
                             token:String,

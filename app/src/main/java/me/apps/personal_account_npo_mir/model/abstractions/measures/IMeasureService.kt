@@ -27,6 +27,9 @@ interface IMeasureService {
         countInPage: Int,
         resultListener: IServerRequestResultListener<GetMeasuresRequestResult>
     )
+    fun saveMeasure(
+        measure: Measure
+    )
 
     var measure : Measure?
 }

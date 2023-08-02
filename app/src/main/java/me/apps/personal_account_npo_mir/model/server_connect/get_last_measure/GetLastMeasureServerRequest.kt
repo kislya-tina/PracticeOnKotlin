@@ -53,8 +53,9 @@ class GetLastMeasureServerRequest(private val url:String,
                         doInput = true
                         httpURLConnection.setRequestProperty("X-User-Token", token)
                     }
-                    val streamReader = InputStreamReader(httpURLConnection.inputStream)
-                    streamReader.use { measure = it.readText() }
+                    streamReader = InputStreamReader(httpURLConnection.inputStream)
+                    streamReader.use {
+                        measure = it.readText() }
                     withContext(Dispatchers.Main) {
                         listener?.onRequestSuccess(GetLastMeasureRequestResult(measure))
                     }

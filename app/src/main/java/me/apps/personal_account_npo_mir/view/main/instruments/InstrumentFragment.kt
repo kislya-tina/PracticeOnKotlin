@@ -34,21 +34,19 @@ class InstrumentFragment : Fragment() {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             val meterName: TextView = view.findViewById(R.id.meterNameTextView2)
             val dateView: TextView = view.findViewById(R.id.dateTextView)
-            val indicationsTextView = view.findViewById<TextView>(R.id.meterIndicationsTextView)
-
-
 
             val meterIndex = this.getInt(ARG_OBJECT)
             val meterID = App.metersService.meters[meterIndex].id
 
-            App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter)
+            //App.metersService.getMeters()
+
+            //App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter)
             //App.measuresService.getLastMeasure(1, App.userDataService.token, presenter)
-            sumIndications = App.measuresService.measure?.summary.toString()
+            App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter).toString()
 
             meterName.text = presenter.name
             println(App.metersService.meters[0].name)
             //meterName.text = App.metersService.getMeterByID(1)?.name
-            indicationsTextView.text = sumIndications
             dateView.text = currentDate.toString()
 
         }
@@ -63,6 +61,12 @@ class InstrumentFragment : Fragment() {
             .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
     }
 
+    fun setMeterIndications(){
+        val indicationsTextView = view?.findViewById<TextView>(R.id.meterIndicationsTextView)
+        sumIndications = App.measuresService.measure?.summary.toString()
+        indicationsTextView?.text = sumIndications
+    }
+
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
 
     private val currentDate = simpleDate.format(Date())
@@ -70,4 +74,5 @@ class InstrumentFragment : Fragment() {
     private val presenter = InstrumentFragmentPresenter()
     private var sumIndications :
             String = ""
+
 }

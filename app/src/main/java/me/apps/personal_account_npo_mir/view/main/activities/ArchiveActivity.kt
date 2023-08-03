@@ -18,6 +18,12 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView {
             .apply {
                 adapter = this@ArchiveActivity.adapter
             }
+        presenter.onViewCreated(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
     override fun setHeader(header: String) {
@@ -29,8 +35,12 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView {
         adapter.notifyDataSetChanged()
     }
 
-    override fun startItemActivity() {
-        val intent = Intent(this, OnDateArchiveActivity::class.java)
+    // getMeasure(deviceID, from, to, 1, 10, token)
+
+    override fun startItemActivity(date: Long) {
+        val intent = Intent(this, OnDateArchiveActivity::class.java).apply {
+            intent.putExtra("date", date)
+        }
         startActivity(intent)
     }
 

@@ -1,6 +1,8 @@
 package me.apps.personal_account_npo_mir.model.services
+
 import kotlinx.coroutines.CoroutineScope
 import me.apps.personal_account_npo_mir.model.abstractions.meters.IMetersService
+import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.bind_meter.BindMeterServerRequest
@@ -28,6 +30,15 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
             )
         )
         return measure
+    }
+
+    override fun getMeterByID(id: Int): Meter? {
+        _meters.forEach {
+            if (it.id == id) {
+                return it
+            }
+        }
+        return null
     }
 
     /*override fun getMeters(username: String): List<Meter> = listOf(
@@ -96,17 +107,30 @@ class MetersService(private val scope: CoroutineScope) : IMetersService {
     }
 
 
+    fun generateMeterName(): String {
+        return "C05-" + (1..10).map { Random.nextInt(1..9) }.joinToString("")
+    }
 
+    fun generateId(): Int =
+        Random.nextInt(0, 255)
 
+    fun generateSerialContractNumber(): Long {
+        return (1..10).map { Random.nextInt(1..9) }.joinToString("").toLong()
+    }
 
-        fun generateMeterName(): String {
-            return "C05-" + (1..10).map { Random.nextInt(1..9) }.joinToString("")
+    override var meters: Array<Meter>
+        get() {
+            return _meters
+        }
+        set(value) {
+            _meters = value
+        }
+    override var id: Int
+        get() = _id
+        set(value) {
+            _id = value
         }
 
-        fun generateId(): Int =
-            Random.nextInt(0, 255)
-
-        fun generateSerialContractNumber(): Long {
-            return (1..10).map { Random.nextInt(1..9) }.joinToString("").toLong()
-        }
+    private var _id = 0
+    private var _meters: Array<Meter> = arrayOf(Meter())
 }

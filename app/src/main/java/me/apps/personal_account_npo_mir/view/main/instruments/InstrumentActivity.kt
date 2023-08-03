@@ -9,15 +9,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import me.apps.personal_account_npo_mir.presentation.main.InstrumentPresenter
+import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
 import me.apps.personalaccountnpomir.R
-
-private const val NUM_PAGES = 5
 
 class InstrumentActivity : FragmentActivity(),
     IMainView,
@@ -28,17 +26,20 @@ class InstrumentActivity : FragmentActivity(),
 
         archiveButton = findViewById(R.id.archiveButton)
         archiveButton.setOnClickListener(this)
+
         diagnosticButton = findViewById(R.id.diagnosticButton)
         diagnosticButton.setOnClickListener(this)
+
         transmittalButton = findViewById(R.id.transButton)
         transmittalButton.setOnClickListener(this)
+
         informationButton = findViewById(R.id.informationButton)
         informationButton.setOnClickListener(this)
 
-        adapter = DeviceAdapter(this)
+        adapter = DeviceAdapter(this, presenter)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
-
+// TODO: переделать viewPager чтобы там были только наши счетчики
         tabLayout = findViewById(R.id.tab_layout)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

@@ -28,7 +28,6 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
      */
     override fun onRequestSuccess(result: SignInRequestResult) {
         App.userDataService.token = result.token
-        // TODO: сохранять токен в файл
         App.userDataService.username = result.username
 
         //Установка серых рамок и скрытие текста

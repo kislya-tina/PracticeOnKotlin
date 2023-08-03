@@ -31,8 +31,6 @@ class InstrumentFragment : Fragment() {
         presenter.onViewCreated(this)
 
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
-            val meterName: TextView = view.findViewById(R.id.meterNameTextView2)
-            val dateView: TextView = view.findViewById(R.id.dateTextView)
             try {
                 val meterIndex = this.getInt(ARG_OBJECT)
                 val meterID = App.metersService.meters[meterIndex].id
@@ -45,8 +43,8 @@ class InstrumentFragment : Fragment() {
             catch (e: Exception){
                 e.printStackTrace()
             }
-            meterName.text = presenter.name
-            dateView.text = currentDate.toString()
+            setMeterName()
+            setMeterTime()
         }
     }
 
@@ -64,17 +62,24 @@ class InstrumentFragment : Fragment() {
         sumIndications = App.measuresService.measure?.summary.toString()
         indicationsTextView?.text = sumIndications
     }
-    fun setMeterTime(){
-        val
+
+    private fun setMeterTime(){
+        dateView =view?.findViewById(R.id.dateTextView)
+//        val currentDate = simpleDate.parse(App.measuresService.measure?.timestamp.toString())
+        dateView?.text = simpleDate.parse(App.measuresService.measure?.timestamp.toString())?.toString()
     }
-    fun setMeterName()
+
+    private fun setMeterName(){
+        meterName = view?.findViewById(R.id.meterNameTextView2)
+        meterName?.text = presenter.name
+    }
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
-
-    private val currentDate = simpleDate.format(Date())
-//    private var meterID = App.metersService.id
+//    private var currentDate = simpleDate.parse(App.measuresService.measure?.timestamp.toString())
     private val presenter = InstrumentFragmentPresenter()
-    private var sumIndications :
-            String = ""
+    private var sumIndications : String = ""
+    private var dateView : TextView? = null
+    private var meterName : TextView? = null
+
 
 }

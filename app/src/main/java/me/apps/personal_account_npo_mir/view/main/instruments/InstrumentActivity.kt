@@ -8,11 +8,8 @@ import android.widget.Button
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
-import me.apps.personal_account_npo_mir.view.login.LogRegActivity
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
@@ -48,13 +45,6 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         adapter = DeviceAdapter(this, presenter)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
-// TODO: переделать viewPager чтобы там были только наши счетчики
-        tabLayout = findViewById(R.id.tab_layout)
-
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = "${(position + 1)}"
-        }.attach()
-
     }
 
 
@@ -111,11 +101,11 @@ class InstrumentActivity : FragmentActivity(), IMainView,
 //        val intent = Intent(this, LogRegActivity::class.java)
 //        startActivity(intent)
 //    }
+
     override fun startSearchDevicesActivity(){
         val intent = Intent(this, SearchDevicesActivity::class.java)
         startActivity(intent)
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -135,7 +125,6 @@ class InstrumentActivity : FragmentActivity(), IMainView,
 //    private lateinit var logoutButton: Button
     private lateinit var adapter: DeviceAdapter
     private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
     private lateinit var addDevicesButton: AppCompatButton
     private var presenter = InstrumentPresenter()
 }

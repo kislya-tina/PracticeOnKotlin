@@ -13,6 +13,7 @@ import me.apps.personalaccountnpomir.R
 
 class SignInPresenter() : IPresenter<ISignInView>,
     IServerRequestResultListener<SignInRequestResult>{
+
     object SaveMeters: IServerRequestResultListener<GetMetersRequestResult>{
 
         override fun onRequestSuccess(result: GetMetersRequestResult) {
@@ -25,6 +26,8 @@ class SignInPresenter() : IPresenter<ISignInView>,
         }
 
     }
+
+
     /**
      * Колбэк при создании View
      */

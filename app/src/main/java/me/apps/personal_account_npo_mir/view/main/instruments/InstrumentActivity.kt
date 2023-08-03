@@ -12,9 +12,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
-import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
+import me.apps.personal_account_npo_mir.view.main.activities.diagnostic.DiagnosticActivity
 import me.apps.personalaccountnpomir.R
 
 class InstrumentActivity : FragmentActivity(),

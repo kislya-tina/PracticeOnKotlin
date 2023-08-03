@@ -29,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity"
+            android:name="me.apps.personal_account_npo_mir.view.main.activities.diagnostic.DiagnosticActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

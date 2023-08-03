@@ -49,50 +49,45 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/indications_by_date"
                 android:layout_margin="5dp"
+                android:text="@string/indications_by_date"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <EditText
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/date_rectangle"
-                android:inputType="date"
                 android:layout_margin="5dp"
-                />
+                android:background="@drawable/date_rectangle"
+                android:inputType="date" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/before"
                 android:layout_margin="5dp"
+                android:text="@string/before"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/date_rectangle"
-                android:inputType="date"
                 android:layout_margin="5dp"
-                />
+                android:background="@drawable/date_rectangle"
+                android:inputType="date" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/archiveRecycler"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             />
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -108,8 +103,8 @@
         android:id="@+id/back_button"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:background="@drawable/main_back_button"
         android:layout_margin="20dp"
+        android:background="@drawable/main_back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

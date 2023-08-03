@@ -18,7 +18,4 @@ interface ILoginService {
         phoneNumber: String,
         resultListener: IServerRequestResultListener<SignInRequestResult>
     )
-
-
-
 }

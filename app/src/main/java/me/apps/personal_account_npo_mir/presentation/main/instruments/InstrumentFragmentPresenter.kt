@@ -10,10 +10,11 @@ import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.main.instruments.InstrumentFragment
 
 class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
-    IServerRequestResultListener<GetLastMeasureRequestResult> {
+    IServerRequestResultListener<GetLastMeasureRequestResult>{
 
     override fun onViewCreated(view: InstrumentFragment) {
         this.view = view
+        name = App.metersService.meters[0].name
     }
 
     override fun onDestroy() {
@@ -22,16 +23,20 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
 
     override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
         try {
-            App.measuresService.measure = Gson().fromJson(result.toString(), Measure::class.java)
-        }
-        catch (e:Exception){
+            println(result.toString())
+            val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
+            App.measuresService.saveMeasure(measure)
+            view?.setMeterIndications()
+            //вот тут надо назначать время счетчику
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
     override fun onRequestFail(message: ErrorCode) {
-
+        println("pipipupu")
     }
 
-    private var view : InstrumentFragment? = null
+    private var view: InstrumentFragment? = null
+    var name : String = ""
 }

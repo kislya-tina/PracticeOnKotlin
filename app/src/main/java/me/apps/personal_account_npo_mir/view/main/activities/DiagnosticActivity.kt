@@ -7,10 +7,10 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import me.apps.personalaccountnpomir.R
 
-class InformationActivity: AppCompatActivity(), OnClickListener {
+class DiagnosticActivity : AppCompatActivity(), OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_information)
+        setContentView(R.layout.activity_diagnostic)
 
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener(this)
@@ -22,5 +22,6 @@ class InformationActivity: AppCompatActivity(), OnClickListener {
     }
 
     private lateinit var backButton: Button
+
 
 }

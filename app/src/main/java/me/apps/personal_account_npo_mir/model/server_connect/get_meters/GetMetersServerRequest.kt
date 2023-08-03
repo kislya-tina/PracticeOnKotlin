@@ -63,7 +63,6 @@ class GetMetersServerRequest(private val url:String,
                     streamReader?.close()
                 }
             }
-
             listener = null
         }
     }

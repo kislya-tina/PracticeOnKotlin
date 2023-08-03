@@ -21,19 +21,13 @@ class InstrumentPresenter : IPresenter<IMainView>,
         val username = App.userDataService.username
         val token = App.userDataService.token
         view.setHeader(username)
-        //App.metersService.getMeters(token, this)
-        val request = GetMetersServerRequest(urlForHostLoopbackInterface, token, App.networkScope)
-        request.setServerRequestListener(this)
-        request.run()
-
+        App.metersService.getMeters(token, this)
     }
 
     override fun onRequestSuccess(result: GetMetersRequestResult) {
         try {
             val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
             App.metersService.saveMeters(meters)
-            println(meters.toString())
-            //App.metersService.id = meters[0].id.toInt()
         }catch (e:Exception){
             e.printStackTrace()
         }

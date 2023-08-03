@@ -31,6 +31,7 @@ class SignInPresenter() : IPresenter<ISignInView>,
     override fun onViewCreated(view: ISignInView) {
         this.view = view
         if (App.userDataService.token.isNotEmpty()) {
+            App.metersService.getMeters(App.userDataService.token, SaveMeters)
             view.startMainActivity()
         }
     }

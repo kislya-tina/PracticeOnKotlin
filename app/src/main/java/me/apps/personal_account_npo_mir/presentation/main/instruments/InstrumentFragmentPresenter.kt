@@ -27,6 +27,7 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
             val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
             App.measuresService.saveMeasure(measure)
             view?.setMeterIndications()
+            //вот тут надо назначать время счетчику
         } catch (e: Exception) {
             e.printStackTrace()
         }

@@ -129,6 +129,5 @@ class RegistrationPresenter : IPresenter<IRegistrationView>,
     private var password: String = ""
     private var repeatedPassword: String = ""
 
-    private var token: String = ""
     private var view : IRegistrationView? = null
 }

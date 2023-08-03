@@ -15,6 +15,7 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class PutMeasureServerRequest(
     private val urlForHostLoopbackInterface: String,
@@ -53,8 +54,11 @@ class PutMeasureServerRequest(
                     connection.setRequestProperty("Content-Type", "application/json")
                     connection.setRequestProperty("X-User-Token", token)
                     connection.doOutput = true
-                    val datetime = LocalDateTime.now()
-                    measure.timestamp = datetime.toString()
+                    val now: LocalDateTime = LocalDateTime.now()
+                    val formatter: DateTimeFormatter =
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                    val formatDateTime: String = now.format(formatter)
+                    measure.timestamp = formatDateTime.toString()
                     val measureJson = gson.toJson(measure)
                     println(measureJson)
                     val outputStream = OutputStreamWriter(connection.outputStream)

@@ -33,7 +33,7 @@ class App : Application() {
         lateinit var loginService: ILoginService
         lateinit var userDataService: IUserDataService
         lateinit var networkScope: CoroutineScope
-        lateinit var archiveDateService:IArchiveDateService
+        lateinit var archiveDateService: IArchiveDateService
         lateinit var metersService: IMetersService
         lateinit var archiveDateService: IArchiveDateService
         lateinit var diagnosticService: IDiagnosticService

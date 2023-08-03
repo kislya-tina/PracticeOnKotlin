@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back_light_gray">
@@ -44,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/codeText"
         android:textSize="18sp"
-        android:layout_marginTop="60dp"
+        android:layout_margin="60dp"
         app:layout_constraintEnd_toStartOf="@+id/errorTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -57,20 +56,8 @@
         android:textSize="18sp"
         android:layout_margin="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/codeTextView"
         app:layout_constraintTop_toTopOf="@+id/imageView"/>
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-        android:layout_margin="5dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toBottomOf="@+id/codeTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="25dp"
-       />
 
    <!-- <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
@@ -78,39 +65,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />-->
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/success_diagnostic"
-        app:layout_constraintEnd_toStartOf="@+id/codeText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeTextView" />
-
-    <TextView
-        android:id="@+id/codeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_00"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:layout_margin="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/errorTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/codeTextView" />
-
-    <TextView
-        android:id="@+id/errorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Дигностика прошла успешно"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/codeText"
-        app:layout_constraintTop_toBottomOf="@id/errorTextView" />
 
 
 

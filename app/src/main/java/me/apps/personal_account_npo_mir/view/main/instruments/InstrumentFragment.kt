@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentFragmentPresenter
-import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personalaccountnpomir.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,21 +33,20 @@ class InstrumentFragment : Fragment() {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             val meterName: TextView = view.findViewById(R.id.meterNameTextView2)
             val dateView: TextView = view.findViewById(R.id.dateTextView)
-
-            val meterIndex = this.getInt(ARG_OBJECT)
-            val meterID = App.metersService.meters[meterIndex].id
-
-            //App.metersService.getMeters()
-
-            //App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter)
-            //App.measuresService.getLastMeasure(1, App.userDataService.token, presenter)
-            App.measuresService.getLastMeasure(meterID.toInt(), App.userDataService.token, presenter).toString()
-
+            try {
+                val meterIndex = this.getInt(ARG_OBJECT)
+                val meterID = App.metersService.meters[meterIndex].id
+                App.measuresService.getLastMeasure(
+                    meterID.toInt(),
+                    App.userDataService.token,
+                    presenter
+                )
+            }
+            catch (e: Exception){
+                e.printStackTrace()
+            }
             meterName.text = presenter.name
-            println(App.metersService.meters[0].name)
-            //meterName.text = App.metersService.getMeterByID(1)?.name
             dateView.text = currentDate.toString()
-
         }
     }
 
@@ -70,7 +68,7 @@ class InstrumentFragment : Fragment() {
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
 
     private val currentDate = simpleDate.format(Date())
-    private var meterID = App.metersService.id
+//    private var meterID = App.metersService.id
     private val presenter = InstrumentFragmentPresenter()
     private var sumIndications :
             String = ""

@@ -10,7 +10,6 @@ import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMeter
 import me.apps.personal_account_npo_mir.model.services.urlForHostLoopbackInterface
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
-import me.apps.personal_account_npo_mir.view.abstractions.main.IMeterListViewItem
 
 class InstrumentPresenter : IPresenter<IMainView>,
     IServerRequestResultListener<GetMetersRequestResult> {
@@ -32,8 +31,8 @@ class InstrumentPresenter : IPresenter<IMainView>,
     override fun onRequestSuccess(result: GetMetersRequestResult) {
         try {
             val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
-            //App.metersService.saveMeters(meters)
-            //println(meters[0].name)
+            App.metersService.saveMeters(meters)
+            println(meters.toString())
             //App.metersService.id = meters[0].id.toInt()
         }catch (e:Exception){
             e.printStackTrace()
@@ -54,8 +53,8 @@ class InstrumentPresenter : IPresenter<IMainView>,
 
     /**
      * Колбэк при создании элемента списка
-     * @param view Представление элемента списка счетчиков\
-     * @param position Индекс позиции, по которой будет отображен элемент
+//     * @param view Представление элемента списка счетчиков\
+//     * @param position Индекс позиции, по которой будет отображен элемент
      */
 
 //    fun onBindViewItem(view: IMeterListViewItem, position: Int) {
@@ -104,8 +103,8 @@ class InstrumentPresenter : IPresenter<IMainView>,
     /**
      * Кол-во элементов в списке
      */
-    val itemsCount
-      get() = meters.size
+//    val itemsCount
+//      get() = meters.size
 
 
     private lateinit var meters: Array<Meter>

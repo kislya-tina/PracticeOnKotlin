@@ -1,6 +1,8 @@
 package me.apps.personal_account_npo_mir.presentation.login
 
+import com.google.gson.Gson
 import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersRequestResult
@@ -11,6 +13,18 @@ import me.apps.personalaccountnpomir.R
 
 class SignInPresenter() : IPresenter<ISignInView>,
     IServerRequestResultListener<SignInRequestResult>{
+    object SaveMeters: IServerRequestResultListener<GetMetersRequestResult>{
+
+        override fun onRequestSuccess(result: GetMetersRequestResult) {
+            val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
+            App.metersService.saveMeters(meters)
+        }
+
+        override fun onRequestFail(message: ErrorCode) {
+            println("Meters Service is empty")
+        }
+
+    }
     /**
      * Колбэк при создании View
      */
@@ -19,8 +33,6 @@ class SignInPresenter() : IPresenter<ISignInView>,
         if (App.userDataService.token.isNotEmpty()) {
             view.startMainActivity()
         }
-        //проверка на файл и токены
-        // если есть токен, ывзвать метолд в фрагменте в котором запустить след
     }
 
     /**
@@ -37,6 +49,7 @@ class SignInPresenter() : IPresenter<ISignInView>,
         App.userDataService.token = result.token
         App.userDataService.username = result.username
         App.tokenService.saveToken(result.token)
+        App.metersService.getMeters(App.userDataService.token, SaveMeters)
 
         //Установка серых рамок и скрытие текста
         view?.setStateFr(true)

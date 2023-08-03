@@ -16,10 +16,12 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class SignUpServerRequest(private val url:String,
-                          private val username: String,
-                          private val password:String,
-                          private val scope: CoroutineScope): IServerRequest<SignInRequestResult> {
+class SignUpServerRequest(
+    private val url: String,
+    private val username: String,
+    private val password: String,
+    private val scope: CoroutineScope
+) : IServerRequest<SignInRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<SignInRequestResult>) {
         this.listener = listener
     }
@@ -45,7 +47,7 @@ class SignUpServerRequest(private val url:String,
                 var httpURLConnection: HttpURLConnection? = null
                 var streamReader: InputStreamReader? = null
                 try {
-                    val URLAddress: String = url +"SignUp" + "/"+username+"/"+password
+                    val URLAddress: String = url + "SignUp" + "/" + username + "/" + password
                     var token: String = ""
                     httpURLConnection =
                         URL(URLAddress).openConnection() as HttpURLConnection
@@ -58,9 +60,9 @@ class SignUpServerRequest(private val url:String,
                     withContext(Dispatchers.Main) {
                         listener?.onRequestSuccess(SignInRequestResult(token, username))
                     }
-                }catch (e: MalformedURLException) {
+                } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
                     }
                 } catch (e: IOException) {
                     withContext(Dispatchers.Main) {
@@ -75,5 +77,6 @@ class SignUpServerRequest(private val url:String,
             listener = null
         }
     }
+
     private var listener: IServerRequestResultListener<SignInRequestResult>? = null
 }

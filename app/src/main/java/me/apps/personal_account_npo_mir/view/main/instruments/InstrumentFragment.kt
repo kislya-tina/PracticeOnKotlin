@@ -64,11 +64,7 @@ class InstrumentFragment : Fragment() {
         sumIndications = App.measuresService.measure?.summary.toString()
         indicationsTextView?.text = sumIndications
     }
-    fun setMeterTime(){
-        val
-    }
-    fun setMeterName()
-
+  
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
 
     private val currentDate = simpleDate.format(Date())

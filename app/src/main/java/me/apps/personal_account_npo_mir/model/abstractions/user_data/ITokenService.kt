@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model.abstractions
+package me.apps.personal_account_npo_mir.model.abstractions.user_data
 
 import android.content.Context
 

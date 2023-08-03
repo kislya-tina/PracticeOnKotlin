@@ -14,26 +14,37 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class FindMeterServerRequest(private val url: String,
-                             private val key: Int,
-                             private val limit: Int,
-                             private val token: String,
-                             private val scope: CoroutineScope):IServerRequest<FindMeterRequestResult> {
+class FindMeterServerRequest(
+    private val url: String,
+    private val key: Int,
+    private val limit: Int,
+    private val token: String,
+    private val scope: CoroutineScope
+) : IServerRequest<FindMeterRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<FindMeterRequestResult>) {
         this.listener = listener
     }
+
     override fun run() {
         scope.launch {
             if (url == "") {
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_URL)
                 }
+            } else if (key == null || limit == null) {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.INPUT_EMPTY)
+                }
+            } else if (token == "") {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_TOKEN)
+                }
             } else {
                 var httpURLConnection: HttpURLConnection? = null
                 var streamReader: InputStreamReader? = null
                 try {
                     val urlAddress: String =
-                        url + "Devices/find/"+ key + "/" + limit
+                        url + "Devices/find/" + key + "/" + limit
                     var meter = ""
                     httpURLConnection =
                         withContext(Dispatchers.IO) {
@@ -51,11 +62,11 @@ class FindMeterServerRequest(private val url: String,
                     }
                 } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
                     }
                 } catch (e: IOException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
                     }
                 } finally {
                     httpURLConnection?.disconnect()

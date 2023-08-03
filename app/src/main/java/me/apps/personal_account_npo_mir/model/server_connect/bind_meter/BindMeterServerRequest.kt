@@ -14,10 +14,9 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class BindMeterServerRequest(val url:String,
-                             val deviceId:Int,
-                             val token:String,
-                             val scope: CoroutineScope):IServerRequest<BindMeterRequestResult> {
+class BindMeterServerRequest(
+    val url: String, val deviceId: Int, val token: String, val scope: CoroutineScope
+) : IServerRequest<BindMeterRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<BindMeterRequestResult>) {
         TODO("Not yet implemented")
     }
@@ -32,7 +31,15 @@ class BindMeterServerRequest(val url:String,
                 }
             } else if (token == "") {
                 withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
+                    listener?.onRequestFail(ErrorCode.BLANK_TOKEN)
+                }
+            } else if (deviceId == null) {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_METER_ID)
+                }
+            } else if (token == "") {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_TOKEN)
                 }
             } else {
                 var httpURLConnection: HttpURLConnection? = null
@@ -40,8 +47,7 @@ class BindMeterServerRequest(val url:String,
                 var requestCode: String = ""
                 val urlAddress = URL(url + "Devices/linktouser?deviceId=" + deviceId)
                 try {
-                    httpURLConnection =
-                        urlAddress.openConnection() as HttpURLConnection
+                    httpURLConnection = urlAddress.openConnection() as HttpURLConnection
                     httpURLConnection.setRequestProperty("X-User-Token", token)
                     httpURLConnection.apply {
                         connectTimeout = 10000
@@ -56,14 +62,13 @@ class BindMeterServerRequest(val url:String,
 
                 } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
                     }
-                } catch (e:IOException) {
+                } catch (e: IOException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
                     }
-                }
-                finally {
+                } finally {
                     httpURLConnection?.disconnect()
                     streamReader?.close()
                 }
@@ -72,5 +77,6 @@ class BindMeterServerRequest(val url:String,
             listener = null
         }
     }
+
     private var listener: IServerRequestResultListener<BindMeterRequestResult>? = null
 }

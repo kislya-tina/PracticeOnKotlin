@@ -22,8 +22,8 @@ class PutMeasureServerRequest(
     private val deviceId: Int,
     val token: String,
     val measure: Measure,
-    private val scope:CoroutineScope
-):IServerRequest<PutMeasureRequestResult> {
+    private val scope: CoroutineScope
+) : IServerRequest<PutMeasureRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<PutMeasureRequestResult>) {
         this.listener = listener
     }
@@ -36,7 +36,15 @@ class PutMeasureServerRequest(
                 }
             } else if (token == "") {
                 withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
+                    listener?.onRequestFail(ErrorCode.BLANK_TOKEN)
+                }
+            } else if (deviceId == null) {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_METER_ID)
+                }
+            } else if (measure == null) {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.INPUT_EMPTY)
                 }
             } else {
                 val urlAddress: String =
@@ -68,15 +76,17 @@ class PutMeasureServerRequest(
                         outputStream.close()
                     }
                     val responseCode = connection.responseCode
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         listener?.onRequestSuccess(PutMeasureRequestResult(responseCode))
                     }
-
                 } catch (e: MalformedURLException) {
-                    e.printStackTrace()
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
+                    }
                 } catch (e: IOException) {
-                    e.printStackTrace()
-
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
+                    }
                 } finally {
                     httpURLConnection?.disconnect()
                     writer?.close()
@@ -86,5 +96,6 @@ class PutMeasureServerRequest(
             }
         }
     }
+
     private var listener: IServerRequestResultListener<PutMeasureRequestResult>? = null
 }

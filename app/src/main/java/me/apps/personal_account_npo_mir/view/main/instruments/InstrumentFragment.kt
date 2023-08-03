@@ -43,8 +43,8 @@ class InstrumentFragment : Fragment() {
             catch (e: Exception){
                 e.printStackTrace()
             }
-            setMeterName()
-            setMeterTime()
+//            setMeterName()
+//            setMeterTime()
         }
     }
 
@@ -63,13 +63,12 @@ class InstrumentFragment : Fragment() {
         indicationsTextView?.text = sumIndications
     }
 
-    private fun setMeterTime(){
+     fun setMeterTime(){
         dateView =view?.findViewById(R.id.dateTextView)
-//        val currentDate = simpleDate.parse(App.measuresService.measure?.timestamp.toString())
         dateView?.text = simpleDate.parse(App.measuresService.measure?.timestamp.toString())?.toString()
     }
 
-    private fun setMeterName(){
+     fun setMeterName(){
         meterName = view?.findViewById(R.id.meterNameTextView2)
         meterName?.text = presenter.name
     }

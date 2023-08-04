@@ -12,7 +12,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
-import me.apps.personal_account_npo_mir.view.login.LogRegActivity
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
@@ -39,8 +38,10 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         informationButton = findViewById(R.id.informationButton)
         informationButton.setOnClickListener(this)
 
-//        logoutButton = findViewById(R.id.logoutButton)
-//        logoutButton.setOnClickListener(this)
+        logoutButton = findViewById(R.id.logout_btn)
+        logoutButton.setOnClickListener(this)
+
+        adapter = DeviceAdapter(this)
 
         addDevicesButton = findViewById(R.id.addDevicesBtn)
         addDevicesButton.setOnClickListener(this)
@@ -74,9 +75,9 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         if (view === addDevicesButton) {
             presenter.onAddDevicesButtonClick()
         }
-//        if(view === logoutButton){
-//            presenter.onLogoutButtonClick()
-//        }
+        if (view === logoutButton) {
+          //  presenter.onLogoutButtonClick()
+        }
     }
 
     override fun refreshItems() {
@@ -125,6 +126,8 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         transmittalButton.setOnClickListener(null)
         informationButton.setOnClickListener(null)
 
+        logoutButton.setOnClickListener(null)
+
         presenter.onDestroy()
     }
 
@@ -132,7 +135,7 @@ class InstrumentActivity : FragmentActivity(), IMainView,
     private lateinit var diagnosticButton: Button
     private lateinit var transmittalButton: Button
     private lateinit var informationButton: Button
-//    private lateinit var logoutButton: Button
+    private lateinit var logoutButton: Button
     private lateinit var adapter: DeviceAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout

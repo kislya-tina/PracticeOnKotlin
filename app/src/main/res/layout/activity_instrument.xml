@@ -6,26 +6,24 @@
     android:background="#E7E7E7"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/infoIconImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:src="@drawable/meter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/informationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_margin="25dp"
         android:text="@string/meters_main"
-        android:layout_marginTop="20dp"
         android:theme="@style/textStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logout_btn"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ic_logout"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.10"
-        app:layout_constraintStart_toEndOf="@id/infoIconImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -36,7 +34,9 @@
         android:src="@drawable/white_rectangle_2"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/infoIconImageView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logout_btn" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -55,6 +55,7 @@
             android:layout_height="0dp"
             android:background="#E7E7E7"
             app:tabIndicatorHeight="0dp" />
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"

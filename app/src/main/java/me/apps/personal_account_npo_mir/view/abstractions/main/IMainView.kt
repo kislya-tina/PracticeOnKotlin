@@ -38,4 +38,5 @@ interface IMainView {
   fun startInformationActivity()
 
   fun startSearchDevicesActivity()
+  fun startLogRegActivity()
 }

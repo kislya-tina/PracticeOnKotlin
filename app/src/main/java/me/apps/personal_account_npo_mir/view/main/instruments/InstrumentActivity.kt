@@ -12,6 +12,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
+import me.apps.personal_account_npo_mir.view.login.LogRegActivity
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
@@ -41,7 +42,7 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         logoutButton = findViewById(R.id.logout_btn)
         logoutButton.setOnClickListener(this)
 
-        adapter = DeviceAdapter(this)
+        adapter = DeviceAdapter(this, presenter)
 
         addDevicesButton = findViewById(R.id.addDevicesBtn)
         addDevicesButton.setOnClickListener(this)
@@ -76,7 +77,7 @@ class InstrumentActivity : FragmentActivity(), IMainView,
             presenter.onAddDevicesButtonClick()
         }
         if (view === logoutButton) {
-          //  presenter.onLogoutButtonClick()
+            presenter.onLogoutButtonClick()
         }
     }
 
@@ -108,10 +109,11 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         startActivity(intent)
     }
 
-//    override fun startLogRegActivity() {
-//        val intent = Intent(this, LogRegActivity::class.java)
-//        startActivity(intent)
-//    }
+    override fun startLogRegActivity() {
+        val intent = Intent(this, LogRegActivity::class.java)
+        startActivity(intent)
+   }
+
     override fun startSearchDevicesActivity(){
         val intent = Intent(this, SearchDevicesActivity::class.java)
         startActivity(intent)

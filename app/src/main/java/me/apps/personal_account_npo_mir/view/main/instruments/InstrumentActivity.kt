@@ -126,3 +126,4 @@ class InstrumentActivity : FragmentActivity(),
     private lateinit var addDevicesButton: AppCompatButton
     private var presenter = InstrumentPresenter()
 }
+

@@ -31,12 +31,6 @@ class InstrumentFragment : Fragment() {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             try {
                 presenter.onMeterIndexCreate(this.getInt(ARG_OBJECT))
-                App.measuresService.getLastMeasure(
-                    presenter.meterID,
-                    App.userDataService.token,
-                    presenter
-                )
-                presenter.setMeterName()
             }
             catch (e: Exception){
                 e.printStackTrace()

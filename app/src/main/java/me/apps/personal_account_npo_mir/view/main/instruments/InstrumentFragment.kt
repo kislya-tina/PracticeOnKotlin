@@ -51,9 +51,6 @@ class InstrumentFragment : Fragment(), View.OnClickListener{
         }
     }
 
-
-
-
     private fun generateMeterName(): String {
         return (1..10).map { Random.nextInt(1..9) }.joinToString("")
     }

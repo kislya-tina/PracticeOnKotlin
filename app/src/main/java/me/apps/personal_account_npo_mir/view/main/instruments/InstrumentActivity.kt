@@ -85,12 +85,6 @@ class InstrumentActivity : AppCompatActivity(),
 
     override fun onDestroy() {
         super.onDestroy()
-
-        /* archiveButton.setOnClickListener(null)
-         diagnosticButton.setOnClickListener(null)
-         transmittalButton.setOnClickListener(null)
-         informationButton.setOnClickListener(null)*/
-
         presenter.onDestroy()
     }
 

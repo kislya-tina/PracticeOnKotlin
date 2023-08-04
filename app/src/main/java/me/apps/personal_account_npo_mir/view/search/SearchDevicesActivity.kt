@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import me.apps.personalaccountnpomir.R
 
 class SearchDevicesActivity : AppCompatActivity(), OnClickListener {
@@ -18,11 +19,18 @@ class SearchDevicesActivity : AppCompatActivity(), OnClickListener {
         editText = findViewById(R.id.searchDevicesEditText)
         editText.setOnClickListener(this)
 
+        backButton = findViewById(R.id.backButton)
+        backButton.setOnClickListener(this)
+
     }
 
-    override fun onClick(v: View?) {
+    override fun onClick(view: View?) {
+        if(view == backButton){
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private lateinit var textView: TextView
     private lateinit var editText: EditText
+    private lateinit var backButton: AppCompatButton
 }

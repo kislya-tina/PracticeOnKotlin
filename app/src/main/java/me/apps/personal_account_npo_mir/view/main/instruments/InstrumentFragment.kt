@@ -43,8 +43,6 @@ class InstrumentFragment : Fragment() {
             catch (e: Exception){
                 e.printStackTrace()
             }
-//            setMeterName()
-//            setMeterTime()
         }
     }
 
@@ -65,7 +63,6 @@ class InstrumentFragment : Fragment() {
     }
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
-//    private var currentDate = simpleDate.parse(App.measuresService.measure?.timestamp.toString())
     private val presenter = InstrumentFragmentPresenter()
     private var sumIndications : String = ""
     private var dateView : TextView? = null

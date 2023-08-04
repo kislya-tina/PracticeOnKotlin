@@ -14,7 +14,7 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
 
     override fun onViewCreated(view: InstrumentFragment) {
         this.view = view
-        name = App.metersService.meters[0].name
+        name = App.metersService.meters[view.meterID].name
     }
 
     override fun onDestroy() {

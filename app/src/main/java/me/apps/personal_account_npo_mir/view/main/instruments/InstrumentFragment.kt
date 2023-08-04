@@ -33,9 +33,9 @@ class InstrumentFragment : Fragment() {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             try {
                 val meterIndex = this.getInt(ARG_OBJECT)
-                val meterID = App.metersService.meters[meterIndex].id
+                meterID = App.metersService.meters[meterIndex].id.toInt()
                 App.measuresService.getLastMeasure(
-                    meterID.toInt(),
+                    meterID,
                     App.userDataService.token,
                     presenter
                 )
@@ -43,18 +43,7 @@ class InstrumentFragment : Fragment() {
             catch (e: Exception){
                 e.printStackTrace()
             }
-//            setMeterName()
-//            setMeterTime()
         }
-    }
-
-    private fun generateMeterName(): String {
-        return (1..10).map { Random.nextInt(1..9) }.joinToString("")
-    }
-
-    private fun generateIndications(): String {
-        return (1..3).map { Random.nextInt(1..9) }
-            .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
     }
 
     fun setMeterIndications(){
@@ -74,11 +63,11 @@ class InstrumentFragment : Fragment() {
     }
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
-//    private var currentDate = simpleDate.parse(App.measuresService.measure?.timestamp.toString())
     private val presenter = InstrumentFragmentPresenter()
     private var sumIndications : String = ""
     private var dateView : TextView? = null
     private var meterName : TextView? = null
+    var meterID : Int = 0
 
 
 }

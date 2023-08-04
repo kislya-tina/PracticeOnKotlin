@@ -31,7 +31,7 @@ class InstrumentFragment : Fragment() {
             val meterName: TextView = view.findViewById(R.id.meterNameTextView2)
             val dateView: TextView = view.findViewById(R.id.dateTextView)
             val indicationsTextView = view.findViewById<TextView>(R.id.meterIndicationsTextView)
-
+// check
             val meterIndex = this.getInt(ARG_OBJECT)
             val meterID = App.metersService.meters[meterIndex].id
             App.measuresService.getLastMeasure(meterID, App.userDataService.token, presenter)

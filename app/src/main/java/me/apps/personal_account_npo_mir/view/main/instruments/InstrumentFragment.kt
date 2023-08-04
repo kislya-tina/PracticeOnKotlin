@@ -11,8 +11,6 @@ import me.apps.personal_account_npo_mir.presentation.main.instruments.Instrument
 import me.apps.personalaccountnpomir.R
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.random.Random
-import kotlin.random.nextInt
 
 const val ARG_OBJECT = "object"
 
@@ -28,17 +26,17 @@ class InstrumentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        presenter.onViewCreated(this)
 
+        presenter.onViewCreated(this)
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             try {
-                val meterIndex = this.getInt(ARG_OBJECT)
-                meterID = App.metersService.meters[meterIndex].id.toInt()
+                presenter.onMeterIndexCreate(this.getInt(ARG_OBJECT))
                 App.measuresService.getLastMeasure(
-                    meterID,
+                    presenter.meterID,
                     App.userDataService.token,
                     presenter
                 )
+                presenter.setMeterName()
             }
             catch (e: Exception){
                 e.printStackTrace()
@@ -46,20 +44,20 @@ class InstrumentFragment : Fragment() {
         }
     }
 
-    fun setMeterIndications(){
+    fun setMeterIndications(text : String){
         val indicationsTextView = view?.findViewById<TextView>(R.id.meterIndicationsTextView)
-        sumIndications = App.measuresService.measure?.summary.toString()
+        sumIndications = text
         indicationsTextView?.text = sumIndications
     }
 
-     fun setMeterTime(){
+     fun setMeterTime(timestamp : String){
         dateView =view?.findViewById(R.id.dateTextView)
-        dateView?.text = simpleDate.parse(App.measuresService.measure?.timestamp.toString())?.toString()
+        dateView?.text = simpleDate.parse(timestamp)?.toString()
     }
 
-     fun setMeterName(){
+     fun setMeterName(name : String){
         meterName = view?.findViewById(R.id.meterNameTextView2)
-        meterName?.text = presenter.name
+        meterName?.text = name
     }
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
@@ -67,7 +65,6 @@ class InstrumentFragment : Fragment() {
     private var sumIndications : String = ""
     private var dateView : TextView? = null
     private var meterName : TextView? = null
-    var meterID : Int = 0
 
 
 }

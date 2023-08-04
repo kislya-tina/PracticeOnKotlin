@@ -14,7 +14,8 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
 
     override fun onViewCreated(view: InstrumentFragment) {
         this.view = view
-        name = App.metersService.meters[view.meterID].name
+        this.view?.setMeterIndications(App.measuresService.measure?.summary.toString())
+        this.view?.setMeterTime(App.measuresService.measure?.timestamp.toString())
     }
 
     override fun onDestroy() {
@@ -26,10 +27,6 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
             println(result.toString())
             val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
             App.measuresService.saveMeasure(measure)
-            view?.setMeterIndications()
-            view?.setMeterTime()
-            view?.setMeterName()
-            //вот тут надо назначать время счетчику
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -39,6 +36,18 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
         println("pipipupu")
     }
 
+    fun onMeterIndexCreate(meterIndex : Int){
+        this.meterIndex = meterIndex
+    }
+
+    fun setMeterName(){
+        meterID = App.metersService.meters[meterIndex].id.toInt()
+        name = App.metersService.meters[meterID].name
+        view?.setMeterName(name)
+    }
+
     private var view: InstrumentFragment? = null
     var name : String = ""
+    var meterID = 0
+    var meterIndex = 0
 }

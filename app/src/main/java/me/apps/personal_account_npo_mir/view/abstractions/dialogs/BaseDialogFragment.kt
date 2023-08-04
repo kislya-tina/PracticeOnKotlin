@@ -28,7 +28,6 @@ abstract class BaseDialogFragment<TDialogView : IDialogView>(
         titleTextView = view.findViewById(R.id.dialog_title_text_view)
         positiveButton = view.findViewById(R.id.dialog_positive_button)
         positiveButton?.setOnClickListener(this)
-        negativeButton = view.findViewById(R.id.dialog_negative_button)
         negativeButton?.setOnClickListener(this)
         return view
     }
@@ -66,7 +65,6 @@ abstract class BaseDialogFragment<TDialogView : IDialogView>(
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.dialog_positive_button -> presenter.onOkButtonClick()
-            R.id.dialog_negative_button -> presenter.onCancelButtonClick()
         }
         dialog?.dismiss()
     }

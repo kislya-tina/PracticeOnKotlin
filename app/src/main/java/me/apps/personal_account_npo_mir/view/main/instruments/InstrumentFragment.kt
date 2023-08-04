@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentFragmentPresenter
 import me.apps.personalaccountnpomir.R
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.random.Random
-import kotlin.random.nextInt
 
 const val ARG_OBJECT = "object"
 
@@ -42,18 +41,6 @@ class InstrumentFragment : Fragment() {
         }
     }
 
-    private fun generateMeterName(): String {
-        return (1..10).map { Random.nextInt(1..9) }.joinToString("")
-    }
-
-    private fun generateIndications(): String {
-        return (1..3).map { Random.nextInt(1..9) }
-            .joinToString("") + "." + (1..2).map { Random.nextInt(1..9) }.joinToString("")
-    }
-
-    private var sumIndications :
-            String = "   " + App.metersService.getLastMeasures(123, "123")["summary"].toString()
-
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.GERMANY)
 
@@ -61,7 +48,6 @@ class InstrumentFragment : Fragment() {
     private val currentDate = simpleDate.format(Date())
     private var meterID = App.metersService.id
     private val presenter = InstrumentFragmentPresenter()
-    private var sumIndications :
-            String = App.measuresService.getLastMeasure(meterID, App.userDataService.token, presenter).toString()
+    private var sumIndications : String = App.measuresService.getLastMeasure(meterID, App.userDataService.token, presenter).toString()
 
 }

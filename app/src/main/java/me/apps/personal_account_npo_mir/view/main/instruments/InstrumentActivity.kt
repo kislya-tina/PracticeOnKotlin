@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -14,9 +15,10 @@ import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
+import me.apps.personal_account_npo_mir.view.main.activities.diagnostic.DiagnosticActivity
+import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
 
-private const val NUM_PAGES = 5
 
 class InstrumentActivity : FragmentActivity(),
     IMainView,
@@ -33,10 +35,11 @@ class InstrumentActivity : FragmentActivity(),
         transmittalButton.setOnClickListener(this)
         informationButton = findViewById(R.id.informationButton)
         informationButton.setOnClickListener(this)
+
         addDevicesButton = findViewById(R.id.addDevicesBtn)
         addDevicesButton.setOnClickListener(this)
 
-        adapter = DeviceAdapter(this)
+        adapter = DeviceAdapter(this, presenter)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
 

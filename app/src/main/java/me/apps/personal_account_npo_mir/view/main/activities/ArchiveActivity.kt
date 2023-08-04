@@ -46,7 +46,7 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView, OnClickListener  {
         adapter.notifyDataSetChanged()
     }
 
-    override fun startItemActivity() {
+    override fun startItemActivity(date: Long) {
         val intent = Intent(this, OnDateArchiveActivity::class.java)
         startActivity(intent)
     }

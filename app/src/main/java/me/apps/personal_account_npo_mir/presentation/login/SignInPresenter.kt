@@ -12,6 +12,7 @@ import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInReque
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personalaccountnpomir.R
+import java.io.IOException
 
 class SignInPresenter() : IPresenter<ISignInView>,
     IServerRequestResultListener<SignInRequestResult>{
@@ -37,8 +38,12 @@ class SignInPresenter() : IPresenter<ISignInView>,
     }
     object SaveLastMeasures:IServerRequestResultListener<GetLastMeasureRequestResult>{
         override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
-            val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
-            App.measuresService.saveMeasures(measure)
+            try {
+                val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
+                App.measuresService.saveMeasures(measure)
+            }catch (e:Exception){
+                println("Measure for this meter is not exist")
+            }
         }
 
         override fun onRequestFail(message: ErrorCode) {

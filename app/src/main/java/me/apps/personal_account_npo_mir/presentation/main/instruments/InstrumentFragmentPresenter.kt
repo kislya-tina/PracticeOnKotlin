@@ -25,7 +25,7 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>{
         this.view?.setMeterIndications(App.measuresService.measures[meterIndex].summary)
         this.view?.setMeterTime(App.measuresService.measures[meterIndex].timestamp)
         //meterID = App.metersService.meters[meterIndex].id.toInt()
-        name = App.metersService.meters[meterID].name
+        name = App.metersService.meters[meterIndex].name
         view?.setMeterName(name)
     }
 

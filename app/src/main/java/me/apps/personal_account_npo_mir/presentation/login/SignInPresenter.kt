@@ -2,9 +2,11 @@ package me.apps.personal_account_npo_mir.presentation.login
 
 import com.google.gson.Gson
 import me.apps.personal_account_npo_mir.di.App
+import me.apps.personal_account_npo_mir.model.abstractions.measures.Measure
 import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
+import me.apps.personal_account_npo_mir.model.server_connect.get_last_measure.GetLastMeasureRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersRequestResult
 import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInRequestResult
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
@@ -19,12 +21,29 @@ class SignInPresenter() : IPresenter<ISignInView>,
         override fun onRequestSuccess(result: GetMetersRequestResult) {
             val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
             App.metersService.saveMeters(meters)
+            for (meter in App.metersService.meters) {
+                App.measuresService.getLastMeasure(
+                    meter.id.toInt(),
+                    App.userDataService.token,
+                    SaveLastMeasures
+                )
+            }
         }
 
         override fun onRequestFail(message: ErrorCode) {
             println("Meters Service is empty")
         }
 
+    }
+    object SaveLastMeasures:IServerRequestResultListener<GetLastMeasureRequestResult>{
+        override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
+            val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
+            App.measuresService.saveMeasures(measure)
+        }
+
+        override fun onRequestFail(message: ErrorCode) {
+            TODO("Not yet implemented")
+        }
     }
 
 

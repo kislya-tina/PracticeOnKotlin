@@ -32,4 +32,6 @@ interface IMeasureService {
     )
 
     var measure : Measure?
+    var measures: Array<Measure>
+    fun saveMeasures(measure: Measure)
 }

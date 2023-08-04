@@ -43,6 +43,15 @@ class MeasuresService(private val scope: CoroutineScope):IMeasureService {
     override fun saveMeasure(measure: Measure){
         this.measure = measure
     }
+    override fun saveMeasures(measure: Measure){
+        this.measures += measure
+    }
 
     override var measure : Measure? = null
+    override var measures: Array<Measure>
+        get() {
+            return _measures
+        }
+        set(value) {_measures = value}
+    private var _measures: Array<Measure> = arrayOf(Measure("", "", "", "", "", ""))
 }

@@ -110,8 +110,7 @@ class InstrumentActivity : FragmentActivity(), IMainView,
     }
 
     override fun startLogRegActivity() {
-        val intent = Intent(this, LogRegActivity::class.java)
-        startActivity(intent)
+
    }
 
     override fun startSearchDevicesActivity(){

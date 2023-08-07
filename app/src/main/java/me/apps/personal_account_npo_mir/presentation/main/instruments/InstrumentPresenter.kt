@@ -90,9 +90,13 @@ class InstrumentPresenter : IPresenter<IMainView>,
         view?.startInformationActivity()
     }
 
-//    fun onLogoutButtonClick(){
-//        view?.startLogRegActivity()
-//    }
+    fun onLogoutButtonClick(){
+      view?.startLogRegActivity()
+   }
+
+    fun deleteToken(){
+        App.userDataService.deleteToken()
+    }
 
     /**
      * Кол-во элементов в списке

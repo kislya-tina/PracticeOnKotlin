@@ -24,7 +24,8 @@ class GetMeasuresServerRequest(
     private val dateTo: String,
     private val pageNumber: Int,
     private val countInPage: Int,
-    private val scope: CoroutineScope):IServerRequest<GetMeasuresRequestResult> {
+    private val scope: CoroutineScope
+) : IServerRequest<GetMeasuresRequestResult> {
 
     override fun setServerRequestListener(listener: IServerRequestResultListener<GetMeasuresRequestResult>) {
         this.listener = listener
@@ -38,13 +39,13 @@ class GetMeasuresServerRequest(
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_URL)
                 }
-            } else if (deviceId == null) {
+            } else if (deviceId == null || dateFrom == "" || dateTo == "" || pageNumber == null || countInPage == null) {
                 withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
+                    listener?.onRequestFail(ErrorCode.INPUT_EMPTY)
                 }
             } else if (token == "") {
                 withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
+                    listener?.onRequestFail(ErrorCode.BLANK_TOKEN)
                 }
             } else {
                 val urlAddress: String =
@@ -68,11 +69,11 @@ class GetMeasuresServerRequest(
                     }
                 } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
                     }
                 } catch (e: IOException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
                     }
                 } finally {
                     httpURLConnection?.disconnect()

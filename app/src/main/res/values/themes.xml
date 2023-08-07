@@ -60,7 +60,7 @@
     </style>
 
     <style name="textStyle" parent="Theme.MIR">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="fontFamily">@font/open_sans_semibold</item>
         <item name="android:textColor">@color/dark_blue</item>
     </style>

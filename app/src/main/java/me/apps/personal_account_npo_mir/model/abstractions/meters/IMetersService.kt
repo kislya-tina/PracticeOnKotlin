@@ -11,11 +11,22 @@ interface IMetersService {
      * @param username Имя пользователя
      */
 
-    fun bindMeter(deviceId:Int, token:String,resultListener: IServerRequestResultListener<BindMeterRequestResult>)
-    var meters : Array<Meter>
+    fun bindMeter(
+        deviceId: Int,
+        token: String,
+        resultListener: IServerRequestResultListener<BindMeterRequestResult>
+    )
+
+    var meters: Array<Meter>
     var id: Int
     fun saveMeters(meters: Array<Meter>)
-    fun findMeter(key: Int, limit:Int, token:String, resultListener: IServerRequestResultListener<FindMeterRequestResult>)
+    fun findMeter(
+        key: Int,
+        limit: Int,
+        token: String,
+        resultListener: IServerRequestResultListener<FindMeterRequestResult>
+    )
+
     fun getMeters(
         token: String,
         resultListener: IServerRequestResultListener<GetMetersRequestResult>

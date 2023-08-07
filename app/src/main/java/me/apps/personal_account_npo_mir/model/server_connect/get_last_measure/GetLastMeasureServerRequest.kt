@@ -15,10 +15,12 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class GetLastMeasureServerRequest(private val url:String,
-                                  private val deviceId:Int,
-                                  private val token:String,
-                                  private val scope: CoroutineScope): IServerRequest<GetLastMeasureRequestResult> {
+class GetLastMeasureServerRequest(
+    private val url: String,
+    private val deviceId: Int,
+    private val token: String,
+    private val scope: CoroutineScope
+) : IServerRequest<GetLastMeasureRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<GetLastMeasureRequestResult>) {
         this.listener = listener
     }
@@ -55,17 +57,18 @@ class GetLastMeasureServerRequest(private val url:String,
                     httpURLConnection.setRequestProperty("X-User-Token", token)
                     streamReader = InputStreamReader(httpURLConnection.inputStream)
                     streamReader.use {
-                        measure = it.readText() }
+                        measure = it.readText()
+                    }
                     withContext(Dispatchers.Main) {
                         listener?.onRequestSuccess(GetLastMeasureRequestResult(measure))
                     }
                 } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
                     }
                 } catch (e: IOException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
                     }
                 } finally {
                     httpURLConnection?.disconnect()

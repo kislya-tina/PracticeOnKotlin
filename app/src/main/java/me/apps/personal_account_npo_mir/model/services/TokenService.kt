@@ -1,8 +1,8 @@
-package me.apps.personal_account_npo_mir.model.server_connect
+package me.apps.personal_account_npo_mir.model.services
 
 import android.content.Context
 import me.apps.personal_account_npo_mir.di.App
-import me.apps.personal_account_npo_mir.model.abstractions.ITokenService
+import me.apps.personal_account_npo_mir.model.abstractions.user_data.ITokenService
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
@@ -52,5 +52,16 @@ class TokenService(override var app: Context) : ITokenService {
             bw.newLine()
         }
         bw.close()
+    }
+
+    override fun deleteToken() {
+        val path = app.getFilesDir()
+        val letDirectory = File(path, "LET")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "tokens.txt")
+        if (file.exists()) {
+            file.delete()
+        }
+        token = ""
     }
 }

@@ -28,6 +28,12 @@ class UserDataService() : IUserDataService {
         set(value) {
             _username = value
         }
+
+    override fun deleteToken() {
+        App.tokenService.deleteToken()
+        token = ""
+    }
+
     private var _token: String = ""
     private var _username: String = ""
 

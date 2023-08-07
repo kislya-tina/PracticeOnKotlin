@@ -12,9 +12,10 @@ interface IMeasureService {
         measure: Measure,
         resultListener: IServerRequestResultListener<PutMeasureRequestResult>
     )
+
     fun getLastMeasure(
         deviceId: Int,
-        token:String,
+        token: String,
         resultListener: IServerRequestResultListener<GetLastMeasureRequestResult>
     )
 
@@ -27,9 +28,10 @@ interface IMeasureService {
         countInPage: Int,
         resultListener: IServerRequestResultListener<GetMeasuresRequestResult>
     )
+
     fun saveMeasure(
         measure: Measure
     )
 
-    var measure : Measure?
+    var measure: Measure?
 }

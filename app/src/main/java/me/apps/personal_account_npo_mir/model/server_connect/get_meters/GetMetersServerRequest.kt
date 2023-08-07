@@ -13,9 +13,11 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class GetMetersServerRequest(private val url:String,
-                             private val token:String,
-                             private val scope:CoroutineScope):IServerRequest<GetMetersRequestResult>    {
+class GetMetersServerRequest(
+    private val url: String,
+    private val token: String,
+    private val scope: CoroutineScope
+) : IServerRequest<GetMetersRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<GetMetersRequestResult>) {
         this.listener = listener
     }
@@ -30,7 +32,7 @@ class GetMetersServerRequest(private val url:String,
                 }
             } else if (token == "") {
                 withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
+                    listener?.onRequestFail(ErrorCode.BLANK_TOKEN)
                 }
             } else {
                 var httpURLConnection: HttpURLConnection? = null
@@ -50,13 +52,13 @@ class GetMetersServerRequest(private val url:String,
                     withContext(Dispatchers.Main) {
                         listener?.onRequestSuccess(GetMetersRequestResult(devices))
                     }
-                }catch (e: MalformedURLException) {
+                } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
                     }
                 } catch (e: IOException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
                     }
                 } finally {
                     httpURLConnection?.disconnect()
@@ -66,6 +68,7 @@ class GetMetersServerRequest(private val url:String,
             listener = null
         }
     }
+
     private var listener: IServerRequestResultListener<GetMetersRequestResult>? = null
 
 }

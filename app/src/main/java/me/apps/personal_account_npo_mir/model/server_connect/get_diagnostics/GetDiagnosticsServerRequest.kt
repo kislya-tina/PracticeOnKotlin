@@ -13,18 +13,25 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class GetDiagnosticsServerRequest(private val url:String,
-                                  private val meterId:Int,
-                                  private val token: String,
-                                  private val scope: CoroutineScope):IServerRequest<GetDiagnosticsRequestResult> {
+class GetDiagnosticsServerRequest(
+    private val url: String,
+    private val meterId: Int,
+    private val token: String,
+    private val scope: CoroutineScope
+) : IServerRequest<GetDiagnosticsRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<GetDiagnosticsRequestResult>) {
         this.listener = listener
     }
+
     override fun run() {
         scope.launch {
             if (url == "") {
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_URL)
+                }
+            } else if (meterId == null) {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_METER_ID)
                 }
             } else {
                 var httpURLConnection: HttpURLConnection? = null
@@ -49,11 +56,11 @@ class GetDiagnosticsServerRequest(private val url:String,
                     }
                 } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.BLANK_URL)
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
                     }
                 } catch (e: IOException) {
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
                     }
                 } finally {
                     httpURLConnection?.disconnect()

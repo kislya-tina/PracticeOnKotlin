@@ -26,55 +26,55 @@ class SignInServerRequest(
 
 
     override fun run() {
-                scope.launch {
-                    if (url == "") {
-                        withContext(Dispatchers.Main) {
-                            listener?.onRequestFail(ErrorCode.BLANK_URL)
-                        }
-                    } else if (username == "") {
-                        withContext(Dispatchers.Main) {
-                            listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
-                        }
-                    } else if (password == "") {
-                        withContext(Dispatchers.Main) {
-                            listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
-                        }
-                    } else {
-                        var httpURLConnection: HttpURLConnection? = null
-                        var streamReader: InputStreamReader? = null
-                        try {
-                            val urlAddress: String =
-                                url + "SignIn" + "/" + username + "/" + password
-                            var token = ""
-                            httpURLConnection =
-                                withContext(Dispatchers.IO) {
-                                    URL(urlAddress).openConnection()
-                                } as HttpURLConnection
-                            httpURLConnection.apply {
-                                connectTimeout = 10000
-                                doInput = true
-                            }
-                            streamReader = InputStreamReader(httpURLConnection.inputStream)
-                            streamReader.use { token = it.readText() }
-                            withContext(Dispatchers.Main) {
-                                listener?.onRequestSuccess(SignInRequestResult(token, username))
-                            }
-                        } catch (e: MalformedURLException) {
-                            withContext(Dispatchers.Main) {
-                                listener?.onRequestFail(ErrorCode.BLANK_URL)
-                            }
-                        } catch (e: IOException) {
-                            withContext(Dispatchers.Main) {
-                                listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
-                            }
-                        } finally {
-                            httpURLConnection?.disconnect()
-                            streamReader?.close()
-                        }
-                    }
-
-                    listener = null
+        scope.launch {
+            if (url == "") {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_URL)
                 }
+            } else if (username == "") {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
+                }
+            } else if (password == "") {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
+                }
+            } else {
+                var httpURLConnection: HttpURLConnection? = null
+                var streamReader: InputStreamReader? = null
+                try {
+                    val urlAddress: String =
+                        url + "SignIn" + "/" + username + "/" + password
+                    var token = ""
+                    httpURLConnection =
+                        withContext(Dispatchers.IO) {
+                            URL(urlAddress).openConnection()
+                        } as HttpURLConnection
+                    httpURLConnection.apply {
+                        connectTimeout = 10000
+                        doInput = true
+                    }
+                    streamReader = InputStreamReader(httpURLConnection.inputStream)
+                    streamReader.use { token = it.readText() }
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestSuccess(SignInRequestResult(token, username))
+                    }
+                } catch (e: MalformedURLException) {
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
+                    }
+                } catch (e: IOException) {
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestFail(ErrorCode.LOGIN_ERROR)
+                    }
+                } finally {
+                    httpURLConnection?.disconnect()
+                    streamReader?.close()
+                }
+            }
+
+            listener = null
+        }
     }
 
     private var listener: IServerRequestResultListener<SignInRequestResult>? = null

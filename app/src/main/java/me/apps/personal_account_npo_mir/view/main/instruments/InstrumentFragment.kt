@@ -31,34 +31,34 @@ class InstrumentFragment : Fragment() {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             try {
                 presenter.onMeterIndexCreate(this.getInt(ARG_OBJECT))
-            }
-            catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 
-    fun setMeterIndications(text : String){
+    fun setMeterIndications(text: String) {
         val indicationsTextView = view?.findViewById<TextView>(R.id.meterIndicationsTextView)
         sumIndications = text
         indicationsTextView?.text = sumIndications
     }
 
-     fun setMeterTime(timestamp : String){
-        dateView =view?.findViewById(R.id.dateTextView)
-        dateView?.text = simpleDate.parse(timestamp)?.toString()
+    fun setMeterTime(timestamp: String) {
+        dateView = view?.findViewById(R.id.dateTextView)
+        //dateView?.text = simpleDate.parse(timestamp)?.toString()
+        dateView?.text = timestamp
     }
 
-     fun setMeterName(name : String){
+    fun setMeterName(name: String) {
         meterName = view?.findViewById(R.id.meterNameTextView2)
         meterName?.text = name
     }
 
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.CHINA)
     private val presenter = InstrumentFragmentPresenter()
-    private var sumIndications : String = ""
-    private var dateView : TextView? = null
-    private var meterName : TextView? = null
+    private var sumIndications: String = ""
+    private var dateView: TextView? = null
+    private var meterName: TextView? = null
 
 
 }

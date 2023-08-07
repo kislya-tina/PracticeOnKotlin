@@ -13,10 +13,10 @@ import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personalaccountnpomir.R
 import java.io.IOException
+import java.time.format.DateTimeFormatter
 
 class SignInPresenter() : IPresenter<ISignInView>,
     IServerRequestResultListener<SignInRequestResult>{
-
     object SaveMeters: IServerRequestResultListener<GetMetersRequestResult>{
 
         override fun onRequestSuccess(result: GetMetersRequestResult) {
@@ -40,10 +40,19 @@ class SignInPresenter() : IPresenter<ISignInView>,
         override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
             try {
                 val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
-                App.measuresService.saveMeasures(measure)
+                val formatter: DateTimeFormatter =
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                measure.timestamp = measure.timestamp.format(formatter)
+                App.measuresService.measuresMap.put(result.deviceId, measure)
+                //App.measuresService.saveMeasures(measure)
             }catch (e:Exception){
                 println("Measure for this meter is not exist")
+                //App.measuresService.saveMeasures(Measure("10","10","10","10","10", "10"))
             }
+            println(App.measuresService.measures.contentToString())
+            println("!!!!!!!!!!!!!!!!!!!!")
+            println(App.measuresService.measuresMap.toString())
+
         }
 
         override fun onRequestFail(message: ErrorCode) {

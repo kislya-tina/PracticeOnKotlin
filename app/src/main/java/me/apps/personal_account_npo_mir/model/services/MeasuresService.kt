@@ -44,7 +44,10 @@ class MeasuresService(private val scope: CoroutineScope):IMeasureService {
         this.measure = measure
     }
     override fun saveMeasures(measure: Measure){
-        this.measures += measure
+        measures+=measure
+    }
+    override fun saveMeasuresMap(key:Int, measure: Measure){
+
     }
 
     override var measure : Measure? = null
@@ -53,5 +56,6 @@ class MeasuresService(private val scope: CoroutineScope):IMeasureService {
             return _measures
         }
         set(value) {_measures = value}
+    override var measuresMap: MutableMap<Int, Measure> = mutableMapOf()
     private var _measures: Array<Measure> = arrayOf(Measure("", "", "", "", "", ""))
 }

@@ -57,7 +57,7 @@ class GetLastMeasureServerRequest(private val url:String,
                     streamReader.use {
                         measure = it.readText() }
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestSuccess(GetLastMeasureRequestResult(measure))
+                        listener?.onRequestSuccess(GetLastMeasureRequestResult(measure, deviceId))
                     }
                 } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {

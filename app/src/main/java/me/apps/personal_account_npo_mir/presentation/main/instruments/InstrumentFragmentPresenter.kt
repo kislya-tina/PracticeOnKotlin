@@ -22,15 +22,13 @@ class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>{
 
     fun onMeterIndexCreate(meterIndex : Int){
         this.meterIndex = meterIndex
-        this.view?.setMeterIndications(App.measuresService.measures[meterIndex].summary)
-        this.view?.setMeterTime(App.measuresService.measures[meterIndex].timestamp)
-        //meterID = App.metersService.meters[meterIndex].id.toInt()
+        this.view?.setMeterIndications(App.measuresService.measuresMap[meterIndex+1]?.summary.toString())
+        this.view?.setMeterTime(App.measuresService.measuresMap[meterIndex+1]?.timestamp.toString())
         name = App.metersService.meters[meterIndex].name
         view?.setMeterName(name)
     }
 
     private var view: InstrumentFragment? = null
     var name : String = ""
-    var meterID = 0
     var meterIndex = 0
 }

@@ -14,9 +14,9 @@ import me.apps.personal_account_npo_mir.presentation.main.instruments.Instrument
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
 import me.apps.personal_account_npo_mir.view.login.LogRegActivity
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
-import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
+import me.apps.personal_account_npo_mir.view.main.activities.diagnostic.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
 

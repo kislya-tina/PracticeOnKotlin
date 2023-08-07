@@ -29,6 +29,7 @@ class SignInPresenter : IPresenter<ISignInView>, IServerRequestResultListener<Si
     override fun onRequestSuccess(result: SignInRequestResult) {
         App.userDataService.token = result.token
         App.userDataService.username = result.username
+        App.tokenService.saveToken(result.token)
 
         //Установка серых рамок и скрытие текста
         view?.setStateFr(true)

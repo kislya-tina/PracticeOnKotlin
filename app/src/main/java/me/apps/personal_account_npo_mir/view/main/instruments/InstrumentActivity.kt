@@ -108,7 +108,6 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         val intent = Intent(this, InformationActivity::class.java)
         startActivity(intent)
     }
-
     override fun startLogRegActivity() {
         val intent = Intent(this, LogRegActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK

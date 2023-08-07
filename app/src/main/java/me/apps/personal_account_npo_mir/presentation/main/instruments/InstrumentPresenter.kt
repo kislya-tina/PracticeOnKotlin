@@ -93,7 +93,6 @@ class InstrumentPresenter : IPresenter<IMainView>,
     fun onLogoutButtonClick(){
       view?.startLogRegActivity()
    }
-
     fun deleteToken(){
         App.userDataService.deleteToken()
     }

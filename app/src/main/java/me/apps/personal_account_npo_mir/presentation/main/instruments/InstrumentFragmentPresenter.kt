@@ -9,34 +9,26 @@ import me.apps.personal_account_npo_mir.model.server_connect.get_last_measure.Ge
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.main.instruments.InstrumentFragment
 
-class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>,
-    IServerRequestResultListener<GetLastMeasureRequestResult>{
+class InstrumentFragmentPresenter : IPresenter<InstrumentFragment>{
 
     override fun onViewCreated(view: InstrumentFragment) {
         this.view = view
-        name = App.metersService.meters[0].name
     }
 
     override fun onDestroy() {
         view = null
     }
 
-    override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
-        try {
-            println(result.toString())
-            val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
-            App.measuresService.saveMeasure(measure)
-            view?.setMeterIndications()
-            //вот тут надо назначать время счетчику
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
 
-    override fun onRequestFail(message: ErrorCode) {
-        println("pipipupu")
+    fun onMeterIndexCreate(meterIndex : Int){
+        this.meterIndex = meterIndex
+        this.view?.setMeterIndications(App.measuresService.measuresMap[meterIndex+1]?.summary.toString())
+        this.view?.setMeterTime(App.measuresService.measuresMap[meterIndex+1]?.timestamp.toString())
+        name = App.metersService.meters[meterIndex].name
+        view?.setMeterName(name)
     }
 
     private var view: InstrumentFragment? = null
     var name : String = ""
+    var meterIndex = 0
 }

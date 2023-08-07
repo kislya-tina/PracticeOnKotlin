@@ -60,7 +60,7 @@ class GetLastMeasureServerRequest(
                         measure = it.readText()
                     }
                     withContext(Dispatchers.Main) {
-                        listener?.onRequestSuccess(GetLastMeasureRequestResult(measure))
+                        listener?.onRequestSuccess(GetLastMeasureRequestResult(measure, deviceId))
                     }
                 } catch (e: MalformedURLException) {
                     withContext(Dispatchers.Main) {

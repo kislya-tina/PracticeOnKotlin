@@ -37,6 +37,7 @@ class SignInPresenter() : IPresenter<ISignInView>,
 
     }
     object SaveLastMeasures:IServerRequestResultListener<GetLastMeasureRequestResult>{
+        var currentMeterId:Int = 0
         override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
             try {
                 val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
@@ -44,13 +45,13 @@ class SignInPresenter() : IPresenter<ISignInView>,
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                 measure.timestamp = measure.timestamp.format(formatter)
                 App.measuresService.measuresMap.put(result.deviceId, measure)
-                //App.measuresService.saveMeasures(measure)
+                currentMeterId+=1
             }catch (e:Exception){
                 println("Measure for this meter is not exist")
-                //App.measuresService.saveMeasures(Measure("10","10","10","10","10", "10"))
+                App.measuresService.measuresMap.put(currentMeterId,
+                Measure("0","0","0","0","0",""))
+                currentMeterId+=1
             }
-            println(App.measuresService.measures.contentToString())
-            println("!!!!!!!!!!!!!!!!!!!!")
             println(App.measuresService.measuresMap.toString())
 
         }

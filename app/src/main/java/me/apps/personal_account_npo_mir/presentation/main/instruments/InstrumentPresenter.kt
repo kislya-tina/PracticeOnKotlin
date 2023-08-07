@@ -94,6 +94,10 @@ class InstrumentPresenter : IPresenter<IMainView>,
       view?.startLogRegActivity()
    }
 
+    fun deleteToken(){
+        App.userDataService.deleteToken()
+    }
+
     /**
      * Кол-во элементов в списке
      */

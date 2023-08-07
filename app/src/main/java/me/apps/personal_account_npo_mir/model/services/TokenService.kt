@@ -53,4 +53,15 @@ class TokenService(override var app: Context) : ITokenService {
         }
         bw.close()
     }
+
+    override fun deleteToken() {
+        val path = app.getFilesDir()
+        val letDirectory = File(path, "LET")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "tokens.txt")
+        if (file.exists()) {
+            file.delete()
+        }
+        token = ""
+    }
 }

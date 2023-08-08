@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.viewpager2.widget.ViewPager2
@@ -35,8 +36,18 @@ class InstrumentActivity : AppCompatActivity(),
             tab.text = "${(position + 1)}"
         }.attach()
 
-        addDevicesButton = findViewById(R.id.addDevicesButton)
+        addDevicesButton = findViewById(R.id.addDevicesBtn)
         addDevicesButton.setOnClickListener(this)
+
+        archiveButton = this.findViewById(R.id.archiveButton)
+        diagnosticButton = this.findViewById(R.id.diagnosticButton)
+        transmittalButton = this.findViewById(R.id.transButton)
+        informationButton = this.findViewById(R.id.informationButton)
+
+        archiveButton.setOnClickListener(this)
+        diagnosticButton.setOnClickListener(this)
+        transmittalButton.setOnClickListener(this)
+        informationButton.setOnClickListener(this)
 
         presenter.onViewCreated(this)
     }
@@ -45,6 +56,18 @@ class InstrumentActivity : AppCompatActivity(),
     override fun onClick(view: View?) {
         if (view === addDevicesButton) {
             presenter.onAddDevicesButtonClick()
+        }
+        if (view === archiveButton) {
+            presenter.onArchiveButtonClick()
+        }
+        if (view === diagnosticButton) {
+            presenter.onDiagnosticButtonClick()
+        }
+        if (view === transmittalButton) {
+            presenter.onTransmittalButtonClick()
+        }
+        if (view === informationButton) {
+            presenter.onInformationButtonClick()
         }
     }
 
@@ -92,6 +115,11 @@ class InstrumentActivity : AppCompatActivity(),
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
     private lateinit var addDevicesButton: AppCompatButton
+    private lateinit var archiveButton: Button
+    private lateinit var diagnosticButton: Button
+    private lateinit var transmittalButton: Button
+    private lateinit var informationButton: Button
+
     private var presenter = InstrumentPresenter()
 }
 

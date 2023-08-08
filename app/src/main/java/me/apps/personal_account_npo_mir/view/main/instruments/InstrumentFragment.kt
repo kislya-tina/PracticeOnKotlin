@@ -17,7 +17,7 @@ import kotlin.random.nextInt
 
 const val ARG_OBJECT = "object"
 
-class InstrumentFragment : Fragment(), View.OnClickListener{
+class InstrumentFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,17 +37,6 @@ class InstrumentFragment : Fragment(), View.OnClickListener{
             indicationsTextView.text = sumIndications
             dateView.text = currentDate.toString()
 
-            archiveButton = view.findViewById(R.id.archiveButton)
-            diagnosticButton = view.findViewById(R.id.diagnosticButton)
-            transmittalButton = view.findViewById(R.id.transButton)
-            informationButton = view.findViewById(R.id.informationButton)
-
-            archiveButton.setOnClickListener(this@InstrumentFragment)
-            diagnosticButton.setOnClickListener(this@InstrumentFragment)
-            transmittalButton.setOnClickListener(this@InstrumentFragment)
-            informationButton.setOnClickListener(this@InstrumentFragment)
-
-
         }
     }
 
@@ -62,25 +51,4 @@ class InstrumentFragment : Fragment(), View.OnClickListener{
     private val simpleDate = SimpleDateFormat("dd.MM.yyyy hh:mm", Locale.GERMANY)
     private val currentDate = simpleDate.format(Date())
 
-    private lateinit var archiveButton: Button
-    private lateinit var diagnosticButton: Button
-    private lateinit var transmittalButton: Button
-    private lateinit var informationButton: Button
-
-    override fun onClick(view: View?) {
-        if (view === archiveButton) {
-            presenter.onArchiveButtonClick()
-        }
-        if (view === diagnosticButton) {
-            presenter.onDiagnosticButtonClick()
-        }
-        if (view === transmittalButton) {
-            presenter.onTransmittalButtonClick()
-        }
-        if (view === informationButton) {
-            presenter.onInformationButtonClick()
-        }
-    }
-
-    private var presenter = InstrumentPresenter()
 }

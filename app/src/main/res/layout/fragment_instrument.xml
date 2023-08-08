@@ -80,48 +80,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/archiveButton"
-            style="@style/Theme.MIR.Buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/archive" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/diagnosticButton"
-            style="@style/Theme.MIR.Buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/diagnostic" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/transButton"
-            style="@style/Theme.MIR.Buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/transmission_of_testimony" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/informationButton"
-            style="@style/Theme.MIR.Buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/information" />
-
-    </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

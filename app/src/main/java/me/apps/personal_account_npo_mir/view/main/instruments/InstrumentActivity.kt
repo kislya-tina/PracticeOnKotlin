@@ -25,7 +25,6 @@ class InstrumentActivity : FragmentActivity(), IMainView,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instrument)
-        presenter.onViewCreated(this)
 
         archiveButton = findViewById(R.id.archiveButton)
         archiveButton.setOnClickListener(this)
@@ -50,13 +49,13 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         adapter = DeviceAdapter(this, presenter)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
-// TODO: переделать viewPager чтобы там были только наши счетчики
         tabLayout = findViewById(R.id.tab_layout)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = "${(position + 1)}"
         }.attach()
 
+        presenter.onViewCreated(this)
     }
 
 
@@ -135,14 +134,14 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         presenter.onDestroy()
     }
 
+    private lateinit var adapter: DeviceAdapter
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
+    private lateinit var addDevicesButton: AppCompatButton
     private lateinit var archiveButton: Button
     private lateinit var diagnosticButton: Button
     private lateinit var transmittalButton: Button
     private lateinit var informationButton: Button
     private lateinit var logoutButton: Button
-    private lateinit var adapter: DeviceAdapter
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
-    private lateinit var addDevicesButton: AppCompatButton
     private var presenter = InstrumentPresenter()
 }

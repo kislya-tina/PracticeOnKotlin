@@ -46,7 +46,6 @@
     <string name="indications_by_date">Показания с</string>
     <string name="before">до</string>
     <string name="meters_from">Показания от</string>
-    <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку.</string>
     <string name="password_mismatch">Пароли не совпадают.</string>
     <string name="short_password">Пароль слишком короткий.</string>
     <string name="this_login_exist">Пользователь с таким логином уже существует.</string>
@@ -55,6 +54,8 @@
     <string name="errorText">Ошибка</string>
     <string name="text_00">00</string>
     <string name="diagnostic_success">Диагностика прошла успешно</string>
+    <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку</string>
+    <string name="add_devices_please">Привяжите приборы учета с помощью кнопки "+"</string>
 
 
 </resources>

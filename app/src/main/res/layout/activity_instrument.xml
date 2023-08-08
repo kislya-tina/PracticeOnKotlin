@@ -31,8 +31,8 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/white_rectangle_2"
         android:layout_marginTop="10dp"
+        android:src="@drawable/white_rectangle_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginTop="50dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +61,7 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-           android:layout_weight="3" />
-
+            android:layout_weight="3" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/archiveButton"
@@ -100,7 +99,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -108,10 +107,31 @@
         android:id="@+id/addDevicesBtn"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/button_add_devices_on_main_activity"
         android:layout_margin="20dp"
+        android:background="@drawable/button_add_devices_on_main_activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addDevicesButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="30dp"
+            android:elevation="25dp"
+            android:background="@drawable/button_add_devices_on_main_activity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!-- <androidx.appcompat.widget.AppCompatButton
+         android:layout_width="60dp"
+         android:layout_height="60dp"
+         android:background="@drawable/add_devices_ico"
+         app:layout_constraintBottom_toBottomOf="@+id/addDevicesButton"
+         app:layout_constraintEnd_toEndOf="@+id/addDevicesButton"
+         app:layout_constraintStart_toStartOf="@+id/addDevicesButton"
+         app:layout_constraintTop_toTopOf="@+id/addDevicesButton" />
+ -->
+

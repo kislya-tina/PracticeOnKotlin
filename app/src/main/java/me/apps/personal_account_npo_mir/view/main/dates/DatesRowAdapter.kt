@@ -3,6 +3,7 @@ package me.apps.personal_account_npo_mir.view.main.dates
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.ArchivePresenter
 import me.apps.personalaccountnpomir.R
 
@@ -25,5 +26,7 @@ class DatesRowAdapter(private val presenter: ArchivePresenter): RecyclerView.Ada
         holder.onCleanUp()
     }
 
-    override fun getItemCount(): Int = presenter.itemsCount
+    override fun getItemCount(): Int {
+       return  App.archiveDateService.datesCount
+    }
 }

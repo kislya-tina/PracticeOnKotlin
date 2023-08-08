@@ -7,56 +7,62 @@ import android.view.View.OnClickListener
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import me.apps.personal_account_npo_mir.presentation.main.InstrumentPresenter
+
+\import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import me.apps.personal_account_npo_mir.presentation.main.InstrumentPresenter
+import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
+import me.apps.personal_account_npo_mir.view.login.LogRegActivity
 import me.apps.personal_account_npo_mir.view.main.activities.ArchiveActivity
-import me.apps.personal_account_npo_mir.view.main.activities.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.main.activities.InformationActivity
 import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
+import me.apps.personal_account_npo_mir.view.main.activities.diagnostic.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
 
-class InstrumentActivity : AppCompatActivity(),
-    IMainView,
+class InstrumentActivity : FragmentActivity(), IMainView,
     OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instrument)
 
-        adapter = DeviceAdapter(this)
+        archiveButton = findViewById(R.id.archiveButton)
+        archiveButton.setOnClickListener(this)
+
+        diagnosticButton = findViewById(R.id.diagnosticButton)
+        diagnosticButton.setOnClickListener(this)
+
+        transmittalButton = findViewById(R.id.transButton)
+        transmittalButton.setOnClickListener(this)
+
+        informationButton = findViewById(R.id.informationButton)
+        informationButton.setOnClickListener(this)
+
+        logoutButton = findViewById(R.id.logout_btn)
+        logoutButton.setOnClickListener(this)
+
+        adapter = DeviceAdapter(this, presenter)
+
+        addDevicesButton = findViewById(R.id.addDevicesBtn)
+        addDevicesButton.setOnClickListener(this)
+
+        adapter = DeviceAdapter(this, presenter)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
-
         tabLayout = findViewById(R.id.tab_layout)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = "${(position + 1)}"
         }.attach()
 
-        addDevicesButton = findViewById(R.id.addDevicesBtn)
-        addDevicesButton.setOnClickListener(this)
-
-        archiveButton = this.findViewById(R.id.archiveButton)
-        diagnosticButton = this.findViewById(R.id.diagnosticButton)
-        transmittalButton = this.findViewById(R.id.transButton)
-        informationButton = this.findViewById(R.id.informationButton)
-
-        archiveButton.setOnClickListener(this)
-        diagnosticButton.setOnClickListener(this)
-        transmittalButton.setOnClickListener(this)
-        informationButton.setOnClickListener(this)
-
         presenter.onViewCreated(this)
     }
 
 
     override fun onClick(view: View?) {
-        if (view === addDevicesButton) {
-            presenter.onAddDevicesButtonClick()
-        }
         if (view === archiveButton) {
             presenter.onArchiveButtonClick()
         }
@@ -69,13 +75,13 @@ class InstrumentActivity : AppCompatActivity(),
         if (view === informationButton) {
             presenter.onInformationButtonClick()
         }
+        if (view === addDevicesButton) {
+            presenter.onAddDevicesButtonClick()
+        }
+        if (view === logoutButton) {
+            presenter.onLogoutButtonClick()
+        }
     }
-
-    override fun startSearchDevicesActivity() {
-        val intent = Intent(this, SearchDevicesActivity::class.java)
-        startActivity(intent)
-    }
-
 
     override fun refreshItems() {
 
@@ -105,9 +111,30 @@ class InstrumentActivity : AppCompatActivity(),
         startActivity(intent)
     }
 
+    override fun startLogRegActivity() {
+        val intent = Intent(this, LogRegActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        presenter.deleteToken()
+        startActivity(intent)
+        finish()
+   }
+
+    override fun startSearchDevicesActivity(){
+        val intent = Intent(this, SearchDevicesActivity::class.java)
+        startActivity(intent)
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
+
+        archiveButton.setOnClickListener(null)
+        diagnosticButton.setOnClickListener(null)
+        transmittalButton.setOnClickListener(null)
+        informationButton.setOnClickListener(null)
+
+        logoutButton.setOnClickListener(null)
+
         presenter.onDestroy()
     }
 
@@ -119,7 +146,6 @@ class InstrumentActivity : AppCompatActivity(),
     private lateinit var diagnosticButton: Button
     private lateinit var transmittalButton: Button
     private lateinit var informationButton: Button
-
+    private lateinit var logoutButton: Button
     private var presenter = InstrumentPresenter()
 }
-

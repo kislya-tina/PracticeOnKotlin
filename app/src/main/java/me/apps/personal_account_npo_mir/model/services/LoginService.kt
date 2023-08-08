@@ -3,15 +3,16 @@ package me.apps.personal_account_npo_mir.model.services
 import kotlinx.coroutines.*
 import me.apps.personal_account_npo_mir.model.abstractions.login.ILoginService
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
-import me.apps.personal_account_npo_mir.model.server_connect.signup.SignUpServerRequest
-import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInRequestResult
-import me.apps.personal_account_npo_mir.model.server_connect.signin.SignInServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.sign_up.SignUpServerRequest
+import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInRequestResult
+import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInServerRequest
 
 
 class SignInService(private val scope: CoroutineScope) : ILoginService {
 
 
 val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
+
     override fun signIn(
         username: String,
         password: String,
@@ -30,7 +31,6 @@ val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
     override fun signUp(
         username: String,
         password: String,
-        email: String,
         phoneNumber: String,
         resultListener: IServerRequestResultListener<SignInRequestResult>
     ) {

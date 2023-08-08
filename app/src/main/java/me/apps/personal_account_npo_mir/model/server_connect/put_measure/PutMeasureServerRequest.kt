@@ -1,4 +1,4 @@
-package me.apps.personal_account_npo_mir.model.server_connect.putMeasure
+package me.apps.personal_account_npo_mir.model.server_connect.put_measure
 
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -14,14 +14,16 @@ import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class PutMeasureServerRequest(
-    val urlForHostLoopbackInterface: String,
-    val deviceId: Int,
+    private val urlForHostLoopbackInterface: String,
+    private val deviceId: Int,
     val token: String,
     val measure: Measure,
-    private val scope:CoroutineScope
-):IServerRequest<PutMeasureRequestResult> {
+    private val scope: CoroutineScope
+) : IServerRequest<PutMeasureRequestResult> {
     override fun setServerRequestListener(listener: IServerRequestResultListener<PutMeasureRequestResult>) {
         this.listener = listener
     }
@@ -32,44 +34,59 @@ class PutMeasureServerRequest(
                 withContext(Dispatchers.Main) {
                     listener?.onRequestFail(ErrorCode.BLANK_URL)
                 }
-            } else if (deviceId == null) {
-                withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_USERNAME)
-                }
             } else if (token == "") {
                 withContext(Dispatchers.Main) {
-                    listener?.onRequestFail(ErrorCode.BLANK_PASSWORD)
+                    listener?.onRequestFail(ErrorCode.BLANK_TOKEN)
+                }
+            } else if (deviceId == null) {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.BLANK_METER_ID)
+                }
+            } else if (measure == null) {
+                withContext(Dispatchers.Main) {
+                    listener?.onRequestFail(ErrorCode.INPUT_EMPTY)
                 }
             } else {
                 val urlAddress: String =
                     urlForHostLoopbackInterface + "Measures/PutMeasure?deviceId=" + deviceId
-                var httpURLConnection: HttpURLConnection? = null
-                var writer: OutputStreamWriter? = null
+                val httpURLConnection: HttpURLConnection? = null
+                val writer: OutputStreamWriter? = null
                 val gson = Gson()
                 try {
                     val url = URL(urlAddress)
-                    val connection = url.openConnection() as HttpURLConnection
+                    val connection =
+                        withContext(Dispatchers.IO) {
+                            url.openConnection()
+                        } as HttpURLConnection
                     connection.requestMethod = "POST"
                     connection.setRequestProperty("Content-Type", "application/json")
                     connection.setRequestProperty("X-User-Token", token)
                     connection.doOutput = true
+                    val now: LocalDateTime = LocalDateTime.now()
+                    val formatter: DateTimeFormatter =
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                    val formatDateTime: String = now.format(formatter)
+                    measure.timestamp = formatDateTime.toString()
                     val measureJson = gson.toJson(measure)
                     println(measureJson)
                     val outputStream = OutputStreamWriter(connection.outputStream)
-                    outputStream.write(measureJson)
-                    outputStream.flush()
-                    outputStream.close()
-
+                    withContext(Dispatchers.IO) {
+                        outputStream.write(measureJson)
+                        outputStream.flush()
+                        outputStream.close()
+                    }
                     val responseCode = connection.responseCode
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         listener?.onRequestSuccess(PutMeasureRequestResult(responseCode))
                     }
-
                 } catch (e: MalformedURLException) {
-                    e.printStackTrace()
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestFail(ErrorCode.WRONG_URL)
+                    }
                 } catch (e: IOException) {
-                    e.printStackTrace()
-
+                    withContext(Dispatchers.Main) {
+                        listener?.onRequestFail(ErrorCode.IOEXCEPTION)
+                    }
                 } finally {
                     httpURLConnection?.disconnect()
                     writer?.close()
@@ -79,5 +96,6 @@ class PutMeasureServerRequest(
             }
         }
     }
+
     private var listener: IServerRequestResultListener<PutMeasureRequestResult>? = null
 }

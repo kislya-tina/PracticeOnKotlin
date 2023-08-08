@@ -23,6 +23,10 @@ TransmittalActivity:  AppCompatActivity(),
         handOverButton = this.findViewById(R.id.handOverButton)
         handOverButton.setOnClickListener(this)
 
+
+        backButton = findViewById(R.id.back_button)
+        backButton.setOnClickListener(this)
+
         sumTextView = this.findViewById(R.id.indicationOfSumTextView)
         tariff1IndicationsTextView = this.findViewById(R.id.indicationFirstTariffTextView)
         tariff2IndicationsTextView = this.findViewById(R.id.indicationSecondTextView)
@@ -47,6 +51,8 @@ TransmittalActivity:  AppCompatActivity(),
             presenter.onTariff4TextChanged(tariff4IndicationsTextView.text.toString())
             presenter.onClickHandOverButton()
         }
+        if (view === backButton){
+            onBackPressedDispatcher.onBackPressed()        }
     }
 
     override fun showDialog() {
@@ -80,5 +86,6 @@ TransmittalActivity:  AppCompatActivity(),
     private lateinit var tariff3IndicationsTextView: AppCompatEditText
     private lateinit var tariff4IndicationsTextView: AppCompatEditText
     private lateinit var handOverButton: Button
+    private lateinit var backButton: Button
     private var presenter = TransmittalPresenter()
 }

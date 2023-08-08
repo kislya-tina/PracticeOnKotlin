@@ -57,22 +57,20 @@ class LogInFragment :
 
     override fun onClick(view: View?) {
         if (view === signInButton) {
+            progressBar.setLoading()
             presenter.onLoginTextChanged(loginEditText.text.toString())
             presenter.onPasswordChanged(passwordEditText.text.toString())
             presenter.onEnterButtonPressed()
-            progressBar.setLoading()
         }
 
         if(view === loginEditText){
             progressBar.reset()
             presenter.onLoginTextChanged(loginEditText.text.toString())
-            invalidTextView.visibility = View.GONE
         }
 
         if(view === passwordEditText){
             progressBar.reset()
             presenter.onPasswordChanged(passwordEditText.text.toString())
-            invalidTextView.visibility = View.GONE
         }
     }
 

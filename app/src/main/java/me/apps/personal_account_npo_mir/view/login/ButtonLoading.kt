@@ -26,7 +26,7 @@ class ButtonLoading(view: View) {
         ic_success.visibility = View.GONE
 
         progressBar.scaleX = 1f
-        ic_success.scaleX  = 0f
+        ic_success.scaleX = 0f
     }
 
     fun setState(isSuccess: Boolean) {
@@ -49,8 +49,8 @@ class ButtonLoading(view: View) {
         ic_success.setImageResource(img)
         val flip1 = ObjectAnimator.ofFloat(progressBar, "scaleX", 1f, 0f)
         val flip2 = ObjectAnimator.ofFloat(ic_success, "scaleX", 0f, 1f)
-        flip1.duration = 400
-        flip2.duration = 400
+        flip1.duration = 200
+        flip2.duration = 200
         flip1.interpolator = DecelerateInterpolator()
         flip2.interpolator = AccelerateDecelerateInterpolator()
         flip1.addListener(object : AnimatorListenerAdapter() {

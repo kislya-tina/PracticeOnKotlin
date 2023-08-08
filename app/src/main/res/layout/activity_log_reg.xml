@@ -5,19 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
     tools:context="me.apps.personal_account_npo_mir.view.login.LogRegActivity">
+
     <!--LinearLayout или его аналог из Compat выравнивает все дочерние объекты в одном направлении
     в зависимости от свойства orientation. По умолчанию оно horizontal-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginHorizontal="5dp"
-        android:background="?colorOnPrimary"
         android:orientation="vertical"
-        android:padding="20dp">
+        >
 
         <!--Контейнер для фрагментов. Указываем статически имя
         отображаемого фрагмента свойством
@@ -26,8 +24,9 @@
             android:id="@+id/sign_in_fragment"
             android:name="me.apps.personal_account_npo_mir.view.login.LogInFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
 
         <!--Второй контейнер для фрагментов. Указываем статически имя
         отображаемого фрагмента свойством-->
@@ -48,6 +47,7 @@
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:theme="@style/Theme.MIR.Button.SignInUpSwitch" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </FrameLayout>

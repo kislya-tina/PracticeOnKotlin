@@ -13,6 +13,7 @@
         android:background="@drawable/blue_devices_rectangle"
         android:orientation="vertical"
         android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,7 +26,7 @@
                 android:id="@+id/meterNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_margin="10dp"
                 android:text="@string/meter_name_1"
                 android:textColor="@color/dark"
                 android:textSize="17sp" />
@@ -40,10 +41,9 @@
                 android:id="@+id/meterNameTextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_margin="10dp"
                 android:textColor="@color/dark"
                 android:textSize="17sp" />
-
 
         </LinearLayout>
 
@@ -51,11 +51,12 @@
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/meterIndicationsTextView"
+                android:gravity="start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -73,7 +74,9 @@
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:gravity="bottom"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/dark"
             android:textSize="17sp" />
 

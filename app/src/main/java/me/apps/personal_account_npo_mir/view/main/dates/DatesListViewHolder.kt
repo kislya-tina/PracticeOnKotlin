@@ -22,18 +22,18 @@ class DatesListViewHolder(val presenter: ArchivePresenter, view: View) :
         itemView.setOnClickListener(null)
     }
 
-    override fun onClick(view: View?) {
-        if(view === itemView){
-            presenter.onItemClick(adapterPosition)
-        }
-    }
-
     override fun setDate(value: Long) {
         val date = Date(value)
         val format = SimpleDateFormat(
             "dd.MM.yyyy",
             Locale.getDefault())
         dateTextView.text = format.format(date)
+    }
+
+    override fun onClick(view: View?) {
+        if(view === itemView){
+            presenter.onItemClick(adapterPosition)
+        }
     }
 
     private lateinit var dateTextView : TextView

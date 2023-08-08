@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import me.apps.personal_account_npo_mir.presentation.login.RegistrationPresenter
@@ -34,7 +35,12 @@ class RegistrationFragment :
         loginEditText = view.findViewById(R.id.sign_up_username_edit_text)
         passwordEditText = view.findViewById(R.id.sign_up_password_edit_text)
         phoneEditText = view.findViewById(R.id.sign_up_phone_edit_text)
-        emailEditText = view.findViewById(R.id.sign_up_email_edit_text)
+        repeatPasswordEditText = view.findViewById(R.id.sign_up_repeat_password_edit_text)
+
+        passwordMismatch = view.findViewById(R.id.password_mismatch_text_view)
+
+        passwordEditText.setOnClickListener(this)
+        repeatPasswordEditText.setOnClickListener(this)
 
         presenter.onViewCreated(this)
     }
@@ -48,30 +54,38 @@ class RegistrationFragment :
     override fun onClick(view: View?) {
         if (view === signUpButton) {
             presenter.onLoginTextChanged(loginEditText.text.toString())
-            presenter.onPasswordChanged(passwordEditText.text.toString())
-            presenter.onEmailChanged(emailEditText.text.toString())
             presenter.onPhoneChanged(phoneEditText.text.toString())
+            presenter.onPasswordChanged(passwordEditText.text.toString())
+            presenter.onRepeatPasswordChanged(repeatPasswordEditText.text.toString())
             presenter.onRegisterButtonClick()
         }
     }
 
-    override fun setLoginBackground(resourceID : Int){
+    override fun setLoginBackground(resourceID: Int) {
         loginEditText.setBackgroundResource(resourceID)
     }
 
-    override fun setPasswordBackground(resourceID : Int){
+    override fun setPasswordBackground(resourceID: Int) {
         passwordEditText.setBackgroundResource(resourceID)
     }
 
-    override fun setEmailBackground(resourceID : Int){
-        emailEditText.setBackgroundResource(resourceID)
+    override fun setRepeatPasswordBackground(resourceID: Int) {
+        repeatPasswordEditText.setBackgroundResource(resourceID)
     }
 
-    override fun setPhoneBackground(resourceID : Int){
+    override fun setPhoneBackground(resourceID: Int) {
         phoneEditText.setBackgroundResource(resourceID)
     }
 
-    override fun startMainActivity(){
+    override fun setPasswordMismatchVisibility(boolean: Boolean) {
+        if (boolean) {
+            passwordMismatch.visibility = View.VISIBLE
+        } else {
+            passwordMismatch.visibility = View.GONE
+        }
+    }
+
+    override fun startMainActivity() {
         val intent = Intent(context, InstrumentActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
@@ -82,7 +96,8 @@ class RegistrationFragment :
     private lateinit var loginEditText: AppCompatEditText
     private lateinit var passwordEditText: AppCompatEditText
     private lateinit var phoneEditText: AppCompatEditText
-    private lateinit var emailEditText: AppCompatEditText
+    private lateinit var repeatPasswordEditText: AppCompatEditText
+    private lateinit var passwordMismatch: TextView
     private val presenter = RegistrationPresenter()
 
     companion object {

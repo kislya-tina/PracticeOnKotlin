@@ -1,5 +1,7 @@
 package me.apps.personal_account_npo_mir.view.abstractions.main
 
+import android.app.Activity
+
 /**
  * Интерфейс главного окна
  */
@@ -30,10 +32,11 @@ interface IMainView {
      */
     fun startTransmittalActivity()
 
-    /**
-     * Запустить окно информации
-     */
-    fun startInformationActivity()
+  /**
+   * Запустить окно информации
+   */
+  fun startInformationActivity()
 
-    fun startSearchDevicesActivity()
+  fun startSearchDevicesActivity()
+  fun startLogRegActivity()
 }

@@ -66,7 +66,7 @@ class PutMeasureServerRequest(
                     val formatter: DateTimeFormatter =
                         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                     val formatDateTime: String = now.format(formatter)
-                    measure.timestamp = formatDateTime.toString()
+                    measure.timestamp = formatDateTime
                     val measureJson = gson.toJson(measure)
                     println(measureJson)
                     val outputStream = OutputStreamWriter(connection.outputStream)

@@ -103,7 +103,7 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
                 3, App.userDataService.token,
                 Measure(
                     summary.toString(), tariff1.toString(), tariff2.toString(),
-                    tariff3.toString(), tariff4.toString(), "timestamp"
+                    tariff3.toString(), tariff4.toString(), "24.07.2023 08:07"
                 ),
                 this
             )

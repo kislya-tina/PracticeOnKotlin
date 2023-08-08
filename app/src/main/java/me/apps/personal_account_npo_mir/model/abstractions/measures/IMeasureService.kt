@@ -12,7 +12,6 @@ interface IMeasureService {
         measure: Measure,
         resultListener: IServerRequestResultListener<PutMeasureRequestResult>
     )
-
     fun getLastMeasure(
         deviceId: Int,
         token: String,
@@ -28,10 +27,13 @@ interface IMeasureService {
         countInPage: Int,
         resultListener: IServerRequestResultListener<GetMeasuresRequestResult>
     )
-
     fun saveMeasure(
         measure: Measure
     )
 
-    var measure: Measure?
+    var measure : Measure?
+    var measures: Array<Measure>
+    fun saveMeasures(measure: Measure)
+    var measuresMap: MutableMap<Int, Measure>
+    fun saveMeasuresMap(key: Int, measure: Measure)
 }

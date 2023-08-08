@@ -100,11 +100,11 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
         if (success) {
             //Обращение к серверу
             App.measuresService.putMeasure(
-                App.indexService.index,
+                App.metersService.meters[App.indexService.index].id.toInt(),
                 App.userDataService.token,
                 Measure(
-                    summary.toString(), tariff1.toString(), tariff2.toString(),
-                    tariff3.toString(), tariff4.toString(), "24.07.2023 08:07"
+                    summary, tariff1, tariff2,
+                    tariff3, tariff4, "24.07.2023 08:07"
                 ),
                 this
             )

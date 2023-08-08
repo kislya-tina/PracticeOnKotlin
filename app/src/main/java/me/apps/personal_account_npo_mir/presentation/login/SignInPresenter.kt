@@ -16,11 +16,11 @@ import java.io.IOException
 import java.time.format.DateTimeFormatter
 
 class SignInPresenter() : IPresenter<ISignInView>,
-    IServerRequestResultListener<SignInRequestResult>{
-    object SaveMeters: IServerRequestResultListener<GetMetersRequestResult>{
+    IServerRequestResultListener<SignInRequestResult> {
+    object SaveMeters : IServerRequestResultListener<GetMetersRequestResult> {
 
         override fun onRequestSuccess(result: GetMetersRequestResult) {
-            val meters:Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
+            val meters: Array<Meter> = Gson().fromJson(result.meters, Array<Meter>::class.java)
             App.metersService.saveMeters(meters)
             for (meter in App.metersService.meters) {
                 App.measuresService.getLastMeasure(
@@ -36,8 +36,8 @@ class SignInPresenter() : IPresenter<ISignInView>,
         }
 
     }
-    object SaveLastMeasures:IServerRequestResultListener<GetLastMeasureRequestResult>{
-        var currentMeterId:Int = 0
+
+    object SaveLastMeasures : IServerRequestResultListener<GetLastMeasureRequestResult> {
         override fun onRequestSuccess(result: GetLastMeasureRequestResult) {
             try {
                 val measure: Measure = Gson().fromJson(result.measure, Measure::class.java)
@@ -45,15 +45,13 @@ class SignInPresenter() : IPresenter<ISignInView>,
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                 measure.timestamp = measure.timestamp.format(formatter)
                 App.measuresService.measuresMap.put(result.deviceId, measure)
-                currentMeterId+=1
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 println("Measure for this meter is not exist")
-                App.measuresService.measuresMap.put(currentMeterId,
-                Measure("0","0","0","0","0",""))
-                currentMeterId+=1
+                App.measuresService.measuresMap.put(
+                    result.deviceId,
+                    Measure("0", "0", "0", "0", "0", "")
+                )
             }
-            println(App.measuresService.measuresMap.toString())
-
         }
 
         override fun onRequestFail(message: ErrorCode) {

@@ -6,8 +6,6 @@ import me.apps.personal_account_npo_mir.model.abstractions.meters.Meter
 import me.apps.personal_account_npo_mir.model.server_connect.ErrorCode
 import me.apps.personal_account_npo_mir.model.server_connect.abstractions.IServerRequestResultListener
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersRequestResult
-import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersServerRequest
-import me.apps.personal_account_npo_mir.model.services.urlForHostLoopbackInterface
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IMainView
 
@@ -57,6 +55,10 @@ class InstrumentPresenter : IPresenter<IMainView>,
 //        // TODO: поставить имя счетчика
 //    }
 
+    fun setIndex(index: Int){
+        App.indexService.index = index
+    }
+
     fun onAddDevicesButtonClick(){
         view?.startSearchDevicesActivity()
     }
@@ -65,7 +67,6 @@ class InstrumentPresenter : IPresenter<IMainView>,
      * Колбэк при нажатии на кнопку "Архив показаний"
      */
     fun onArchiveButtonClick() {
-        // TODO: передавать id выбранного токена в App.meterService.id
         view?.startArchiveActivity()
     }
 
@@ -93,21 +94,11 @@ class InstrumentPresenter : IPresenter<IMainView>,
     fun onLogoutButtonClick(){
       view?.startLogRegActivity()
    }
+
     fun deleteToken(){
         App.userDataService.deleteToken()
     }
 
-    /**
-     * Кол-во элементов в списке
-     */
-//    val itemsCount
-//      get() = meters.size
-
-
-    private lateinit var meters: Array<Meter>
     private var view: IMainView? = null
-//    private var meters:
-    // TODO:
-
 }
 

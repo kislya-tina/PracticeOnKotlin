@@ -32,8 +32,6 @@ interface IMeasureService {
     )
 
     var measure : Measure?
-    var measures: Array<Measure>
-    fun saveMeasures(measure: Measure)
     var measuresMap: MutableMap<Int, Measure>
     fun saveMeasuresMap(key: Int, measure: Measure)
 }

@@ -46,7 +46,7 @@ class TokenService(override var app: Context) : ITokenService {
         if (!file.exists()) {
             file.createNewFile()
         }
-        val bw = BufferedWriter(FileWriter(file, true))
+        val bw = BufferedWriter(FileWriter(file))
         if (file.readText() != null) {
             bw.write(token)
             bw.newLine()

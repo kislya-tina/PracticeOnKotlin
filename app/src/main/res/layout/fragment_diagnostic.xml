@@ -26,10 +26,10 @@
         android:text="@string/text_00"
         android:layout_marginStart="20dp"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/errorText"
-        app:layout_constraintStart_toEndOf="@id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

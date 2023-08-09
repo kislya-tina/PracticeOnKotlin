@@ -42,6 +42,9 @@ class ArchivePresenter : IPresenter<IArchiveView> {
     }
 
     private var dates: List<Long> = App.archiveDateService.dates
+
+    var itemsCount: Int = dates.size
+
     private var view: IArchiveView? = null
     private var currentClickedPosition: Int = -1
 

@@ -52,7 +52,6 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         addDevicesButton = findViewById(R.id.addDevicesBtn)
         addDevicesButton.setOnClickListener(this)
 
-        adapter = DeviceAdapter(this, presenter)
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = adapter
         tabLayout = findViewById(R.id.tab_layout)
@@ -69,6 +68,8 @@ class InstrumentActivity : FragmentActivity(), IMainView,
 
 
     override fun onClick(view: View?) {
+        presenter.setIndex(tabLayout.selectedTabPosition)
+
         if (view === archiveButton) {
             presenter.onArchiveButtonClick()
         }

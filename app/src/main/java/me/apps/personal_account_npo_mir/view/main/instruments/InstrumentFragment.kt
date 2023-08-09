@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.presentation.main.instruments.InstrumentFragmentPresenter
 import me.apps.personalaccountnpomir.R
 import java.text.SimpleDateFormat

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.TransmittalPresenter
@@ -19,10 +20,10 @@ TransmittalActivity:  AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transmittal)
+        presenter.onViewCreated(this)
 
         handOverButton = this.findViewById(R.id.handOverButton)
         handOverButton.setOnClickListener(this)
-
 
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener(this)
@@ -33,7 +34,9 @@ TransmittalActivity:  AppCompatActivity(),
         tariff3IndicationsTextView = this.findViewById(R.id.indicationThirdTextView)
         tariff4IndicationsTextView = this.findViewById(R.id.indicationFourthTextView)
 
-        presenter.onViewCreated(this)
+        nameTextView = this.findViewById(R.id.meter_name_text_view)
+        nameTextView.text = presenter.getMeterName()
+
     }
 
     override fun onDestroy() {
@@ -87,5 +90,6 @@ TransmittalActivity:  AppCompatActivity(),
     private lateinit var tariff4IndicationsTextView: AppCompatEditText
     private lateinit var handOverButton: Button
     private lateinit var backButton: Button
+    private lateinit var nameTextView: TextView
     private var presenter = TransmittalPresenter()
 }

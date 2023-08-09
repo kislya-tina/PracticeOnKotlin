@@ -46,16 +46,16 @@ class SignInPresenter() : IPresenter<ISignInView>,
                 measure.timestamp = measure.timestamp.format(formatter)
                 App.measuresService.measuresMap.put(result.deviceId, measure)
             } catch (e: Exception) {
-                println("Measure for this meter is not exist")
+                println("Measure for this meter is not exist" + result.deviceId)
                 App.measuresService.measuresMap.put(
                     result.deviceId,
-                    Measure("0", "0", "0", "0", "0", "")
+                    Measure("0", "0", "0", "0", "0", "08.08.2002 06:09")
                 )
             }
         }
 
         override fun onRequestFail(message: ErrorCode) {
-            TODO("Not yet implemented")
+            println("ploho")
         }
     }
 

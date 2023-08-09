@@ -18,7 +18,7 @@ class InformationPresenter: IPresenter<IInformationView> {
     }
 
     fun getSerialNumber(): String{
-        return meter.serialNumber
+        return meter.serialNumber.toString()
     }
 
     fun getAddress(): String{

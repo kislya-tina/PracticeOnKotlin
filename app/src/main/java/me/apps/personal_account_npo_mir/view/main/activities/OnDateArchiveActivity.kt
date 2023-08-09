@@ -13,7 +13,7 @@ class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_date_archive)
 
-        summary = findViewById(R.id.indicationOfSumTextView)
+        summary = this.findViewById(R.id.indicationOfSumTextView)
         tariff1 = findViewById(R.id.indicationFirstTariffTextView)
         tariff2 = findViewById(R.id.indicationSecondTextView)
         tariff3 = findViewById(R.id.indicationThirdTextView)
@@ -26,20 +26,20 @@ class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView {
     }
 
     override fun setMeasure(measure : Measure) {
-        summary.text = measure.summary.toString()
-        tariff1.text = measure.tariff1.toString()
-        tariff2.text = measure.tariff2.toString()
-        tariff3.text = measure.tariff3.toString()
-        tariff4.text = measure.tariff4.toString()
+        summary?.text = measure.summary
+        tariff1?.text = measure.tariff1
+        tariff2?.text = measure.tariff2
+        tariff3?.text = measure.tariff3
+        tariff4?.text = measure.tariff4
     }
 
     override fun setHeader(header : String) {
-        supportActionBar?.title = header
+        dateTextView = findViewById(R.id.meter_name_text_view)
+        dateTextView?.text = header
     }
 
     override fun getPosition() : Int {
-//        arguments?.getInt("position")
-        return 0
+        return presenter.currentClickedDate
     }
 
 
@@ -48,10 +48,11 @@ class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView {
         presenter.onDestroy()
     }
 //    private var date : Long? = null
-    private lateinit var summary : TextView
-    private lateinit var tariff1 : TextView
-    private lateinit var tariff2 : TextView
-    private lateinit var tariff3 : TextView
-    private lateinit var tariff4 : TextView
+    private var summary : TextView? = null
+    private var tariff1 : TextView? = null
+    private var tariff2 : TextView? = null
+    private var tariff3 : TextView? = null
+    private var tariff4 : TextView? = null
+    private var dateTextView : TextView? = null
     private var presenter = OnDateArchivePresenter()
 }

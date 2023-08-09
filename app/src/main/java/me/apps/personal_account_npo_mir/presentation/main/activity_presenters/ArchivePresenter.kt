@@ -12,8 +12,7 @@ class ArchivePresenter : IPresenter<IArchiveView> {
      */
     override fun onViewCreated(view: IArchiveView) {
         this.view = view
-        val username = App.userDataService.username
-        view.setHeader(username)
+        dates = App.archiveDateService.dates
         view.refreshItems()
     }
 
@@ -37,15 +36,20 @@ class ArchivePresenter : IPresenter<IArchiveView> {
     fun onItemClick(position : Int){
         currentClickedPosition = position
         App.archiveDateService.currentClickedDate = position
-
-        view?.startItemActivity(dates[position])
+        dates[position]
+        view?.startItemActivity()
     }
 
-    private var dates: List<Long> = App.archiveDateService.dates
+    fun onTransferButtonClick(fromDate: String, toDate: String){
+        //запрос
+        dates = listOf("119", "120", "123")
+        view?.refreshItems()
+    }
 
-    var itemsCount: Int = dates.size
-
+    private var dates: List<String> = App.archiveDateService.dates
     private var view: IArchiveView? = null
     private var currentClickedPosition: Int = -1
 
+    val itemsCount
+        get() = dates.size
 }

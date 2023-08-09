@@ -8,16 +8,19 @@ import me.apps.personal_account_npo_mir.view.abstractions.main.IOnDateArchiveVie
 class OnDateArchivePresenter : IPresenter<IOnDateArchiveView> {
     override fun onViewCreated(view: IOnDateArchiveView) {
         this.view = view
-        val date : Long = App.archiveDateService.dates[view.getPosition()]
-        view.setHeader(date.toString())
-//        view.setMeasure(Measure(App.measuresService.getLastMeasure()))
-        // TODO: Сделать так, чтобы во вью подавался объект Measure,
-        //  в котором лежат показания полученные из getLastMeasures()
+        val date = App.archiveDateService.dates[view.getPosition()]
+        view.setHeader(date)
+        view.setMeasure(Measure("100", "", "", "", "", ""))
     }
 
     override fun onDestroy() {
         this.view = null
     }
 
-    private var view : IOnDateArchiveView? = null
+    // TODO: Сделать так, чтобы во вью подавался объект Measure,
+    //  в котором лежат показания полученные из getLastMeasures()
+
+
+    var currentClickedDate: Int = App.archiveDateService.currentClickedDate
+    private var view: IOnDateArchiveView? = null
 }

@@ -33,7 +33,7 @@ class InstrumentPresenter : IPresenter<IMainView>,
     }
 
     override fun onRequestFail(message: ErrorCode) {
-        TODO("Not yet implemented")
+        println("ploho")
     }
 
     /**

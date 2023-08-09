@@ -100,7 +100,7 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
         if (success) {
             //Обращение к серверу
             App.measuresService.putMeasure(
-                App.metersService.meters[App.indexService.index].id.toInt(),
+                App.metersService.meters[App.indexService.index].id,
                 App.userDataService.token,
                 Measure(
                     summary, tariff1, tariff2,
@@ -111,6 +111,9 @@ class TransmittalPresenter : IPresenter<ITransmittalView>,
         }
     }
 
+    fun getMeterName(): String{
+        return App.metersService.meters[App.indexService.index].name
+    }
 
     override fun onRequestSuccess(result: PutMeasureRequestResult) {
         if(result.responseCode == 200){

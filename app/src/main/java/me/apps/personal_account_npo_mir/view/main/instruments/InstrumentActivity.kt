@@ -20,6 +20,11 @@ import me.apps.personal_account_npo_mir.view.main.activities.TransmittalActivity
 import me.apps.personal_account_npo_mir.view.main.activities.diagnostic.DiagnosticActivity
 import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
+import android.content.Context
+import android.util.DisplayMetrics
+import androidx.core.view.ViewCompat
+import androidx.viewpager2.widget.MarginPageTransformer
+
 
 class InstrumentActivity : FragmentActivity(), IMainView,
     OnClickListener {
@@ -55,7 +60,10 @@ class InstrumentActivity : FragmentActivity(), IMainView,
             tab.text = "${(position + 1)}"
         }.attach()
 
+        viewPager.setPreviewBothSide(R.dimen._20dp,R.dimen._35dp)
+
         presenter.onViewCreated(this)
+
     }
 
 
@@ -90,6 +98,7 @@ class InstrumentActivity : FragmentActivity(), IMainView,
 
     }
 
+
     override fun startArchiveActivity() {
         val intent = Intent(this, ArchiveActivity::class.java)
         startActivity(intent)
@@ -109,6 +118,7 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         val intent = Intent(this, InformationActivity::class.java)
         startActivity(intent)
     }
+
     override fun startLogRegActivity() {
         val intent = Intent(this, LogRegActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -116,9 +126,9 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         App.tokenService.deleteToken()
         startActivity(intent)
         finish()
-   }
+    }
 
-    override fun startSearchDevicesActivity(){
+    override fun startSearchDevicesActivity() {
         val intent = Intent(this, SearchDevicesActivity::class.java)
         startActivity(intent)
     }

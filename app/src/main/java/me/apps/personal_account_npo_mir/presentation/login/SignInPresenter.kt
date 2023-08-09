@@ -12,11 +12,11 @@ import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInReque
 import me.apps.personal_account_npo_mir.presentation.abstraction.IPresenter
 import me.apps.personal_account_npo_mir.view.abstractions.login.ISignInView
 import me.apps.personalaccountnpomir.R
-import java.io.IOException
 import java.time.format.DateTimeFormatter
 
 class SignInPresenter() : IPresenter<ISignInView>,
     IServerRequestResultListener<SignInRequestResult> {
+
     object SaveMeters : IServerRequestResultListener<GetMetersRequestResult> {
 
         override fun onRequestSuccess(result: GetMetersRequestResult) {
@@ -24,7 +24,7 @@ class SignInPresenter() : IPresenter<ISignInView>,
             App.metersService.saveMeters(meters)
             for (meter in App.metersService.meters) {
                 App.measuresService.getLastMeasure(
-                    meter.id.toInt(),
+                    meter.id,
                     App.userDataService.token,
                     SaveLastMeasures
                 )

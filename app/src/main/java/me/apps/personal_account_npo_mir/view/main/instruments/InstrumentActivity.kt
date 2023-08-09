@@ -22,7 +22,10 @@ import me.apps.personal_account_npo_mir.view.search.SearchDevicesActivity
 import me.apps.personalaccountnpomir.R
 import android.content.Context
 import android.util.DisplayMetrics
+import android.widget.TextView
 import androidx.core.view.ViewCompat
+import androidx.core.view.isEmpty
+import androidx.core.view.size
 import androidx.viewpager2.widget.MarginPageTransformer
 
 
@@ -47,6 +50,8 @@ class InstrumentActivity : FragmentActivity(), IMainView,
         logoutButton = findViewById(R.id.logout_btn)
         logoutButton.setOnClickListener(this)
 
+        textView = findViewById(R.id.addDevicesTextView)
+
         adapter = DeviceAdapter(this, presenter)
 
         addDevicesButton = findViewById(R.id.addDevicesBtn)
@@ -60,8 +65,16 @@ class InstrumentActivity : FragmentActivity(), IMainView,
             tab.text = "${(position + 1)}"
         }.attach()
 
-        viewPager.setPreviewBothSide(R.dimen._20dp,R.dimen._35dp)
+        viewPager.setPreviewBothSide(R.dimen._30dp,R.dimen._35dp)
 
+     /*   if(viewPager.size == 0){
+            informationButton.visibility = View.GONE
+            archiveButton.visibility = View.GONE
+            transmittalButton.visibility = View.GONE
+            diagnosticButton.visibility = View.GONE
+            textView.visibility = View.VISIBLE
+        }
+*/
         presenter.onViewCreated(this)
 
     }
@@ -156,5 +169,6 @@ class InstrumentActivity : FragmentActivity(), IMainView,
     private lateinit var transmittalButton: Button
     private lateinit var informationButton: Button
     private lateinit var logoutButton: Button
+    private lateinit var textView: TextView
     private var presenter = InstrumentPresenter()
 }

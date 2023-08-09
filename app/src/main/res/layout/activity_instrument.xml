@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:text="@string/meters_main"
+        android:textSize="25sp"
         android:theme="@style/textStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +27,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -38,12 +38,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logout_btn" />
 
+    <TextView
+        android:id="@+id/addDevicesTextView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_devices_please"
+        android:padding="15dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@color/light_gray"
+        app:layout_constraintTop_toTopOf="@id/imageView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
-        android:paddingStart="@dimen/_20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +71,6 @@
             android:layout_height="0dp"
             android:background="#E7E7E7"
             app:tabIndicatorHeight="0dp" />
-
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"

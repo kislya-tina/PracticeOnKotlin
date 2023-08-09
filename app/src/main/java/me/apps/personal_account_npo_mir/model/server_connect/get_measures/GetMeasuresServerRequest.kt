@@ -49,7 +49,7 @@ class GetMeasuresServerRequest(
                 }
             } else {
                 val urlAddress: String =
-                    "$urlForHostLoopbackInterface/Measures/getmeasures/$deviceId/$dateFrom/$dateTo/$pageNumber/$countInPage"
+                    "$urlForHostLoopbackInterface+Measures/getmeasures/$deviceId/$dateFrom/$dateTo/$pageNumber/$countInPage"
                 println(urlAddress)
                 var httpURLConnection: HttpURLConnection? = null
                 var streamReader: InputStreamReader? = null
@@ -60,8 +60,8 @@ class GetMeasuresServerRequest(
                     httpURLConnection.apply {
                         connectTimeout = 10000
                         doInput = true
-                        httpURLConnection.setRequestProperty("X-User-Token", token)
                     }
+                    httpURLConnection.setRequestProperty("X-User-Token", token)
                     val streamReader = InputStreamReader(httpURLConnection.inputStream)
                     streamReader.use { measures = it.readText() }
                     withContext(Dispatchers.Main) {

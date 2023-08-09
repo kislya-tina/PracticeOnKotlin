@@ -67,14 +67,13 @@ class InstrumentActivity : FragmentActivity(), IMainView,
 
         viewPager.setPreviewBothSide(R.dimen._30dp,R.dimen._35dp)
 
-     /*   if(viewPager.size == 0){
+        if(adapter.itemCount == 0){
             informationButton.visibility = View.GONE
             archiveButton.visibility = View.GONE
             transmittalButton.visibility = View.GONE
             diagnosticButton.visibility = View.GONE
             textView.visibility = View.VISIBLE
         }
-*/
         presenter.onViewCreated(this)
 
     }

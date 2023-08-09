@@ -56,6 +56,7 @@
     <string name="diagnostic_success">Диагностика прошла успешно</string>
     <string name="invalid_login_password">Не верный логин или пароль. Повторите попытку</string>
     <string name="add_devices_please">Привяжите приборы учета с помощью кнопки "+"</string>
+    <string name="text_0">0</string>
 
 
 </resources>

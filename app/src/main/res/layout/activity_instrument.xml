@@ -19,8 +19,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logout_btn"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@drawable/ic_logout"
         android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +108,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
-        android:background="@drawable/button_add_devices_on_main_activity"
+        android:background="@drawable/add_devices"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -23,4 +23,5 @@ class OnDateArchivePresenter : IPresenter<IOnDateArchiveView> {
 
     var currentClickedDate: Int = App.archiveDateService.currentClickedDate
     private var view: IOnDateArchiveView? = null
+
 }

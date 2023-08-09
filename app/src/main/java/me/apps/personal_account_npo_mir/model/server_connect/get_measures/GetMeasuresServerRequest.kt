@@ -49,7 +49,7 @@ class GetMeasuresServerRequest(
                 }
             } else {
                 val urlAddress: String =
-                    "$urlForHostLoopbackInterface+Measures/getmeasures/$deviceId/$dateFrom/$dateTo/$pageNumber/$countInPage"
+                    url + "Measures/getmeasures/"+deviceId+"/"+dateFrom+"/"+dateTo+"/"+pageNumber+"/"+countInPage
                 println(urlAddress)
                 var httpURLConnection: HttpURLConnection? = null
                 var streamReader: InputStreamReader? = null

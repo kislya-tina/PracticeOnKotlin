@@ -12,20 +12,21 @@ import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeas
 import me.apps.personal_account_npo_mir.model.server_connect.put_measure.PutMeasureServerRequest
 
 const val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
+const val urlForDevice:String = "http://192.168.137.1:5000/api/"
 class MeasuresService(private val scope: CoroutineScope):IMeasureService {
     override fun putMeasure(deviceId: Int,
                             token:String,
                             measure:Measure,
                             resultListener: IServerRequestResultListener<PutMeasureRequestResult>
     ){
-        val request = PutMeasureServerRequest(urlForHostLoopbackInterface, deviceId, token, measure, scope)
+        val request = PutMeasureServerRequest(urlForDevice, deviceId, token, measure, scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }
     override fun getLastMeasure(deviceId:Int,
                                 token:String,
                                 resultListener: IServerRequestResultListener<GetLastMeasureRequestResult>){
-        val request = GetLastMeasureServerRequest(urlForHostLoopbackInterface,deviceId,token,scope)
+        val request = GetLastMeasureServerRequest(urlForDevice,deviceId,token,scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }
@@ -36,7 +37,7 @@ class MeasuresService(private val scope: CoroutineScope):IMeasureService {
                              pageNumber:Int,
                              countInPage: Int,
                              resultListener: IServerRequestResultListener<GetMeasuresRequestResult>){
-        val request = GetMeasuresServerRequest(urlForHostLoopbackInterface,deviceId,token,dateFrom,dateTo,pageNumber,countInPage,scope)
+        val request = GetMeasuresServerRequest(urlForDevice,deviceId,token,dateFrom,dateTo,pageNumber,countInPage,scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }

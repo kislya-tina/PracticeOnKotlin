@@ -13,10 +13,9 @@ import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMeter
 import me.apps.personal_account_npo_mir.model.server_connect.get_meters.GetMetersServerRequest
 
 class MetersService(private val scope: CoroutineScope) : IMetersService{
-    private val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
 
     override fun getMeters(token:String, resultListener: IServerRequestResultListener<GetMetersRequestResult>){
-        val request = GetMetersServerRequest(me.apps.personal_account_npo_mir.model.services.urlForHostLoopbackInterface, token, App.networkScope)
+        val request = GetMetersServerRequest(me.apps.personal_account_npo_mir.model.services.urlForDevice, token, App.networkScope)
         request.setServerRequestListener(resultListener)
         request.run()
     }
@@ -25,7 +24,7 @@ class MetersService(private val scope: CoroutineScope) : IMetersService{
     }
 
     override fun findMeter(key: Int, limit: Int, token: String, resultListener:IServerRequestResultListener<FindMeterRequestResult>) {
-        val request = FindMeterServerRequest(urlForHostLoopbackInterface, key, limit, token, scope)
+        val request = FindMeterServerRequest(urlForDevice, key, limit, token, scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }
@@ -35,7 +34,7 @@ class MetersService(private val scope: CoroutineScope) : IMetersService{
         token: String,
         resultListener: IServerRequestResultListener<BindMeterRequestResult>
     ) {
-        val request = BindMeterServerRequest(urlForHostLoopbackInterface, deviceId, token, scope)
+        val request = BindMeterServerRequest(urlForDevice, deviceId, token, scope)
         request.setServerRequestListener(resultListener)
         request.run()
 

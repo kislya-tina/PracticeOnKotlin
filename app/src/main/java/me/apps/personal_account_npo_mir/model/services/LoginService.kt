@@ -10,16 +10,13 @@ import me.apps.personal_account_npo_mir.model.server_connect.sign_in.SignInServe
 
 class SignInService(private val scope: CoroutineScope) : ILoginService {
 
-
-val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
-
     override fun signIn(
         username: String,
         password: String,
         resultListener: IServerRequestResultListener<SignInRequestResult>
     ) {
 
-        val request = SignInServerRequest(urlForHostLoopbackInterface, username,password, scope)
+        val request = SignInServerRequest(urlForDevice, username,password, scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }
@@ -34,7 +31,7 @@ val urlForHostLoopbackInterface: String = "http://10.0.2.2:5000/api/"
         phoneNumber: String,
         resultListener: IServerRequestResultListener<SignInRequestResult>
     ) {
-        val request = SignUpServerRequest(urlForHostLoopbackInterface, username,password, scope)
+        val request = SignUpServerRequest(urlForDevice, username,password, scope)
         request.setServerRequestListener(resultListener)
         request.run()
     }

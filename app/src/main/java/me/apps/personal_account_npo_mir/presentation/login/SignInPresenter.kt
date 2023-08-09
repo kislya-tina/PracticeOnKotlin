@@ -55,7 +55,7 @@ class SignInPresenter() : IPresenter<ISignInView>,
         }
 
         override fun onRequestFail(message: ErrorCode) {
-            println("ploho")
+            println(message.description)
         }
     }
 

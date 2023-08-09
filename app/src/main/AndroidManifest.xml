@@ -26,7 +26,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="me.apps.personal_account_npo_mir.view.main.activities.OnDateArchiveActivity"
+            android:name="me.apps.personal_account_npo_mir.view.main.dates.OnDateArchiveActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

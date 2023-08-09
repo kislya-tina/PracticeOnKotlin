@@ -7,10 +7,13 @@ import me.apps.personal_account_npo_mir.view.abstractions.main.IOnDateArchiveVie
 
 class OnDateArchivePresenter : IPresenter<IOnDateArchiveView> {
     override fun onViewCreated(view: IOnDateArchiveView) {
+        var currentMeter = App.metersService.meters[App.indexService.index]
         this.view = view
         val date = App.archiveDateService.dates[view.getPosition()]
+        val measure = App.archiveDateService.arrayOfMeasures[view.getPosition()]
         view.setHeader(date)
-        view.setMeasure(Measure("100", "", "", "", "", ""))
+        view.setMeasure(measure)
+        //view.setMeasure(App.archiveDateService.arrayOfMeasures[currentMeter])
     }
 
     override fun onDestroy() {

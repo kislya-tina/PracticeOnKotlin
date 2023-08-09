@@ -16,7 +16,9 @@ class DiagnosticItemAdapter(private val presenter: DiagnosticPresenter):
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_diagnostic, parent, false)
 
-        return DiagnosticItemLIstViewHolder(presenter, view)    }
+        return DiagnosticItemLIstViewHolder(presenter, view)
+
+    }
 
     override fun onBindViewHolder(holder: DiagnosticItemLIstViewHolder, position: Int) {
         holder.onBind()

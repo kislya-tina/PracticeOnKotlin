@@ -20,6 +20,7 @@ class DiagnosticActivity : AppCompatActivity(), OnClickListener {
 
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener(this)
+
     }
 
     override fun onClick(view: View?) {

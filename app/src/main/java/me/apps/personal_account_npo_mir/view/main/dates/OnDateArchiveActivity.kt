@@ -2,6 +2,9 @@ package me.apps.personal_account_npo_mir.view.main.dates
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.View.OnClickListener
+import android.widget.Button
 import android.widget.TextView
 import me.apps.personal_account_npo_mir.di.App
 import me.apps.personal_account_npo_mir.model.abstractions.measures.Measure
@@ -9,7 +12,7 @@ import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.On
 import me.apps.personal_account_npo_mir.view.abstractions.main.IOnDateArchiveView
 import me.apps.personalaccountnpomir.R
 
-class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView {
+class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView, OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_date_archive)
@@ -25,6 +28,10 @@ class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView {
 //        val arguments = intent.extras
 //        date = arguments?.getLong("date") as Long
         // TODO: Нужно передавать в эту активити дату и ID счетчика
+
+        backButton = findViewById(R.id.back_button)
+        backButton.setOnClickListener(this)
+
     }
 
     override fun setMeasure(measure : Measure) {
@@ -33,6 +40,12 @@ class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView {
         tariff2?.text = measure.tariff2
         tariff3?.text = measure.tariff3
         tariff4?.text = measure.tariff4
+    }
+
+    override fun onClick(view: View?) {
+        if(view == backButton){
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     override fun setHeader(header : String) {
@@ -57,4 +70,5 @@ class OnDateArchiveActivity : AppCompatActivity() , IOnDateArchiveView {
     private var tariff4 : TextView? = null
     private var dateTextView : TextView? = null
     private var presenter = OnDateArchivePresenter()
+    private lateinit var backButton: Button
 }

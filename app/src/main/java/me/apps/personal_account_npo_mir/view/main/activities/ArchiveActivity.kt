@@ -8,6 +8,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import me.apps.personal_account_npo_mir.presentation.main.activity_presenters.ArchivePresenter
 import me.apps.personal_account_npo_mir.view.abstractions.main.IArchiveView
@@ -69,7 +70,7 @@ class ArchiveActivity : AppCompatActivity(), IArchiveView, OnClickListener  {
     private val presenter = ArchivePresenter()
     private val adapter = DatesRowAdapter(presenter)
     private lateinit var backButton: Button
-    private lateinit var transferButton: Button
+    private lateinit var transferButton: AppCompatButton
     private lateinit var fromDate: EditText
     private lateinit var toDate: EditText
 
